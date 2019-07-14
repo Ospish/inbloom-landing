@@ -1,0 +1,37 @@
+.select-size {
+  position: relative;
+  padding-top: 58px;
+  padding-bottom: 58px;
+
+  background-image: url('../images/select-size-decor.jpg');
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: 191px;
+
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    background-image: url('../images/select-size-decor@2x.jpg');
+  }
+
+  &__heading {
+    margin-bottom: 25px;
+  }
+
+  &__text {
+    display: block;
+    margin-bottom: 41px;
+
+    font-size: 24px;
+    font-weight: 300;
+    text-align: center;
+    color: #292929;
+  }
+  
+  &__list {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__item {
+    width: 325px;
+  }
+}

@@ -1,0 +1,40 @@
+.city-select {
+  &__btn {
+    width: 120px;
+    padding: 0;
+
+    border: none;
+    background-color: transparent;
+
+    font-size: 16px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #292929;
+  }
+
+  &__btn-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__icon {
+    width: 10px;
+    height: auto;
+  }
+
+  &__arrow {
+    width: 9px;
+    height: auto;
+
+    transition: all 0.25s ease;
+    
+    .is-active & {
+      transform: rotate(180deg);
+    }
+  }
+}

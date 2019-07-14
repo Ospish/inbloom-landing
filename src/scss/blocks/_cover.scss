@@ -1,0 +1,83 @@
+.cover {
+  position: relative;
+
+  height: 570px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border-bottom: 2px solid #fff5e5;
+
+  background-image: url('../images/cover.jpg');
+  background-size: auto 570px;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    background-image: url('../images/cover@2x.jpg');
+  }
+
+  &__decor {
+    position: absolute;
+    z-index: 0;
+
+    pointer-events: none;
+  
+    &--lb {
+      left: 0;
+      bottom: 0;
+    }
+
+    &--rt {
+      top: 0;
+      right: 0;
+    }
+  }
+
+  &__heading {
+    width: 600px;
+    margin-bottom: 27px;
+
+    background-image: linear-gradient(to right, #cb6ce6, #ffbd4a 99%), linear-gradient(to bottom, #292929, #292929);
+    font-family: 'Magnolia-Script';
+    font-size: 45px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #292929;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: none;
+    transform: translateZ(0);
+  }
+
+  &__line {
+    display: block;
+    width: 300px;
+    height: 2px;
+    margin-bottom: 29px;
+
+    background-color: #cf9333;
+  }
+
+  &__text {
+    margin: 0 0 40px;
+
+    font-size: 24px;
+  }
+
+  &__btn {
+    width: 355px;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  &__link {
+
+  }
+}

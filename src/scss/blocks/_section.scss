@@ -1,0 +1,24 @@
+.section {
+  position: relative;
+  
+  &__heading {
+    text-align: center;
+
+    &:after {
+      content: '';
+
+      display: block;
+      width: 220px;
+      height: 2px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 29px;
+
+      background-color: #cf9333;
+    }
+  }
+
+  p + p {
+    margin-top: 18px;
+  }
+}
