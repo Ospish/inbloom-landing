@@ -1,0 +1,28 @@
+.rewrite-item {
+  padding: 19px 46px 36px 30px;
+  
+  &__name {
+    margin-bottom: 9px;
+
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.13;
+    letter-spacing: normal;
+  }
+
+  &__city {
+    margin-bottom: 24px;
+
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.69;
+    letter-spacing: normal;
+  }
+
+  &__text {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.5;
+    letter-spacing: normal;
+  }
+}

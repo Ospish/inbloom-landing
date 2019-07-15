@@ -18,6 +18,15 @@
     }
   }
 
+  &__description {
+    display: block;
+    margin-top: 25px;
+
+    font-size: 24px;
+    font-weight: 300;
+    text-align: center;
+  }
+
   p + p {
     margin-top: 18px;
   }
