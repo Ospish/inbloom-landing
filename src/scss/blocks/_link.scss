@@ -18,6 +18,10 @@
     color: #cf9333;
   
     border-bottom: 1px dotted #cf9333;
+
+    @media all and (max-width: 1024px) {
+      font-size: 14px;
+    }
   }
 
   &--white {

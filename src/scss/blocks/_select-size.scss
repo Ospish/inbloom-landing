@@ -12,6 +12,17 @@
     background-image: url('../images/select-size-decor@2x.jpg');
   }
 
+  @media all and (max-width: 1024px) {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  &__container {
+    @media all and (max-width: 1024px) {
+      width: 707px;
+    }
+  }
+
   &__heading {
     margin-bottom: 25px;
   }
@@ -19,14 +30,27 @@
   &__text {
     display: block;
     margin-bottom: 41px;
+
+    @media all and (max-width: 1024px) {
+      margin-bottom: 20px;
+    }
   }
   
   &__list {
     display: flex;
     justify-content: space-between;
+    
+    @media all and (max-width: 1280px) {
+      justify-content: center; 
+    }
   }
 
   &__item {
     width: 325px;
+
+    @media all and (max-width: 1280px) {
+      width: 300px;
+      margin: 0 15px;
+    }
   }
 }

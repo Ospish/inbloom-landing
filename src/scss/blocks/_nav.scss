@@ -1,11 +1,55 @@
 .nav {
+  
+  &__btn-burger {
+    display: none;
+
+    font-size: 18px;
+    font-weight: 500;
+    color: #292929;
+
+    border: none;
+    padding: 20px;
+    background-color: transparent;
+
+    @media all and (max-width: 1024px) {
+      display: block;
+    }
+  }
+
   &__list {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding: 0;
+    padding: 10px;
     margin: 0;
 
     list-style: none;
+
+    @media all and (max-width: 1024px) {
+      position: absolute;
+      left: 0;
+      top: 100%;
+      
+      flex-direction: column;
+      width: 100%;
+      height: auto;
+
+      background-color: #fff;
+
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+
+      .is-visible & {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &__item {
+    padding: 8px;
   }
 }

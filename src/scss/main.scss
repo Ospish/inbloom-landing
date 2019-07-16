@@ -1,30 +1,30 @@
 @import "base/fonts";
 
-$grid-breakpoints: (
-  xs: 0,
-  sm: 480px,
-  md: 768px,
-  lg: 1025px,
-  xl: 1230px
-) !default;
+// $grid-breakpoints: (
+//   xs: 0,
+//   sm: 480px,
+//   md: 768px,
+//   lg: 1025px,
+//   xl: 1230px
+// ) !default;
 
-$container-max-widths: (
-  sm: 290px,
-  md: 708px,
-  lg: 964px,
-  xl: 1170px
-) !default;
+// $container-max-widths: (
+//   sm: 290px,
+//   md: 708px,
+//   lg: 964px,
+//   xl: 1170px
+// ) !default;
 
-$grid-columns: 12 !default;
-$grid-gutter-width: 30px !default;
+// $grid-columns: 12 !default;
+// $grid-gutter-width: 30px !default;
 
-//Bootstrap Grid
-@import "breakpoints/mixins/breakpoints";
-@import "grid/bootstrap-grid";
-@import "sizing/utilities/sizing";
-@import "layout/utilities/spacing";
-@import "layout/mixins/visibility";
-@import "layout/utilities/visibility";
+// //Bootstrap Grid
+// @import "breakpoints/mixins/breakpoints";
+// @import "grid/bootstrap-grid";
+// @import "sizing/utilities/sizing";
+// @import "layout/utilities/spacing";
+// @import "layout/mixins/visibility";
+// @import "layout/utilities/visibility";
 
 
 html {
@@ -59,6 +59,10 @@ body {
   letter-spacing: normal;
 
   color: #292929;
+
+  @media all and (max-width: 1024px) {
+    font-size: 16px
+  }
 }
 
 header,
@@ -112,6 +116,10 @@ h2,
   font-weight: 300;
   text-transform: uppercase;
   color: #292929;
+
+  @media all and (max-width: 1024px) {
+    font-size: 32px;
+  }
 }
 
 h3,
@@ -125,6 +133,13 @@ h3,
 
 p {
   margin: 0;
+}
+
+.container {
+  width: 1170px;
+  max-width: calc(100% - 60px);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @import "blocks/header";

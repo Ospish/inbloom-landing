@@ -14,9 +14,18 @@
     width: 125px;
     height: auto;
     margin-right: 15px;
+
+    @media all and (max-width: 1024px) {
+      width: 110px;
+      margin-right: 0;
+    }
   }
 
   &__text {
     width: 95px;
+
+    @media all and (max-width: 1024px) {
+      display: none;
+    }
   }
 }

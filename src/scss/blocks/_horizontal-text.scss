@@ -24,6 +24,21 @@
   transform-origin: left center;
   transform: rotate(-90deg) translateX(-100%);
 
+  @media all and (max-width: 1550px) {
+    left: 60px;
+  }
+
+  @media all and (max-width: 1440px) {
+    top: -32px;
+    left: 40px;
+
+    font-size: 44px;  
+  }
+
+  @media all and (max-width: 1330px) {
+    display: none;
+  }
+
   &:after {
     content: '';
 

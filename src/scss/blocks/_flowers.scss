@@ -11,6 +11,30 @@
     background-image: url('../images/flowers-bg@2x.jpg');
   }
 
+  @media all and (max-width: 1024px) {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  &__container {
+    justify-content: space-between;
+    display: flex;
+
+    @media all and (max-width: 1024px) {
+      width: 707px;
+    }
+  }
+
+  &__cover {
+    flex-shrink: 0;
+    width: calc(50% - 27px);
+  }
+
+  &__content {
+    flex-shrink: 0;
+    width: calc(50% - 27px);
+  }
+
   &__img {
     max-width: 100%;
     height: auto;
@@ -19,6 +43,10 @@
   &__text {
     padding-top: 40px;
     margin-bottom: 38px;
+
+    @media all and (max-width: 1024px) {
+      padding-top: 22px;
+    }
   }
 
 
@@ -32,8 +60,16 @@
     font-size: 15px;
     font-weight: 300;
 
+    @media all and (max-width: 1024px) {
+      font-size: 14px;
+    }
+  
     & + & {
       margin-left: 60px;
+
+      @media all and (max-width: 1024px) {
+        margin-left: 30px;
+      }
     }
   }
 

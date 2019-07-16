@@ -13,6 +13,10 @@
     line-height: normal;
     letter-spacing: normal;
     color: #292929;
+
+    @media all and (max-width: 1024px) {
+      width: 100px;
+    }
   }
 
   &__btn-inner {

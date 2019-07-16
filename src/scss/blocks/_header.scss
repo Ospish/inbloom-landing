@@ -8,10 +8,18 @@
     align-items: center;
     justify-content: space-between;
     height: 80px;
+  
+    @media all and (max-width: 1024px) {
+      height: 70px;
+    }
   }
 
   &__logo {
     margin-right: 30px;
+
+    @media all and (max-width: 1024px) {
+      margin-right: 15px;
+    }
   }
 
   &__nav {

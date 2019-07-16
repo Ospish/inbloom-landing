@@ -1,21 +1,69 @@
 .versus {
+  position: relative;
+
   padding-top: 43px;
   padding-bottom: 40px;
 
-  background: url('../images/versus-bg-left.jpg') center left no-repeat, url('../images/versus-bg-right.jpg') center right no-repeat;
-  // background-size: 50%;
+  @media all and (max-width: 1024px) {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  &:after,
+  &:before {
+    content: '';
+    
+    position: absolute;
+    top: 0;
+    z-index: 0;
+
+    width: 50%;
+    height: 100%;
+
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    @media all and (max-width: 1024px) {
+      opacity: 0.3;
+    }
+  }
+
+  &:after {
+    left: 0;
+
+    background-image: url('../images/versus-bg-left.jpg');
+    background-position: left center;
+  }
+
+  &:before {
+    right: 0;
+    
+    background-image: url('../images/versus-bg-right.jpg');
+    background-position: right center;
+  }
 
   &__heading {
-
+    position: relative;
+    z-index: 1;
   }
 
   &__text {
+    position: relative;
+    z-index: 1;
+
     margin-bottom: 68px;
   }
 
   &__wrap {
+    position: relative;
+    z-index: 1;
+
     display: flex;
     margin-bottom: 90px;
+
+    @media all and (max-width: 1024px) {
+      margin-bottom: 45px;
+    }
   }
 
   &__column {
@@ -23,9 +71,17 @@
     flex-shrink: 0;
     padding-left: 78px;
 
+    @media all and (max-width: 1024px) {
+      padding-left: 39px;
+    }
+
     &--left {
       text-align: right;
       padding-right: 78px;
+
+      @media all and (max-width: 1024px) {
+        padding-right: 39px;
+      }
     }
   }
 
@@ -91,6 +147,9 @@
   }
 
   &__btn {
+    position: relative;
+    z-index: 1;
+
     width: 355px;
     margin-left: auto;
     margin-right: auto;

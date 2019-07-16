@@ -2,6 +2,17 @@
   padding-top: 40px;
   padding-bottom: 40px;
 
+  @media all and (max-width: 1024px) {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  &__container {
+    @media all and (max-width: 1024px) {
+      width: 708px;
+    }  
+  }
+
   &__text {
     margin-bottom: 60px;
   }
@@ -15,6 +26,7 @@
   }
 
   &__img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
