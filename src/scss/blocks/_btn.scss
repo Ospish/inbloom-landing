@@ -34,6 +34,19 @@
     transform: rotate(35deg);
   }
 
+  &--other {
+    height: 51px;
+
+    box-shadow: 0px 3px 12.1px 0.9px rgba(220, 148, 66, 0.39), 0px 1px 0 0 #ab4d33, inset 0px 9px 8px 0 rgba(126, 23, 174, 0.13);
+    background-image: linear-gradient(to right, #dc9442, #ae6e25 99%);
+
+    font-size: 16px;
+
+    &:before {
+      background-color: #ab4d33;
+    }
+  }
+
   &__inner {
     position: relative;
     z-index: 2;

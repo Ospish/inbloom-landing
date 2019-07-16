@@ -1,0 +1,17 @@
+.footer-nav {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0;
+    margin: 0;
+
+    list-style: none;
+  }
+
+  &__item {
+    width: 50%;
+    margin-bottom: 16px;
+  }
+}
