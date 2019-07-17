@@ -1,4 +1,6 @@
 .portfolio {
+  position: relative;
+
   padding-top: 40px;
   padding-bottom: 40px;
 
@@ -7,13 +9,82 @@
     padding-bottom: 30px;
   }
 
+  &:before,
+  &:after {
+    content: '';
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+
+    width: 175px;
+    height: 472px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    @media all and (max-width: 767px) {
+      display: none;
+      background: none !important;
+    }
+  }
+
+  &:after {
+    left: auto;
+    right: 0;
+
+    width: 225px;
+    height: 846px;
+  }
+
+  .no-webp &:before {
+    background-image: url('../images/portfolio-decor-tl.png');
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      background-image: url('../images/portfolio-decor-tl@2x.jpg');
+    }
+  }
+  
+  .webp &:before {
+    background-image: url('../images/portfolio-decor-tl.webp');
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      background-image: url('../images/portfolio-decor-tl@2x.webp');
+    }
+  }
+
+  .no-webp &:after {
+    background-image: url('../images/portfolio-decor-tr.png');
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      background-image: url('../images/portfolio-decor-tr@2x.jpg');
+    }
+  }
+  
+  .webp &:after {
+    background-image: url('../images/portfolio-decor-tr.webp');
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      background-image: url('../images/portfolio-decor-tr@2x.webp');
+    }
+  }
+
   &__container {
+    position: relative;
+
     @media all and (max-width: 1024px) {
       width: 708px;
     }  
   }
 
+  &__heading {
+    position: relative;
+  }
+
   &__text {
+    position: relative;
+
     margin-bottom: 60px;
   }
 
@@ -23,6 +94,10 @@
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     grid-column-gap: 15px;
     grid-row-gap: 15px;
+
+    @media all and (max-width: 566px) {
+      display: block;
+    }
   }
 
   &__img {
@@ -30,6 +105,10 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+
+    @media all and (max-width: 566px) {
+      margin-bottom: 15px;
+    }
   }
 
   &__item:nth-child(1) { grid-area: 1 / 2 / 4 / 3; }

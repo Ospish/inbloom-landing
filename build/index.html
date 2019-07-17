@@ -39,6 +39,7 @@
 
         <!-- begin city-select -->
         <div class="header__city city-select">
+          <!-- TODO: Нужно выподяющее меню какое-то или popup с выбором города -->
           <button class="city-select__btn" type="button" aria-label="Выбор города">
             <span class="city-select__btn-inner">
               <img class="city-select__icon" src="images/icons/location-pin.svg" alt="">
@@ -83,10 +84,10 @@
               partner@inblum.store
             </span>
           </a>
-          <a class="link link--bold" href="tel:88000000000">
+          <a class="link link--bold" href="tel:88000000000" aria-label="Позвонить">
             <span class="link__inner">
               <img class="link__icon" src="images/icons/tel.svg" alt="">
-              8 800 000 00 00
+              <span class="link__text">8 800 000 00 00</span>
             </span>
           </a>
         </div>
@@ -103,6 +104,8 @@
 
     <!-- begin .cover -->
     <section class="cover">
+
+      <!-- TODO: Подобрать фоновую картинку для мобильной версии, желательно ещё и планшетную версию -->
 
       <!-- TODO: запросить SVG -->
       <img class="cover__decor cover__decor--lb" src="images/cover-decor-lb.png" srcset="images/cover-decor-lb@2x.png 2x" alt="" />
@@ -202,6 +205,7 @@
             <!-- begin .select-size-item -->
             <div class="select-size-item">
               <div class="select-size-item__cover">
+                <!-- TODO: желательно заменить на PNG, иногда залазит на фон, заметны белые границы -->
                 <img class="select-size-item__img" src="images/content/select-size/s.jpg" srcset="images/content/select-size/s@2x.jpg 2x" alt="большой букет в шляпной коробке">
               </div>
               <div class="select-size-item__label">S</div>
@@ -310,7 +314,7 @@
 
     <!-- begin portfolio -->
     <section class="section portfolio">
-      <h2 class="section__heading">Наши работы</h2>
+      <h2 class="section__heading portfolio__heading">Наши работы</h2>
       <p class="section__description portfolio__text">Посмотрите букеты, которые мы собирали для наших букетов</p>
 
       <div class="portfolio__container container">
@@ -328,7 +332,7 @@
             <img class="portfolio__img" src="images/content/portfolio/5.jpg" srcset="images/content/portfolio/5@2x.jpg 2x" alt="">
           </div>
           <div class="portfolio__item">
-            <img class="portfolio__img" src="images/content/portfolio/1.jpg" srcset="images/content/portfolio/l@2x.jpg 2x" alt="">
+            <img class="portfolio__img" src="images/content/portfolio/1.jpg" srcset="images/content/portfolio/1@2x.jpg 2x" alt="">
           </div>
         </div>
       </div>
@@ -383,6 +387,7 @@
     <section class="section map">
       <h2 class="section__heading map__heading">Наши представиители</h2>
       <p class="section__description">Для отображения карты необходим API ключ Google</p>
+      <!-- TODO: Что должно происходить по клику? Или это ссылка? -->
       <a class="map__btn btn" href="">
         <span class="btn__inner">Стать партнером</span>
       </a>

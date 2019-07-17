@@ -2,6 +2,7 @@
 const { task, src, dest, watch, series, parallel } = require('gulp');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
+var minifyCSS = require("gulp-minify-css");
 var pipeline = require('readable-stream').pipeline;
 var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync').create();
@@ -14,6 +15,12 @@ task('compress', function () {
     dest('build/js')
   );
 });
+
+// gulp.task('compressCSS', function () {
+//   gulp.src('./css/*.css') // path to your file
+//   .pipe(minifyCss())
+//   .pipe(gulp.dest('./minify-css'));
+// });
 
 
 function html() {
@@ -35,14 +42,15 @@ function css() {
       browsers: ['last 2 versions'],
       cascade: false
     }))
+    .pipe(minifyCSS())
     .pipe(dest('build/css'))
     .pipe(browserSync.reload({stream: true}))
 }
 
 function js() {
-  return src('src/js/*.js', { sourcemaps: true })
-    .pipe(dest('build/js', { sourcemaps: true }))
+  return src('src/js/*.js', { sourcemaps: false })
     .pipe(uglify())
+    .pipe(dest('build/js', { sourcemaps: false }))
     .pipe(browserSync.reload({stream: true}))
 }
 

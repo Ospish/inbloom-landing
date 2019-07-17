@@ -3,13 +3,24 @@
   padding-top: 58px;
   padding-bottom: 58px;
 
-  background-image: url('../images/select-size-decor.jpg');
   background-position: top left;
   background-repeat: no-repeat;
   background-size: 191px;
 
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    background-image: url('../images/select-size-decor@2x.jpg');
+  .no-webp & {
+    background-image: url('../images/select-size-decor.jpg');
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      background-image: url('../images/select-size-decor@2x.jpg');
+    }
+  }
+  
+  .webp & {
+    background-image: url('../images/select-size-decor.webp');
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      background-image: url('../images/select-size-decor@2x.webp');
+    }
   }
 
   @media all and (max-width: 1024px) {
@@ -42,6 +53,11 @@
     
     @media all and (max-width: 1280px) {
       justify-content: center; 
+    }
+
+    @media all and (max-width: 767px) {
+      flex-direction: column;
+      align-items: center;
     }
   }
 

@@ -9,18 +9,40 @@
 
   border-bottom: 2px solid #fff5e5;
 
-  background-image: url('../images/cover.jpg');
   background-size: auto 570px;
   background-position: center;
   background-repeat: no-repeat;
 
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    background-image: url('../images/cover@2x.jpg');
+  .no-webp & {
+    background-image: url('../images/cover.jpg');
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      background-image: url('../images/cover@2x.jpg');
+    }
+  }
+  
+  .webp & {
+    background-image: url('../images/cover.webp');
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      background-image: url('../images/cover@2x.webp');
+    }
   }
 
   @media all and (max-width: 1024px) {
     height: 480px;
     background-size: auto 480px;
+  }
+
+  @media all and (max-width: 767px) {
+    height: auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    background-size: cover;
+    background-position: left center;
+
+    text-align: center;
   }
 
   &__decor {
@@ -62,7 +84,15 @@
 
     @media all and (max-width: 1024px) {
       width: 480px;
+
       font-size: 38px;    
+    }
+
+    @media all and (max-width: 767px) {
+      width: 100%;
+    
+      font-size: 32px;
+      text-align: center;
     }
   }
 
@@ -73,6 +103,11 @@
     margin-bottom: 29px;
 
     background-color: #cf9333;
+
+    @media all and (max-width: 767px) {
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 
   &__text {
@@ -85,6 +120,11 @@
     width: 355px;
     max-width: 100%;
     margin-bottom: 20px;
+
+    @media all and (max-width: 767px) {
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 
   &__link {
