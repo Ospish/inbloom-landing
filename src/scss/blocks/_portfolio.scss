@@ -39,7 +39,7 @@
   }
 
   .no-webp &:before {
-    background-image: url('../images/portfolio-decor-tl.png');
+    background-image: url('../images/portfolio-decor-tl.jpg');
 
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       background-image: url('../images/portfolio-decor-tl@2x.jpg');
@@ -55,7 +55,7 @@
   }
 
   .no-webp &:after {
-    background-image: url('../images/portfolio-decor-tr.png');
+    background-image: url('../images/portfolio-decor-tr.jpg');
 
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       background-image: url('../images/portfolio-decor-tr@2x.jpg');
