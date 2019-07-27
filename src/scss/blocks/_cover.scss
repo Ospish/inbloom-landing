@@ -116,6 +116,11 @@
     font-size: 24px;
   }
 
+  &__btn-wrap {
+    display: inline-block;
+    text-align: center;
+  }
+
   &__btn {
     width: 355px;
     max-width: 100%;

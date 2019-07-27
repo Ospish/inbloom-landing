@@ -1,8 +1,16 @@
 .link {
+  position: relative;
+
   font-size: 16px;
   font-weight: 300;
   color: #292929;
   text-decoration: none;
+
+  transition: all 0.25s ease;
+
+  &:hover {
+    color: #972bad;
+  }
 
   &--bold {
     font-weight: bold;
@@ -30,6 +38,10 @@
 
   &--white {
     color: #ffffff;
+
+    &:hover {
+      color: #cf9333;
+    }
   }
 
   &__inner {

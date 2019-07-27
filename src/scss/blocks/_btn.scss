@@ -5,7 +5,8 @@
   height: 64px;
 
   border-radius: 5px;
-  box-shadow: 0px 3px 12.1px 0.9px rgba(205, 111, 224, 0.39), 0px 1px 0 0 #972bad, inset 0px 9px 8px 0 rgba(126, 23, 174, 0.13);
+  box-shadow: 0 3px 12.1px 0.9px rgba(205, 111, 224, 0.39), 0 1px 0 0 #972bad, inset 0 9px 8px 0 rgba(126, 23, 174, 0.13);
+  background-color: #7a1896;
   background-image: linear-gradient(to right, #cb6ce6, #8f2ca2 99%);
 
   font-size: 18px;
@@ -15,6 +16,8 @@
   color: #ffffff;
 
   overflow: hidden;
+
+  transition: all 0.25s ease;
 
   @media all and (max-width: 1024px) {
     height: 52px;
@@ -38,6 +41,42 @@
 
     opacity: 0.2;
     transform: rotate(35deg);
+    transition: all 0.25s ease;
+  }
+
+  &:after {
+    content: '';
+
+    position: absolute;
+    left: -30px;
+    top: -60px;
+    width: 100px;
+    height: 300%;
+
+    background-color: #fff;
+
+    transform-origin: center;
+    transform: rotate(30deg);
+
+    opacity: 0;
+    transition: all 0.25s ease;
+
+  }
+
+  &:hover {
+    box-shadow: 0 0 0 0 rgba(205, 111, 224, 0.39), 0 1px 0 0 #972bad, inset 0 9px 8px 0 rgba(126, 23, 174, 0.13);
+
+    &:before {
+      opacity: 0;
+    }
+
+    &:after {
+      animation: blik 0.5s ease;
+    }
+  }
+
+  &:active {
+    background: #7a1896;
   }
 
   &--other {
@@ -61,5 +100,22 @@
     align-items: center;
     justify-content: center;
     height: 100%;
+  }
+}
+
+
+@keyframes blik {
+  0% {
+    left: -30px;
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+
+  100% {
+    left: 120%;
+    opacity: 0;
   }
 }

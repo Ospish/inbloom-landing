@@ -56,4 +56,29 @@
   &__item {
     padding: 8px;
   }
+
+  &__link {
+    &:after {
+      content: '';
+
+      position: absolute;
+      left: 0;
+      bottom: 0;
+
+      width: 0;
+      height: 1px;
+
+      background-color: transparent;
+
+      transition: all 0.25s ease;
+    }
+
+    &:hover {
+      &:after {
+        width: 100%;
+
+        background-color: #972bad;
+      }
+    }
+  }
 }

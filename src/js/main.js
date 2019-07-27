@@ -1,3 +1,23 @@
+document.querySelectorAll('a[href^="#"]').forEach( function (anchor) {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    var element = document.querySelector(this.getAttribute('href'));
+    window.scroll({
+      top: getCoords(element).top ,
+      behavior: 'smooth'
+    });
+  });
+});
+
+function getCoords(elem) { // кроме IE8-
+  var box = elem.getBoundingClientRect();
+  return {
+    top: box.top + pageYOffset,
+    left: box.left + pageXOffset
+  };
+}
+
+
 ;(function(window, document, undefined){
   var classes = [];
   var tests = [];
@@ -243,18 +263,6 @@
   }
   window.Modernizr = Modernizr;
 })(window, document);
-
-
-
-
-
-
-
-
-
-
-
-
 
 var btnBurger = document.getElementById('btn-burger');
 var nav = document.getElementById('nav');
