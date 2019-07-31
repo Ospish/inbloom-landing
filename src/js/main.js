@@ -272,3 +272,8 @@ btnBurger.onclick = function() {
 
 
 Modernizr.on('webp');
+
+
+AOS.init({
+  duration: 400
+});

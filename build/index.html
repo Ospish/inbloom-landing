@@ -16,6 +16,7 @@
   <meta property="og:image" content="https://inblum.store/images/OG_Image.jpg" />
 
   <title>InBloom - flowers from soop</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
@@ -53,7 +54,7 @@
         <!-- end city-select -->
 
         <!-- begin nav -->
-        <nav class="header__nav nav" id="nav">
+        <nav class="header__nav nav" id="nav" data-aos="fade-in">
           <button class="nav__btn-burger btn-burger" id="btn-burger">
             Меню
           </button>
@@ -78,7 +79,7 @@
         <!-- end nav -->
 
         <!-- begin header-contacts -->    
-        <div class="header__contacts">
+        <div class="header__contacts" data-aos="fade-left">
           <a class="link" href="mailto:partner@inblum.store">
             <span class="link__inner">
               <img class="link__icon" src="images/icons/mail.svg" alt="">
@@ -116,14 +117,14 @@
       <div class="cover__container container">
         <div class="row">
           <div class="col-12">
-            <h1 class="cover__heading">Магазин неувядающих цветов на&nbsp;мыльной основе</h1>
-            <p class="cover__text">Если не устроит качество букета — вернем деньги!</p>
-            <span class="cover__line"></span>
+            <h1 class="cover__heading" data-aos="fade-down">Магазин неувядающих цветов на&nbsp;мыльной основе</h1>
+            <p class="cover__text" data-aos="fade-down">Если не устроит качество букета — вернем деньги!</p>
+            <span class="cover__line" data-aos="fade-right"></span>
             <span class="cover__btn-wrap">
-              <a class="cover__btn btn" href="">
+              <a class="cover__btn btn" href="" data-aos="fade-down">
                 <span class="btn__inner">Купить готовый букет</span>
               </a>
-              <a class="cover__link link link--big" href="">Собрать букет самостоятельно</a>
+              <a class="cover__link link link--big" href="" data-aos="fade-down">Собрать букет самостоятельно</a>
             </span>
           </div>
         </div>
@@ -496,6 +497,7 @@
 
   </footer>
 
+  <script src="js/aos.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
