@@ -26,7 +26,7 @@
     <div class="header__container container">
 
       <!-- begin header__inner -->
-      <div class="header__inner">
+      <div class="header__inner"  data-aos="fade-in">
 
         <!-- begin logo -->
         <span class="header__logo header-logo">
@@ -54,7 +54,7 @@
         <!-- end city-select -->
 
         <!-- begin nav -->
-        <nav class="header__nav nav" id="nav" data-aos="fade-in">
+        <nav class="header__nav nav" id="nav">
           <button class="nav__btn-burger btn-burger" id="btn-burger">
             Меню
           </button>
@@ -78,8 +78,8 @@
         </nav>
         <!-- end nav -->
 
-        <!-- begin header-contacts -->    
-        <div class="header__contacts" data-aos="fade-left">
+        <!-- begin header-contacts -->
+        <div class="header__contacts">
           <a class="link" href="mailto:partner@inblum.store">
             <span class="link__inner">
               <img class="link__icon" src="images/icons/mail.svg" alt="">
@@ -117,9 +117,11 @@
       <div class="cover__container container">
         <div class="row">
           <div class="col-12">
-            <h1 class="cover__heading" data-aos="fade-down">Магазин неувядающих цветов на&nbsp;мыльной основе</h1>
+            <div data-aos="fade-down">
+              <h1 class="cover__heading">Магазин неувядающих цветов на&nbsp;мыльной основе</h1>
+            </div>
             <p class="cover__text" data-aos="fade-down">Если не устроит качество букета — вернем деньги!</p>
-            <span class="cover__line" data-aos="fade-right"></span>
+            <span class="cover__line" data-aos="fade-right" data-aos-delay="500"></span>
             <span class="cover__btn-wrap">
               <a class="cover__btn btn" href="" data-aos="fade-down">
                 <span class="btn__inner">Купить готовый букет</span>
@@ -139,19 +141,19 @@
 
       <div class="horizontal-text">неувядающие цветы</div>
 
-      <h2 class="section__heading">Что такое неувядающие цветы</h2>
+      <h2 class="section__heading" data-aos="fade-down">Что такое неувядающие цветы</h2>
       <div class="flowers__container container">
 
-        <div class="flowers__cover">
+        <div class="flowers__cover" data-aos="fade-in">
           <picture>
             <source srcset="images/flowers@2x.webp 2x, images/flowers.webp 1x" type="image/webp"/>
             <source srcset="images/flowers@2x.png 2x, images/flowers.png 1x" type="image/png"/>
             <img class="flowers__img" src="images/flowers.png" alt=""/>
           </picture>
         </div>
-      
+
         <div class="flowers__content">
-          <div class="flowers__text">
+          <div class="flowers__text"  data-aos="fade-down">
             <p>
               Мыльные цветы&nbsp;&mdash; это реалистичный аналог свежесрезанным
               цветам, состоящие из&nbsp;специального мыльного раствора.
@@ -163,8 +165,8 @@
               В&nbsp;отличии от&nbsp;живых цветов они совсем не&nbsp;требуют ухода и&nbsp;абсолютно гипоаллергенны. Букет из&nbsp;неувядающих цветов может прослужить до&nbsp;5&nbsp;лет.
             </p>
           </div>
-  
-          <div class="flowers__list">
+
+          <div class="flowers__list" data-aos="zoom-in">
             <div class="flowers__item">
               <img class="flowers__icon" src="images/icons/cough.svg" alt="">
               <span>Гипоаллергенны</span>
@@ -178,32 +180,32 @@
               <span>Служат до&nbsp;5&nbsp;лет</span>
             </div>
           </div>
-  
+
           <a class="flowers__btn btn" href="">
             <span class="btn__inner">Собрать букет</span>
           </a>
-  
-          <div class="flowers__sale-text">
+
+          <div class="flowers__sale-text"  data-aos="fade-up">
               Только сегодня цены от&nbsp;1290 рублей
           </div>
         </div>
 
-            
+
       </div>
     </section>
     <!-- end flowers -->
 
     <!-- begin select-size -->
     <section class="section select-size">
-      <h2 class="section__heading select-size__heading">Выберите размер букета</h2>
-      <p class="section__description select-size__text">Ответьте на&nbsp;5&nbsp;вопросов и&nbsp;мы&nbsp;подберем для Вас самы оптимальный вариант</p>
+      <h2 class="section__heading select-size__heading" data-aos="fade-down">Выберите размер букета</h2>
+      <p class="section__description select-size__text" data-aos="fade-down">Ответьте на&nbsp;5&nbsp;вопросов и&nbsp;мы&nbsp;подберем для Вас самы оптимальный вариант</p>
 
       <!-- begin .container -->
       <div class="select-size__container container">
 
         <!-- begin .select-size__list -->
         <div class="select-size__list">
-          
+
           <!-- begin .select-size__item -->
           <div class="select-size__item">
             <!-- begin .select-size-item -->
@@ -279,12 +281,12 @@
 
     <!-- begin versus -->
     <section class="section versus">
-      <h2 class="section__heading versus__heading">Неувядающие цветы vs живые цветы</h2>
-      <p class="section__description versus__text">5 отличий цветов на мыльной основе от обычных</p>
-    
+      <h2 class="section__heading versus__heading" data-aos="fade-down">Неувядающие цветы vs живые цветы</h2>
+      <p class="section__description versus__text" data-aos="fade-down">5 отличий цветов на мыльной основе от обычных</p>
+
       <div class="versus__wrap">
         <!-- begin .versus__column -->
-        <section class="versus__column versus__column--left">
+        <section class="versus__column versus__column--left" data-aos="fade-right">
           <h3 class="versus__subheading">Мыльные цветы <span class="versus__icon versus__icon--plus">+</span></h3>
           <ul class="versus__list">
             <li class="versus__item">Могут простоять до 5 лет</li>
@@ -296,7 +298,7 @@
         </section>
         <!-- end .versus__column -->
         <!-- begin .versus__column -->
-        <section class="versus__column">
+        <section class="versus__column" data-aos="fade-left">
           <h3 class="versus__subheading">Обычные цветы <span class="versus__icon versus__icon--minus">-</span></h3>
           <ul class="versus__list">
             <li class="versus__item">Завянут через 7 дней</li>
@@ -313,15 +315,15 @@
         <span class="btn__inner">Собрать букет</span>
       </a>
 
-    </section> 
+    </section>
     <!-- end versus -->
 
     <!-- begin portfolio -->
     <section class="section portfolio" id="portfolio">
-      <h2 class="section__heading portfolio__heading">Наши работы</h2>
-      <p class="section__description portfolio__text">Посмотрите букеты, которые мы собирали для наших букетов</p>
+      <h2 class="section__heading portfolio__heading" data-aos="fade-down">Наши работы</h2>
+      <p class="section__description portfolio__text" data-aos="fade-down">Посмотрите букеты, которые мы собирали для наших букетов</p>
 
-      <div class="portfolio__container container">
+      <div class="portfolio__container container" data-aos="fade-in">
         <div class="portfolio__grid">
           <div class="portfolio__item">
             <img class="portfolio__img" src="images/content/portfolio/2.jpg" srcset="images/content/portfolio/2@2x.jpg 2x" alt="">
@@ -347,19 +349,19 @@
 
     <!-- befin rewrites -->
     <section class="section rewrites" id="rewrites">
-      <h2 class="section__heading rewrites__heading">Отзывы наших клентов</h2>
+      <h2 class="section__heading rewrites__heading" data-aos="fade-down">Отзывы наших клентов</h2>
 
       <!-- begin .rewrites__wrap -->
       <div class="rewrites__wrap">
 
         <!-- begin .rewrites__photo-slider -->
-        <div class="rewrites__photo-slider">
+        <div class="rewrites__photo-slider" data-aos="fade-right" data-aos-delay="300">
 
         </div>
         <!-- end .rewrites__photo-slider -->
-  
+
         <!-- begin .rewrites__slider -->
-        <div class="rewrites__slider">
+        <div class="rewrites__slider" data-aos="fade-right">
           <!-- begin .rewrites-slider -->
           <div class="rewrites-slider">
             <div id="rewrites-slider">
@@ -389,8 +391,8 @@
 
     <!-- begin .map -->
     <section class="section map">
-      <h2 class="section__heading map__heading">Наши представиители</h2>
-      <p class="section__description">Для отображения карты необходим API ключ Google</p>
+      <h2 class="section__heading map__heading" data-aos="fade-down">Наши представиители</h2>
+      <p class="section__description" data-aos="fade-down">Для отображения карты необходим API ключ Google</p>
       <!-- TODO: Что должно происходить по клику? Или это ссылка? -->
       <a class="map__btn btn" href="">
         <span class="btn__inner">Стать партнером</span>
@@ -411,7 +413,7 @@
             </span>
           </a>
           <!-- end logo -->
-          
+
           <div>
             ИНН: 280 444 784 018
             <br><br>
@@ -498,6 +500,7 @@
   </footer>
 
   <script src="js/aos.js"></script>
+  <script src="js/tiny-slider.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

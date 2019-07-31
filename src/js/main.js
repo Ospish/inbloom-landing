@@ -98,7 +98,7 @@ function getCoords(elem) { // кроме IE8-
 
   var docElement = document.documentElement;
   var isSVG = docElement.nodeName.toLowerCase() === 'svg';
-  
+
   function setClasses(classes) {
     var className = docElement.className;
     var classPrefix = Modernizr._config.classPrefix || '';
@@ -275,5 +275,5 @@ Modernizr.on('webp');
 
 
 AOS.init({
-  duration: 400
+  duration: 1000
 });
