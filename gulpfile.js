@@ -16,13 +16,6 @@ task('compress', function () {
   );
 });
 
-// gulp.task('compressCSS', function () {
-//   gulp.src('./css/*.css') // path to your file
-//   .pipe(minifyCss())
-//   .pipe(gulp.dest('./minify-css'));
-// });
-
-
 function html() {
   return src('src/*.html')
     .pipe(dest('build'))

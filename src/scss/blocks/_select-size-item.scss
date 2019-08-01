@@ -46,10 +46,12 @@
   }
 
   &:hover &__label {
-    top: 10%;
-    text-shadow: 0px 12px 21px rgba(203, 108, 230, 0.48);
-    font-size: 101.5px;
-    color: #cb6ce6;
+    @media all and (min-width: 768px) {
+      top: 10%;
+      text-shadow: 0px 12px 21px rgba(203, 108, 230, 0.48);
+      font-size: 101.5px;
+      color: #cb6ce6;
+    }
   }
 
   &__card {
@@ -65,7 +67,7 @@
     width: 100%;
     height: calc(100% - 150px);
     padding: 0 30px;
-  
+
     text-align: center;
 
     border-radius: 10px;
@@ -82,8 +84,10 @@
   }
 
   &:hover &__card {
-    opacity: 1;
-    transform: translate(-50%, -50%) scaleY(1);
+    @media all and (min-width: 768px) {
+      opacity: 1;
+      transform: translate(-50%, -50%) scaleY(1);
+    }
   }
 
   &__name {

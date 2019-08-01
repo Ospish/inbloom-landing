@@ -14,7 +14,7 @@
       background-image: url('../images/select-size-decor@2x.jpg');
     }
   }
-  
+
   .webp & {
     background-image: url('../images/select-size-decor.webp');
 
@@ -46,27 +46,27 @@
       margin-bottom: 20px;
     }
   }
-  
+
   &__list {
-    display: flex;
-    justify-content: space-between;
-    
+    //display: flex;
+    //justify-content: space-between;
+
     @media all and (max-width: 1280px) {
-      justify-content: center; 
+      //justify-content: center;
     }
 
     @media all and (max-width: 767px) {
-      flex-direction: column;
-      align-items: center;
+      //flex-direction: column;
+      //align-items: center;
     }
   }
 
   &__item {
-    width: 325px;
+    //width: 325px;
 
     @media all and (max-width: 1280px) {
-      width: 300px;
-      margin: 0 15px;
+      //width: 300px;
+      //margin: 0 15px;
     }
   }
 }

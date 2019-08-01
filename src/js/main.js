@@ -277,3 +277,20 @@ Modernizr.on('webp');
 AOS.init({
   duration: 1000
 });
+
+var selectSizeList = document.getElementById('select-size-list');
+if (selectSizeList) {
+  var selectSizeListSlider = tns({
+    container: selectSizeList,
+    items: 1,
+    controls: false,
+    nav: false,
+    pages: false,
+    gutter: 30,
+    responsive: {
+      767: {
+        items: 3
+      }
+    }
+  });
+}
