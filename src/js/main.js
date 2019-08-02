@@ -1,3 +1,13 @@
+(function(e) {
+  e.matches = e.matches || e.mozMatchesSelector || e.msMatchesSelector || e.oMatchesSelector || e.webkitMatchesSelector;
+  e.closest = e.closest || function closest(selector) {
+    if (!this) return null;
+    if (this.matches(selector)) return this;
+    if (!this.parentElement) { return null; }
+    else return this.parentElement.closest(selector);
+  };
+}(Element.prototype));
+
 document.querySelectorAll('a[href^="#"]').forEach( function (anchor) {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
@@ -313,3 +323,15 @@ if (portfolioSliderElement) {
 if ( window.matchMedia( '( min-width: 568px )' ).matches ) {
   portfolioSlider.destroy();
 }
+
+
+document.onclick = function(event) {
+  console.log(event.target);
+  if (event.target.classList.contains('js-open-size-card')) {
+    event.target.closest('.js-size-card').classList.add('is-active');
+  }
+
+  if (event.target.classList.contains('js-close-size-card')) {
+    event.target.closest('.js-size-card').classList.remove('is-active');
+  }
+};
