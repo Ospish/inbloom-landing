@@ -294,3 +294,22 @@ if (selectSizeList) {
     }
   });
 }
+
+
+var portfolioSliderElement = document.getElementById('portfolio-slider');
+if (portfolioSliderElement) {
+  var portfolioSlider = tns({
+    container: portfolioSliderElement,
+    items: 1,
+    controls: false,
+    disable: false,
+    nav: false,
+    pages: false,
+    autoHeight: true,
+    gutter: 30
+  });
+}
+
+if ( window.matchMedia( '( min-width: 568px )' ).matches ) {
+  portfolioSlider.destroy();
+}
