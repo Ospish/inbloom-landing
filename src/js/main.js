@@ -28,7 +28,7 @@ function getCoords(elem) { // кроме IE8-
 }
 
 
-;(function(window, document, undefined){
+(function(window, document, undefined){
   var classes = [];
   var tests = [];
   var ModernizrProto = {
@@ -283,6 +283,16 @@ btnBurger.onclick = function() {
 
 Modernizr.on('webp');
 
+document.addEventListener('mousemove', parallax);
+
+function parallax(e) {
+  this.querySelectorAll('.js-layer').forEach(function (layer) {
+    var speed = layer.getAttribute('data-speed');
+    var x = (window.innerWidth - e.pageX * speed) / 100;
+    var y = (window.innerWidth - e.pageY * speed) / 100;
+    layer.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+  });
+}
 
 AOS.init({
   duration: 1000
@@ -326,7 +336,6 @@ if ( window.matchMedia( '( min-width: 568px )' ).matches ) {
 
 
 document.onclick = function(event) {
-  console.log(event.target);
   if (event.target.classList.contains('js-open-size-card')) {
     event.target.closest('.js-size-card').classList.add('is-active');
   }

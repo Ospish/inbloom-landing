@@ -110,8 +110,8 @@
       <!-- TODO: Подобрать фоновую картинку для мобильной версии, желательно ещё и планшетную версию -->
 
       <!-- TODO: запросить SVG -->
-      <img class="cover__decor cover__decor--lb" src="images/cover-decor-lb.png" srcset="images/cover-decor-lb@2x.png 2x" alt="" />
-      <img class="cover__decor cover__decor--rt" src="images/cover-decor-rt.png" srcset="images/cover-decor-rt@2x.png 2x" alt="" />
+      <img class="cover__decor cover__decor--lb" src="images/cover-decor-lb.png" srcset="images/cover-decor-lb@2x.png 2x" alt="" data-jarallax-element="50 -100"/>
+      <img class="cover__decor cover__decor--rt" src="images/cover-decor-rt.png" srcset="images/cover-decor-rt@2x.png 2x" alt="" data-jarallax-element="-50 50"/>
 
       <!-- begin .container -->
       <div class="cover__container container">
@@ -139,7 +139,11 @@
     <!-- begin flowers -->
     <section class="section flowers" id="flowers">
 
-      <div class="horizontal-text">неувядающие цветы</div>
+      <div class="horizontal-text" id="horizontal-text" data-jarallax-element="-140">
+        <div class="horizontal-text__inner">
+          <span class="horizontal-text__text">неувядающие цветы</span>
+        </div>
+      </div>
 
       <h2 class="section__heading" data-aos="fade-down">Что такое неувядающие цветы</h2>
       <div class="flowers__container container">
@@ -360,6 +364,13 @@
       <!-- begin .rewrites__wrap -->
       <div class="rewrites__wrap">
 
+        <div class="rewrites__rouses">
+          <img class="rewrites__rouses-img js-layer" src="images/rouses/1.png" alt="" data-speed="4" style="z-index: 4;">
+          <img class="rewrites__rouses-img js-layer" src="images/rouses/2.png" alt="" data-speed="3" style="z-index: 3;">
+          <img class="rewrites__rouses-img js-layer" src="images/rouses/3.png" alt="" data-speed="2" style="z-index: 2;">
+          <img class="rewrites__rouses-img js-layer" src="images/rouses/4.png" alt="" data-speed="1" style="z-index: 1;">
+        </div>
+
         <!-- begin .rewrites__photo-slider -->
         <div class="rewrites__photo-slider" data-aos="fade-right" data-aos-delay="300">
 
@@ -505,6 +516,8 @@
 
   </footer>
 
+  <script src="https://unpkg.com/jarallax@1.10/dist/jarallax.min.js"></script>
+  <script src="http://unpkg.com/jarallax@1.10/dist/jarallax-element.min.js"></script>
   <script src="js/aos.js"></script>
   <script src="js/tiny-slider.js"></script>
   <script src="js/main.js"></script>
