@@ -13,6 +13,12 @@
     box-shadow: 0px 3px 3.7px 0.3px rgba(235, 35, 139, 0.27), inset 0px 9px 8px 0 rgba(126, 23, 174, 0.13);
     background-image: linear-gradient(to right, #de6593, #e92276 99%);
 
+    transition: all 0.25s ease;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
     & + & {
       margin-left: 10px;
     }
@@ -24,5 +30,11 @@
     justify-content: center;
     width: 100%;
     height: 100%;
+
+    transition: all 0.25s ease;
+  }
+
+  &__link:hover &__link-inner {
+    transform: scale(0.8);
   }
 }
