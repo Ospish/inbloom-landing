@@ -127,7 +127,7 @@
 
   &__photo-slider {
     position: relative;
-    z-index: 3;
+    z-index: 4;
     flex-shrink: 0;
     width: 255px;
     height: 255px;
@@ -146,7 +146,7 @@
 
   &__slider {
     position: relative;
-    z-index: 1;
+    z-index: 3;
 
     padding-left: 137px;
 

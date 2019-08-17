@@ -109,6 +109,14 @@
 
       <!-- TODO: Подобрать фоновую картинку для мобильной версии, желательно ещё и планшетную версию -->
 
+      <div class="cover__rouses">
+        <img class="cover__rouse cover__rouse--one js-layer" src="images/cover-rouses/3.png" srcset="images/cover-rouses/3@2x.png 2x" alt="" data-speed="1"/>
+        <img class="cover__rouse cover__rouse--two js-layer" src="images/cover-rouses/2.png" srcset="images/cover-rouses/2@2x.png 2x" alt="" data-speed="0.5"/>
+        <img class="cover__rouse cover__rouse--three js-layer" src="images/cover-rouses/5.png" srcset="images/cover-rouses/5@2x.png 2x" alt="" data-speed="1"/>
+        <img class="cover__rouse cover__rouse--four js-layer" src="images/cover-rouses/4.png" srcset="images/cover-rouses/4@2x.png 2x" alt="" data-speed="2"/>
+        <img class="cover__rouse cover__rouse--five js-layer" src="images/cover-rouses/6.png" srcset="images/cover-rouses/6@2x.png 2x" alt="" data-speed="2"/>
+      </div>
+
       <!-- TODO: запросить SVG -->
       <img class="cover__decor cover__decor--lb" src="images/cover-decor-lb.png" srcset="images/cover-decor-lb@2x.png 2x" alt="" data-jarallax-element="50 -100"/>
       <img class="cover__decor cover__decor--rt" src="images/cover-decor-rt.png" srcset="images/cover-decor-rt@2x.png 2x" alt="" data-jarallax-element="-50 50"/>
@@ -216,7 +224,7 @@
             <div class="select-size-item js-size-card">
               <div class="select-size-item__cover">
                 <!-- TODO: желательно заменить на PNG, иногда залазит на фон, заметны белые границы -->
-                <img class="select-size-item__img" src="images/content/select-size/s.jpg" srcset="images/content/select-size/s@2x.jpg 2x" alt="большой букет в шляпной коробке">
+                <img class="select-size-item__img" src="images/content/select-size/s.png" alt="большой букет в шляпной коробке">
               </div>
               <div class="select-size-item__label">S</div>
               <button class="select-size-item__btn-open js-open-size-card" type="button">i</button>
@@ -239,7 +247,7 @@
             <!-- begin .select-size-item -->
             <div class="select-size-item js-size-card">
               <div class="select-size-item__cover">
-                <img class="select-size-item__img" src="images/content/select-size/m.jpg" srcset="images/content/select-size/m@2x.jpg 2x" alt="большой букет в шляпной коробке">
+                <img class="select-size-item__img" src="images/content/select-size/m.png" alt="большой букет в шляпной коробке">
               </div>
               <div class="select-size-item__label">M</div>
               <button class="select-size-item__btn-open js-open-size-card" type="button">i</button>
@@ -262,7 +270,7 @@
             <!-- begin .select-size-item -->
             <div class="select-size-item js-size-card">
               <div class="select-size-item__cover">
-                <img class="select-size-item__img" src="images/content/select-size/l.jpg" srcset="images/content/select-size/l@2x.jpg 2x" alt="большой букет в шляпной коробке">
+                <img class="select-size-item__img" src="images/content/select-size/l.png" alt="большой букет в шляпной коробке">
               </div>
               <div class="select-size-item__label">L</div>
               <button class="select-size-item__btn-open js-open-size-card" type="button">i</button>
@@ -335,21 +343,21 @@
 
       <div class="portfolio__container container" data-aos="fade-in">
         <div class="portfolio__grid" id="portfolio-slider">
-          <div class="portfolio__item">
+          <a class="portfolio__item js-lightbox" href="images/content/portfolio/2@2x.jpg">
             <img class="portfolio__img" src="images/content/portfolio/2.jpg" srcset="images/content/portfolio/2@2x.jpg 2x" alt="">
-          </div>
-          <div class="portfolio__item">
+          </a>
+          <a class="portfolio__item js-lightbox" href="images/content/portfolio/3@2x.jpg">
             <img class="portfolio__img" src="images/content/portfolio/3.jpg" srcset="images/content/portfolio/3@2x.jpg 2x" alt="">
-          </div>
-          <div class="portfolio__item">
+          </a>
+          <a class="portfolio__item js-lightbox" href="images/content/portfolio/4@2x.jpg">
             <img class="portfolio__img" src="images/content/portfolio/4.jpg" srcset="images/content/portfolio/4@2x.jpg 2x" alt="">
-          </div>
-          <div class="portfolio__item">
+          </a>
+          <a class="portfolio__item js-lightbox" href="images/content/portfolio/5@2x.jpg">
             <img class="portfolio__img" src="images/content/portfolio/5.jpg" srcset="images/content/portfolio/5@2x.jpg 2x" alt="">
-          </div>
-          <div class="portfolio__item">
+          </a>
+          <a class="portfolio__item js-lightbox" href="images/content/portfolio/1@2x.jpg">
             <img class="portfolio__img" src="images/content/portfolio/1.jpg" srcset="images/content/portfolio/1@2x.jpg 2x" alt="">
-          </div>
+          </a>
         </div>
       </div>
 
@@ -408,7 +416,7 @@
 
     <!-- begin .map -->
     <section class="section map">
-      <h2 class="section__heading map__heading" data-aos="fade-down">Наши представиители</h2>
+      <h2 class="section__heading map__heading" data-aos="fade-down">Наши представители</h2>
       <p class="section__description" data-aos="fade-down">Для отображения карты необходим API ключ Google</p>
       <!-- TODO: Что должно происходить по клику? Или это ссылка? -->
       <a class="map__btn btn" href="">
@@ -519,6 +527,7 @@
   <script src="https://unpkg.com/jarallax@1.10/dist/jarallax.min.js"></script>
   <script src="http://unpkg.com/jarallax@1.10/dist/jarallax-element.min.js"></script>
   <script src="js/aos.js"></script>
+  <script src="js/lightbox.js"></script>
   <script src="js/tiny-slider.js"></script>
   <script src="js/main.js"></script>
 </body>

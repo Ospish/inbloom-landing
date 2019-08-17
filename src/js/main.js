@@ -344,3 +344,10 @@ document.onclick = function(event) {
     event.target.closest('.js-size-card').classList.remove('is-active');
   }
 };
+
+
+
+var lightboxDescription = GLightbox({
+  selector: 'js-lightbox',
+  loopAtEnd: true
+});
