@@ -45,7 +45,7 @@
       background-image: url('../images/portfolio-decor-tl@2x.jpg');
     }
   }
-  
+
   .webp &:before {
     background-image: url('../images/portfolio-decor-tl.webp');
 
@@ -61,7 +61,7 @@
       background-image: url('../images/portfolio-decor-tr@2x.jpg');
     }
   }
-  
+
   .webp &:after {
     background-image: url('../images/portfolio-decor-tr.webp');
 
@@ -75,7 +75,7 @@
 
     @media all and (max-width: 1024px) {
       width: 708px;
-    }  
+    }
   }
 
   &__heading {
@@ -100,15 +100,25 @@
     }
   }
 
+  &__item {
+    overflow: hidden;
+  }
+
   &__img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
 
+    transition: all 0.5s ease;
+
     @media all and (max-width: 566px) {
       margin-bottom: 15px;
     }
+  }
+
+  &__item:hover &__img {
+    transform: scale(1.1);
   }
 
   &__item:nth-child(1) { grid-area: 1 / 2 / 4 / 3; }

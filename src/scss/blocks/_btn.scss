@@ -90,6 +90,18 @@
     &:before {
       background-color: #ab4d33;
     }
+
+    &:hover {
+      box-shadow: none;
+
+      &:before {
+        opacity: 0;
+      }
+
+      &:after {
+        animation: blik 0.5s ease;
+      }
+    }
   }
 
   &__inner {

@@ -295,7 +295,8 @@ function parallax(e) {
 }
 
 AOS.init({
-  duration: 1000
+  duration: 1000,
+  once: true
 });
 
 var selectSizeList = document.getElementById('select-size-list');
