@@ -40,16 +40,23 @@
         <!-- end logo -->
 
         <!-- begin city-select -->
-        <div class="header__city city-select">
+        <div class="header__city city-select" id="city-select">
           <!-- TODO: Нужно выподяющее меню какое-то или popup с выбором города -->
-          <button class="city-select__btn" type="button" aria-label="Выбор города">
+          <button class="city-select__btn" type="button" aria-label="Выбор города" v-if="city" @click="showList = !showList">
             <span class="city-select__btn-inner">
               <img class="city-select__icon" src="images/icons/location-pin.svg" alt="">
               <!-- TODO: есть риска что невлезит длинное название города -->
-              <span class="city-select__name">г. Сочи</span>
+              <span class="city-select__name">г. {{ city }}</span>
               <img class="city-select__arrow" src="images/icons/arrow.svg" alt="">
             </span>
           </button>
+          <!-- begin .city-select__dropdown -->
+          <div class="city-select__dropdown" :class="{'is-visible': showList}" @click.self="showList = !showList">
+            <div class="city-select__list">
+              <button class="city-select__item" v-for="(item, index) in cities" @click="selectCity(index)">{{ item }}</button>
+            </div>
+          </div>
+          <!-- end .city-select__dropdown -->
         </div>
         <!-- end city-select -->
 
@@ -79,7 +86,7 @@
         <!-- end nav -->
 
         <!-- begin header-contacts -->
-        <div class="header__contacts">
+        <div class="header__contacts" id="header-contacts">
           <a class="link" href="mailto:partner@inblum.store">
             <span class="link__inner">
               <img class="link__icon" src="images/icons/mail.svg" alt="">
@@ -524,6 +531,8 @@
 
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="js/app.js"></script>
   <script src="https://unpkg.com/jarallax@1.10/dist/jarallax.min.js"></script>
   <script src="http://unpkg.com/jarallax@1.10/dist/jarallax-element.min.js"></script>
   <script src="js/aos.js"></script>
