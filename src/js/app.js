@@ -18,6 +18,12 @@ var citySelect = new Vue({
       return this.cities[this.selectedIndex];
     }
   },
+  watch: {
+    selectedIndex: function(value) {
+      if (value === false) return;
+      partnerInfo.getId(this.cities[value]);
+    }
+  },
   created: function () {
     this.getCities();
   },
@@ -49,6 +55,80 @@ var citySelect = new Vue({
     selectCity: function(index) {
       this.selectedIndex = index;
       this.showList = false;
+    }
+  }
+});
+
+
+partnerInfo = new Vue({
+  el: '#header-contacts',
+  data: {
+    email: false,
+    phone: false
+  },
+  methods: {
+    /**
+     * @param city - город партнера
+     * Получаем id партнера у которого дольше всего небыло заказа в этом городе
+     */
+    getId: function(city) {
+      fetch('http://ibapi.fobesko.com/public/api/user/city?city=' + city, fetchGetConf)
+        .then(function(response) {
+          response.json().then(function(id) {
+            if (id.length > 0) {
+              partnerInfo.getInfo(id[0]['id']);
+              socials.getSocials(id[0]['id']);
+            }
+          });
+        })
+        .catch(function(error) {
+          console.error(error);
+        });
+    },
+    /**
+     * @param id - id партнера
+     */
+    getInfo: function(id) {
+      fetch('http://ibapi.fobesko.com/public/api/user/info/' + id, fetchGetConf)
+        .then(function(response) {
+          response.json().then(function(info) {
+            if (info.length > 0) {
+              partnerInfo.phone = info[0]['phone'] ? info[0]['phone'] : false;
+              partnerInfo.email = info[0]['corp_email'] ? info[0]['corp_email'] : false;
+            }
+          });
+        })
+        .catch(function(error) {
+          console.error(error);
+        });
+    }
+  }
+});
+
+
+socials = new Vue({
+  el: '#footer-socials',
+  data: {
+    active: false,
+    list: false
+  },
+  methods: {
+    /**
+     * @param id - id партнера
+     */
+    getSocials: function(id) {
+      fetch('http://ibapi.fobesko.com/public/api/user/socials/' + id, fetchGetConf)
+        .then(function(response) {
+          response.json().then(function(list) {
+            if (list.length > 0) {
+              socials.list = list[0][0];
+              socials.active = list[1][0];
+            }
+          });
+        })
+        .catch(function(error) {
+          console.error(error);
+        });
     }
   }
 });
