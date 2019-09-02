@@ -72,18 +72,19 @@ partnerInfo = new Vue({
      * Получаем id партнера у которого дольше всего небыло заказа в этом городе
      */
     getId: function(city) {
-      fetch('http://ibapi.fobesko.com/public/api/user/city?city=' + city, fetchGetConf)
-        .then(function(response) {
-          response.json().then(function(id) {
-            if (id.length > 0) {
-              partnerInfo.getInfo(id[0]['id']);
-              socials.getSocials(id[0]['id']);
-            }
-          });
-        })
-        .catch(function(error) {
-          console.error(error);
+     fetch('http://ibapi.fobesko.com/public/api/user/city?city=' + city, fetchGetConf)
+      .then(function(response) {
+        response.json().then(function(id) {
+          if (id.length > 0) {
+            partnerInfo.getInfo(id[0]['id']);
+            socials.getSocials(id[0]['id']);
+            catalog.getProducts(id[0]['id']);
+          }
         });
+      })
+      .catch(function(error) {
+        console.error(error);
+      });
     },
     /**
      * @param id - id партнера
@@ -129,6 +130,39 @@ socials = new Vue({
         .catch(function(error) {
           console.error(error);
         });
+    }
+  }
+});
+
+
+
+catalog = new Vue({
+  el: '#catalog',
+  data: {
+    products: []
+  },
+  methods: {
+    /**
+     * @param id - id партнера
+     */
+    getProducts: function(id) {
+      this.products.splice(0, this.products.length);
+      fetch('http://ibapi.fobesko.com/public/api/store/site/' + id, fetchGetConf)
+        .then(function(response) {
+          response.json().then(function(products) {
+            if (products.length > 0) {
+              catalog.addProducts(products);
+            }
+          });
+        })
+        .catch(function(error) {
+          console.error(error);
+        });
+    },
+    addProducts: function(products) {
+      products.forEach(function(item) {
+        catalog.products.push(item);
+      });
     }
   }
 });

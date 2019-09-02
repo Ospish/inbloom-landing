@@ -1,0 +1,27 @@
+.catalog {
+  padding-top: 80px;
+  padding-bottom: 80px;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    width: calc(100% / 4);
+    padding: 10px;
+    margin-bottom: 16px;
+
+    @media all and(max-width: 1024px) {
+      width: calc(100% / 3);
+    }
+
+    @media all and(max-width: 767px) {
+      width: calc(100% / 2);
+    }
+
+    @media all and(max-width: 420px) {
+      width: 100%;
+    }
+  }
+}

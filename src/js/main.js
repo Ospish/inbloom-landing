@@ -329,10 +329,10 @@ if (portfolioSliderElement) {
     autoHeight: true,
     gutter: 30
   });
-}
 
-if ( window.matchMedia( '( min-width: 568px )' ).matches ) {
-  portfolioSlider.destroy();
+  if ( window.matchMedia( '( min-width: 568px )' ).matches ) {
+    portfolioSlider.destroy();
+  }
 }
 
 
