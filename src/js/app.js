@@ -5,6 +5,8 @@ var fetchGetConf = {
   }
 };
 
+var hasCatalog = document.getElementById('catalog');
+
 var citySelect = new Vue({
   el: '#city-select',
   data: {
@@ -25,20 +27,30 @@ var citySelect = new Vue({
     }
   },
   created: function () {
-    this.getCities();
+    this.getCities().then(function(cities) {
+      citySelect.addCities(cities);
+    });
   },
   methods: {
+    init: function() {
+
+    },
     getCities: function () {
-      fetch('http://ibapi.fobesko.com/public/api/user/cities', fetchGetConf)
-      .then(function(response) {
-        response.json().then(function(cities) {
-          if (cities.length > 0)
-            citySelect.addCities(cities);
+      return fetch('http://ibapi.fobesko.com/public/api/user/cities', fetchGetConf)
+        .then(function(response) {
+          return response.json().then(function(cities) {
+            if (cities.length > 0) {
+              return cities;
+            } else {
+              return [];
+            }
+          }).catch(function() {
+            return [];
+          });
+        })
+        .catch(function(error) {
+          console.error(error);
         });
-      })
-      .catch(function(error) {
-        console.error(error);
-      });
     },
     /**
      * @param cities - массив с городами [{city: cityName}, {city: cityName}]
@@ -72,13 +84,18 @@ partnerInfo = new Vue({
      * Получаем id партнера у которого дольше всего небыло заказа в этом городе
      */
     getId: function(city) {
-     fetch('http://ibapi.fobesko.com/public/api/user/city?city=' + city, fetchGetConf)
+     return fetch('http://ibapi.fobesko.com/public/api/user/city?city=' + city, fetchGetConf)
       .then(function(response) {
-        response.json().then(function(id) {
+        return response.json().then(function(id) {
           if (id.length > 0) {
             partnerInfo.getInfo(id[0]['id']);
             socials.getSocials(id[0]['id']);
-            catalog.getProducts(id[0]['id']);
+
+            if (hasCatalog) {
+              catalog.getProducts(id[0]['id']).then(function(products) {
+                catalog.addProducts(products);
+              });
+            }
           }
         });
       })
@@ -90,9 +107,9 @@ partnerInfo = new Vue({
      * @param id - id партнера
      */
     getInfo: function(id) {
-      fetch('http://ibapi.fobesko.com/public/api/user/info/' + id, fetchGetConf)
+      return fetch('http://ibapi.fobesko.com/public/api/user/info/' + id, fetchGetConf)
         .then(function(response) {
-          response.json().then(function(info) {
+          return response.json().then(function(info) {
             if (info.length > 0) {
               partnerInfo.phone = info[0]['phone'] ? info[0]['phone'] : false;
               partnerInfo.email = info[0]['corp_email'] ? info[0]['corp_email'] : false;
@@ -118,9 +135,9 @@ socials = new Vue({
      * @param id - id партнера
      */
     getSocials: function(id) {
-      fetch('http://ibapi.fobesko.com/public/api/user/socials/' + id, fetchGetConf)
+      return fetch('http://ibapi.fobesko.com/public/api/user/socials/' + id, fetchGetConf)
         .then(function(response) {
-          response.json().then(function(list) {
+          return response.json().then(function(list) {
             if (list.length > 0) {
               socials.list = list[0][0];
               socials.active = list[1][0];
@@ -147,12 +164,16 @@ catalog = new Vue({
      */
     getProducts: function(id) {
       this.products.splice(0, this.products.length);
-      fetch('http://ibapi.fobesko.com/public/api/store/site/' + id, fetchGetConf)
+      return fetch('http://ibapi.fobesko.com/public/api/store/site/' + id, fetchGetConf)
         .then(function(response) {
-          response.json().then(function(products) {
+          return response.json().then(function(products) {
             if (products.length > 0) {
-              catalog.addProducts(products);
+              return products;
+            } else {
+              return [];
             }
+          }).catch(function() {
+            return [];
           });
         })
         .catch(function(error) {

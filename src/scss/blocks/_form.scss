@@ -1,0 +1,10 @@
+.form {
+  &__field {
+    margin-bottom: 20px;
+  }
+
+  &__bottons {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
