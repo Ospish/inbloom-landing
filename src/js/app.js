@@ -1,3 +1,4 @@
+
 var fetchGetConf = {
   method: 'GET',
   headers: {
@@ -15,6 +16,9 @@ var citySelect = new Vue({
     showList: false
   },
   computed: {
+    /**
+     * Название выбранного города
+     */
     city: function() {
       if (this.cities.length < 1) return false;
       return this.cities[this.selectedIndex];
@@ -24,6 +28,11 @@ var citySelect = new Vue({
     selectedIndex: function(value) {
       if (value === false) return;
       partnerInfo.getId(this.cities[value]);
+      if (hasCatalog) {
+        catalog.getProductsByCity(this.cities[value]).then(function(products) {
+          catalog.addProducts(products);
+        });
+      }
     }
   },
   created: function () {
@@ -35,6 +44,9 @@ var citySelect = new Vue({
     init: function() {
 
     },
+    /**
+     * Получение городов
+     */
     getCities: function () {
       return fetch('http://ibapi.fobesko.com/public/api/user/cities', fetchGetConf)
         .then(function(response) {
@@ -53,6 +65,7 @@ var citySelect = new Vue({
         });
     },
     /**
+     * Добавление города
      * @param cities - массив с городами [{city: cityName}, {city: cityName}]
      */
     addCities: function(cities) {
@@ -62,6 +75,7 @@ var citySelect = new Vue({
       citySelect.selectedIndex = 0;
     },
     /**
+     * Смена города по индексу
      * @param index - индекс города в массиве this.cities
      */
     selectCity: function(index) {
@@ -80,8 +94,8 @@ partnerInfo = new Vue({
   },
   methods: {
     /**
-     * @param city - город партнера
      * Получаем id партнера у которого дольше всего небыло заказа в этом городе
+     * @param city - город партнера
      */
     getId: function(city) {
      return fetch('http://ibapi.fobesko.com/public/api/user/city?city=' + city, fetchGetConf)
@@ -90,12 +104,6 @@ partnerInfo = new Vue({
           if (id.length > 0) {
             partnerInfo.getInfo(id[0]['id']);
             socials.getSocials(id[0]['id']);
-
-            if (hasCatalog) {
-              catalog.getProducts(id[0]['id']).then(function(products) {
-                catalog.addProducts(products);
-              });
-            }
           }
         });
       })
@@ -104,6 +112,7 @@ partnerInfo = new Vue({
       });
     },
     /**
+     * Получение инофрмации о партнере по id
      * @param id - id партнера
      */
     getInfo: function(id) {
@@ -132,6 +141,7 @@ socials = new Vue({
   },
   methods: {
     /**
+     * Получение социальных ситей по id партнера
      * @param id - id партнера
      */
     getSocials: function(id) {
@@ -160,11 +170,34 @@ catalog = new Vue({
   },
   methods: {
     /**
+     * Получение продуктов по id партнера
      * @param id - id партнера
      */
-    getProducts: function(id) {
+    getProductsById: function(id) {
       this.products.splice(0, this.products.length);
       return fetch('http://ibapi.fobesko.com/public/api/store/site/' + id, fetchGetConf)
+        .then(function(response) {
+          return response.json().then(function(products) {
+            if (products.length > 0) {
+              return products;
+            } else {
+              return [];
+            }
+          }).catch(function() {
+            return [];
+          });
+        })
+        .catch(function(error) {
+          console.error(error);
+        });
+    },
+    /**
+     * Полкчение продуктов по городу
+     * @param city - город
+     */
+    getProductsByCity: function(city) {
+      this.products.splice(0, this.products.length);
+      return fetch('http://ibapi.fobesko.com/public/api/store/city/' + city, fetchGetConf)
         .then(function(response) {
           return response.json().then(function(products) {
             if (products.length > 0) {
