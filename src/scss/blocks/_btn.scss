@@ -20,6 +20,13 @@
 
   transition: all 0.25s ease;
 
+  &--circle {
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+  }
+
   &--small {
     height: 54px;
   }

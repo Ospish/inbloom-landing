@@ -1,10 +1,51 @@
 .form {
-  &__field {
-    margin-bottom: 20px;
+  &__heading {
+    margin-bottom: 30px;
+
+    text-align: center;
   }
 
-  &__bottons {
+  &__field {
+    & + & {}
+
+    margin-top: 20px;
+  }
+
+  &__buttons {
     display: flex;
     justify-content: flex-end;
+    padding-top: 20px;
+  }
+
+  &__btn-back {
+    width: 64px;
+    height: 64px;
+    padding: 0;
+    margin-right: 30px;
+
+    border: none;
+    border-radius: 50%;
+    background-color: #e8e8e8;
+  }
+
+  &__btn-back-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__btn-back-icon {
+    width: 21px;
+    height: 27px;
+
+    fill: #9a9a9a;
+
+    transform: rotate(90deg);
+  }
+
+  &__btn-next {
+    width: 260px;
   }
 }

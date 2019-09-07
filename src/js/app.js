@@ -166,9 +166,23 @@ socials = new Vue({
 catalog = new Vue({
   el: '#catalog',
   data: {
-    products: []
+    products: [],
+    cart: false,
+    buyer: {
+      name: '',
+      phone: '',
+      date: false
+    }
   },
   methods: {
+    /**
+     * Показать форму оформления заказа
+     */
+    buy: function(idProduct) {
+      this.cart = idProduct;
+      togglePopup('popup-form');
+    },
+
     /**
      * Получение продуктов по id партнера
      * @param id - id партнера

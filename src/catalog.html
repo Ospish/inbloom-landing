@@ -125,11 +125,11 @@
 					<div class="item-card">
 						<div class="item-card__cover">
 							<img class="item-card__img" src="" alt="">
-							<span class="item-card__size">Размер: М</span>
+							<span class="item-card__size">Размер: {{ item.posInfo_size }}</span>
 						</div>
 						<div class="item-card__text" v-text="item.name"></div>
-						<div class="item-card__text" v-text="item.description"></div>
-						<button class="item-card__btn btn btn--small" type="button">
+						<div class="item-card__text" v-text="item.posInfo_flowers"></div>
+						<button class="item-card__btn btn btn--small" type="button" @click="buy(item.id)">
 							<span class="btn__inner">Купить</span>
 						</button>
 						<div class="item-card__price">{{ item.price }} рублей</div>
@@ -144,6 +144,110 @@
 
 </main>
 
+
+<!-- begin .popup -->
+<div class="popup js-popup" id="popup-form">
+
+	<!-- begin .popup__window -->
+	<div class="popup__window">
+		<button class="popup__btn-close btn btn--circle is-active js-close-popup">
+			<span class="btn__inner">
+				<svg class="btn__icon" width="18" height="18" viewBox="0 0 18 18" fill="none">
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M11.1393 9.00003L17.5569 2.58237C18.1477 1.99162 18.1477 1.03382 17.5569 0.44315C16.9662 -0.147604 16.0085 -0.147604 15.4177 0.44315L8.99997 6.8609L2.58222 0.443065C1.99147 -0.147688 1.03376 -0.147688 0.443002 0.443065C-0.147667 1.03382 -0.147667 1.99162 0.443002 2.58229L6.86075 8.99995L0.443002 15.4177C-0.147667 16.0084 -0.147667 16.9662 0.443002 17.5569C1.03376 18.1477 1.99147 18.1477 2.58222 17.5569L8.99997 11.1392L15.4177 17.5569C16.0084 18.1477 16.9662 18.1477 17.5569 17.5569C18.1477 16.9662 18.1477 16.0084 17.5569 15.4177L11.1393 9.00003Z" fill="white"/>
+				</svg>
+			</span>
+		</button>
+
+		<div class="form">
+			<div class="form__heading heading-2">Укажите контакты</div>
+
+			<label class="form__field field">
+				<input class="field__input" type="text" placeholder="Ваше имя">
+				<span class="field__icon"></span>
+			</label>
+
+			<label class="form__field field">
+				<input class="field__input" type="tel" placeholder="Ваш телефон (c WhatsApp или Viber)">
+				<span class="field__icon"></span>
+			</label>
+
+			<label class="form__field field">
+				<input class="field__input" type="date" placeholder="Дата получения">
+				<span class="field__icon"></span>
+			</label>
+
+			<div class="form__buttons">
+				<button class="form__btn-next btn" type="button">
+					<span class="btn__inner">Отправить</span>
+				</button>
+			</div>
+		</div>
+
+	</div>
+	<!-- end .popup__window -->
+
+</div>
+<!-- end .popup -->
+
+
+<!-- begin .popup -->
+<div class="popup js-popup" id="popup-message">
+
+	<!-- begin .popup__window -->
+	<div class="popup__window">
+		<button class="popup__btn-close btn btn--circle is-active js-close-popup">
+			<span class="btn__inner">
+				<svg class="btn__icon" width="18" height="18" viewBox="0 0 18 18" fill="none">
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M11.1393 9.00003L17.5569 2.58237C18.1477 1.99162 18.1477 1.03382 17.5569 0.44315C16.9662 -0.147604 16.0085 -0.147604 15.4177 0.44315L8.99997 6.8609L2.58222 0.443065C1.99147 -0.147688 1.03376 -0.147688 0.443002 0.443065C-0.147667 1.03382 -0.147667 1.99162 0.443002 2.58229L6.86075 8.99995L0.443002 15.4177C-0.147667 16.0084 -0.147667 16.9662 0.443002 17.5569C1.03376 18.1477 1.99147 18.1477 2.58222 17.5569L8.99997 11.1392L15.4177 17.5569C16.0084 18.1477 16.9662 18.1477 17.5569 17.5569C18.1477 16.9662 18.1477 16.0084 17.5569 15.4177L11.1393 9.00003Z" fill="white"/>
+				</svg>
+			</span>
+		</button>
+
+		<div class="form">
+			<div class="form__heading heading-2">Заявка отрпавлена</div>
+			<p>
+				Мы с вяжемся с Вами в течении 20 минут и согласуем букет перед отправкой.
+			</p>
+		</div>
+
+	</div>
+	<!-- end .popup__window -->
+
+</div>
+<!-- end .popup -->
+
+
+<div class="form">
+	<div class="form__heading heading-2">Укажите контакты</div>
+
+	<label class="form__field field">
+		<input class="field__input" type="text" placeholder="Ваше имя">
+		<span class="field__icon"></span>
+	</label>
+
+	<label class="form__field field">
+		<input class="field__input" type="tel" placeholder="Ваш телефон (c WhatsApp или Viber)">
+		<span class="field__icon"></span>
+	</label>
+
+	<label class="form__field field">
+		<input class="field__input" type="date" placeholder="Дата получения">
+		<span class="field__icon"></span>
+	</label>
+
+	<div class="form__buttons">
+		<button class="form__btn-back">
+			<span class="form__btn-back-inner">
+				<svg class="form__btn-back-icon" width="64" height="64" viewBox="0 0 64 64">
+					<path d="M30.711 63.306c.393.393.907.589 1.422.589.514 0 1.028-.196 1.422-.589l21.237-21.239a2.012 2.012 0 0 0-2.844-2.844L34.144 57.029V2.248a2.01 2.01 0 1 0-4.022 0v54.781L12.314 39.223a2.01 2.01 0 1 0-2.843 2.844l21.24 21.239z"/>
+				</svg>
+			</span>
+		</button>
+		<button class="form__btn-next btn" type="button">
+			<span class="btn__inner">Отправить</span>
+		</button>
+	</div>
+</div>
 
 <footer class="footer" id="footer">
 
