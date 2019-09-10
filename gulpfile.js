@@ -6,6 +6,7 @@ var minifyCSS = require("gulp-minify-css");
 var pipeline = require('readable-stream').pipeline;
 var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync').create();
+var fileinclude = require('gulp-file-include');
 
 
 task('compress', function () {
@@ -18,6 +19,10 @@ task('compress', function () {
 
 function html() {
   return src('src/*.html')
+    .pipe(fileinclude({
+      prefix: '@@',
+      basepath: '@file'
+    }))
     .pipe(dest('build'))
     .pipe(browserSync.reload({stream: true}))
 }

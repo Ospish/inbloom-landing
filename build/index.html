@@ -21,93 +21,93 @@
 </head>
 <body>
 
-  <header class="header" id="header">
+<header class="header" id="header">
     <!-- begin .container -->
     <div class="header__container container">
 
-      <!-- begin header__inner -->
-      <div class="header__inner"  data-aos="fade-in">
+        <!-- begin header__inner -->
+        <div class="header__inner"  data-aos="fade-in">
 
-        <!-- begin logo -->
-        <span class="header__logo header-logo">
+            <!-- begin logo -->
+            <span class="header__logo header-logo">
           <span class="header-logo__inner">
             <a class="header-logo__link" href="/" aria-label="InBloom">
               <img class="header-logo__img" src="images/logo.png" srcset="images/logo@2x.png 2x" alt="InBloom" />
             </a>
-<!--            <span class="header-logo__text">Доставка по всему миру</span>-->
+              <!--            <span class="header-logo__text">Доставка по всему миру</span>-->
           </span>
         </span>
-        <!-- end logo -->
+            <!-- end logo -->
 
-        <!-- begin city-select -->
-        <div class="header__city city-select" id="city-select">
-          <!-- TODO: Нужно выподяющее меню какое-то или popup с выбором города -->
-          <button class="city-select__btn" type="button" aria-label="Выбор города" v-if="city" @click="showList = !showList">
+            <!-- begin city-select -->
+            <div class="header__city city-select" id="city-select">
+                <!-- TODO: Нужно выподяющее меню какое-то или popup с выбором города -->
+                <button class="city-select__btn" type="button" aria-label="Выбор города" v-if="city" @click="showList = !showList">
             <span class="city-select__btn-inner">
               <img class="city-select__icon" src="images/icons/location-pin.svg" alt="">
-              <!-- TODO: есть риска что невлезит длинное название города -->
+                <!-- TODO: есть риска что невлезит длинное название города -->
               <span class="city-select__name">г. {{ city }}</span>
               <img class="city-select__arrow" src="images/icons/arrow.svg" alt="">
             </span>
-          </button>
-          <!-- begin .city-select__dropdown -->
-          <div class="city-select__dropdown" :class="{'is-visible': showList}" @click.self="showList = !showList">
-            <div class="city-select__list">
-              <button class="city-select__item" v-for="(item, index) in cities" @click="selectCity(index)">{{ item }}</button>
+                </button>
+                <!-- begin .city-select__dropdown -->
+                <div class="city-select__dropdown" :class="{'is-visible': showList}" @click.self="showList = !showList">
+                    <div class="city-select__list">
+                        <button class="city-select__item" v-for="(item, index) in cities" @click="selectCity(index)">{{ item }}</button>
+                    </div>
+                </div>
+                <!-- end .city-select__dropdown -->
             </div>
-          </div>
-          <!-- end .city-select__dropdown -->
-        </div>
-        <!-- end city-select -->
+            <!-- end city-select -->
 
-        <!-- begin nav -->
-        <nav class="header__nav nav" id="nav">
-          <button class="nav__btn-burger btn-burger" id="btn-burger">
-            Меню
-          </button>
-          <ul class="nav__list" id="nav-list">
-            <li class="nav__item">
-              <a class="nav__link link" href="/about.html">О нас</a>
-            </li>
-            <li class="nav__item">
-              <a class="nav__link link" href="#flowers">О цветах</a>
-            </li>
-            <li class="nav__item">
-              <a class="nav__link link" href="#portfolio">Фото</a>
-            </li>
-            <li class="nav__item">
-              <a class="nav__link link" href="#rewrites">Отзывы</a>
-            </li>
-            <li class="nav__item">
-              <a class="nav__link link" href="/" target="_blank" rel="noopener">Франшиза</a>
-            </li>
-          </ul>
-        </nav>
-        <!-- end nav -->
+            <!-- begin nav -->
+            <nav class="header__nav nav" id="nav">
+                <button class="nav__btn-burger btn-burger" id="btn-burger">
+                    Меню
+                </button>
+                <ul class="nav__list" id="nav-list">
+                    <li class="nav__item">
+                        <a class="nav__link link" href="/about.html">О нас</a>
+                    </li>
+                    <li class="nav__item">
+                        <a class="nav__link link" href="#flowers">О цветах</a>
+                    </li>
+                    <li class="nav__item">
+                        <a class="nav__link link" href="#portfolio">Фото</a>
+                    </li>
+                    <li class="nav__item">
+                        <a class="nav__link link" href="#rewrites">Отзывы</a>
+                    </li>
+                    <li class="nav__item">
+                        <a class="nav__link link" href="/" target="_blank" rel="noopener">Франшиза</a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- end nav -->
 
-        <!-- begin header-contacts -->
-        <div class="header__contacts" id="header-contacts">
-          <a class="link" href="mailto:partner@inblum.store" v-if="email">
+            <!-- begin header-contacts -->
+            <div class="header__contacts" id="header-contacts">
+                <a class="link" href="mailto:partner@inblum.store" v-if="email">
             <span class="link__inner">
               <img class="link__icon" src="images/icons/mail.svg" alt="">
               {{ email }}
             </span>
-          </a>
-          <a class="link link--bold" href="tel:74959910406" aria-label="Позвонить" v-if="phone">
+                </a>
+                <a class="link link--bold" href="tel:74959910406" aria-label="Позвонить" v-if="phone">
             <span class="link__inner">
               <img class="link__icon" src="images/icons/tel.svg" alt="">
               <span class="link__text">{{ phone }}</span>
             </span>
-          </a>
-        </div>
-        <!-- end header-contacts -->
+                </a>
+            </div>
+            <!-- end header-contacts -->
 
-      </div>
-      <!-- end header__inner -->
+        </div>
+        <!-- end header__inner -->
 
     </div>
     <!-- end .container -->
-  </header>
+</header>
 
   <main class="main" id="main">
 
@@ -437,107 +437,107 @@
   <footer class="footer" id="footer">
 
     <div class="footer__container container">
-      <div class="footer__about">
-          <!-- begin logo -->
-          <a class="footer__logo footer-logo" href="/" aria-label="InBloom">
+        <div class="footer__about">
+            <!-- begin logo -->
+            <a class="footer__logo footer-logo" href="/" aria-label="InBloom">
             <span class="footer-logo__inner">
               <img class="footer-logo__img" src="images/logo-white.png" alt="InBloom" />
             </span>
-          </a>
-          <!-- end logo -->
+            </a>
+            <!-- end logo -->
 
-          <div>
-            ИНН: 280 444 784 018
-            <br><br>
-            ОГРН: 318 774 600 184 311
-          </div>
-      </div>
-      <div class="footer__nav">
-        <nav class="footer-nav">
-          <ul class="footer-nav__list">
-            <li class="footer-nav__item"><a class="footer-nav__link link link--white" href="">О цветах</a></li>
-            <li class="footer-nav__item"><a class="footer-nav__link link link--white" href="">Условия заказа</a></li>
-            <li class="footer-nav__item"><a class="footer-nav__link link link--white" href="">Отзывы</a></li>
-            <li class="footer-nav__item"><a class="footer-nav__link link link--white" href="">Условия доставки</a></li>
-          </ul>
-        </nav>
-        <a class="footer__btn btn btn--other" href="">
-          <span class="btn__inner">Стать партнером</span>
-        </a>
-      </div>
-      <div class="footer__subscribe">
-        <div class="footer__heading">Узнавайте об акциях первыми</div>
-        <form class="footer-subscribe" action="">
-          <label class="footer-subscribe__field field" aria-label="Введите почту">
-            <input class="footer-subscribe__input" type="email" placeholder="Введите почту">
-          </label>
-          <button class="footer-subscribe__btn" type="submit">Подписться</button>
-        </form>
-      </div>
-      <div class="footer__socials">
-        <div class="footer__heading">Социальные сети</div>
-        <div class="footer-socials" id="footer-socials">
-          <a class='footer-socials__link' href="https://vk.com/inbloomopt" target="_blank" rel="noopener" aria-label="vk" v-if="active.vk">
+            <div>
+                ИНН: 280 444 784 018
+                <br><br>
+                ОГРН: 318 774 600 184 311
+            </div>
+        </div>
+        <div class="footer__nav">
+            <nav class="footer-nav">
+                <ul class="footer-nav__list">
+                    <li class="footer-nav__item"><a class="footer-nav__link link link--white" href="">О цветах</a></li>
+                    <li class="footer-nav__item"><a class="footer-nav__link link link--white" href="">Условия заказа</a></li>
+                    <li class="footer-nav__item"><a class="footer-nav__link link link--white" href="">Отзывы</a></li>
+                    <li class="footer-nav__item"><a class="footer-nav__link link link--white" href="">Условия доставки</a></li>
+                </ul>
+            </nav>
+            <a class="footer__btn btn btn--other" href="">
+                <span class="btn__inner">Стать партнером</span>
+            </a>
+        </div>
+        <div class="footer__subscribe">
+            <div class="footer__heading">Узнавайте об акциях первыми</div>
+            <form class="footer-subscribe" action="">
+                <label class="footer-subscribe__field field" aria-label="Введите почту">
+                    <input class="footer-subscribe__input" type="email" placeholder="Введите почту">
+                </label>
+                <button class="footer-subscribe__btn" type="submit">Подписться</button>
+            </form>
+        </div>
+        <div class="footer__socials">
+            <div class="footer__heading">Социальные сети</div>
+            <div class="footer-socials" id="footer-socials">
+                <a class='footer-socials__link' href="https://vk.com/inbloomopt" target="_blank" rel="noopener" aria-label="vk" v-if="active.vk">
             <span class="footer-socials__link-inner">
               <svg class="footer-socials__icon" width="19px" height="11px">
                 <path fill-rule="evenodd"  fill="rgb(255, 255, 255)" d="M9.413,10.812 L10.527,10.812 C10.527,10.812 10.864,10.774 11.036,10.586 C11.194,10.414 11.189,10.091 11.189,10.091 C11.189,10.091 11.167,8.576 11.860,8.353 C12.544,8.133 13.422,9.817 14.353,10.464 C15.057,10.954 15.591,10.847 15.591,10.847 L18.080,10.812 C18.080,10.812 19.382,10.730 18.765,9.693 C18.714,9.608 18.405,8.926 16.914,7.523 C15.354,6.055 15.563,6.293 17.442,3.754 C18.587,2.207 19.045,1.263 18.902,0.859 C18.766,0.474 17.923,0.575 17.923,0.575 L15.122,0.593 C15.122,0.593 14.914,0.565 14.760,0.658 C14.609,0.749 14.513,0.963 14.513,0.963 C14.513,0.963 14.069,2.159 13.478,3.177 C12.230,5.324 11.731,5.438 11.527,5.304 C11.053,4.993 11.171,4.056 11.171,3.390 C11.171,1.309 11.483,0.441 10.565,0.216 C10.260,0.142 10.036,0.093 9.257,0.085 C8.257,0.074 7.411,0.088 6.932,0.326 C6.613,0.484 6.367,0.836 6.517,0.857 C6.702,0.882 7.121,0.971 7.344,1.278 C7.631,1.674 7.621,2.563 7.621,2.563 C7.621,2.563 7.786,5.013 7.236,5.317 C6.858,5.525 6.340,5.100 5.228,3.151 C4.658,2.153 4.227,1.051 4.227,1.051 C4.227,1.051 4.144,0.844 3.996,0.734 C3.817,0.600 3.566,0.558 3.566,0.558 L0.903,0.575 C0.903,0.575 0.504,0.587 0.357,0.763 C0.226,0.920 0.347,1.244 0.347,1.244 C0.347,1.244 2.431,6.186 4.791,8.677 C6.956,10.961 9.413,10.812 9.413,10.812 L9.413,10.812 L9.413,10.812 Z"/>
               </svg>
             </span>
-          </a>
-<!--          <a class='footer-socials__link' href="https://www.youtube.com/channel/UC3QQeObZ9EXai3ZwhqZ8lYQ?view_as=subscriber" target="_blank" rel="noopener" aria-label="youtube" v-if="active.vk">-->
-<!--            <span class="footer-socials__link-inner">-->
-<!--              <svg class="footer-socials__icon" width="17px" height="12px">-->
-<!--                <path fill-rule="evenodd"  fill="rgb(255, 255, 255)" d="M16.120,2.450 C15.929,1.610 15.251,0.991 14.436,0.899 C12.505,0.681 10.551,0.680 8.605,0.681 C6.659,0.680 4.705,0.681 2.774,0.899 C1.958,0.991 1.281,1.610 1.091,2.450 C0.820,3.645 0.817,4.950 0.817,6.181 C0.817,7.411 0.817,8.716 1.088,9.912 C1.278,10.751 1.955,11.370 2.771,11.462 C4.702,11.681 6.656,11.682 8.602,11.681 C10.548,11.682 12.502,11.681 14.433,11.462 C15.248,11.370 15.926,10.751 16.116,9.912 C16.388,8.716 16.389,7.411 16.389,6.181 C16.389,4.950 16.391,3.645 16.120,2.450 ZM6.970,8.332 L6.970,3.956 L11.087,6.144 L6.970,8.332 Z"/>-->
-<!--              </svg>-->
-<!--            </span>-->
-<!--          </a>-->
-<!--          <a class='footer-socials__link' href="" target="_blank" rel="noopener" aria-label="facebook">-->
-<!--            <span class="footer-socials__link-inner">-->
-<!--              <svg class="footer-socials__icon" width="10px" height="19px">-->
-<!--                <path fill-rule="evenodd"  fill="rgb(255, 255, 255)" d="M6.755,18.320 L6.755,10.066 L9.488,10.066 L9.898,6.849 L6.755,6.849 L6.755,4.796 C6.755,3.864 7.010,3.229 8.328,3.229 L10.008,3.229 L10.008,0.352 C9.718,0.313 8.720,0.225 7.559,0.225 C5.136,0.225 3.477,1.724 3.477,4.477 L3.477,6.849 L0.737,6.849 L0.737,10.066 L3.477,10.066 L3.477,18.320 L6.755,18.320 Z"/>-->
-<!--              </svg>-->
-<!--            </span>-->
-<!--          </a>-->
-<!--          <a class='footer-socials__link' href="" target="_blank" rel="noopener" aria-label="ok">-->
-<!--            <span class="footer-socials__link-inner">-->
-<!--              <svg class="footer-socials__icon" width="10px" height="17px">-->
-<!--                <path fill-rule="evenodd"  fill="rgb(255, 255, 255)" d="M8.710,10.829 C7.963,11.305 7.152,11.641 6.311,11.836 L8.621,14.176 C9.094,14.655 9.094,15.432 8.621,15.911 C8.148,16.390 7.382,16.390 6.910,15.911 L4.640,13.611 L2.371,15.911 C2.135,16.150 1.825,16.270 1.515,16.270 C1.206,16.270 0.896,16.150 0.660,15.911 C0.187,15.432 0.187,14.655 0.659,14.176 L2.969,11.836 C2.128,11.641 1.317,11.304 0.570,10.829 C0.005,10.468 -0.165,9.711 0.191,9.138 C0.546,8.563 1.293,8.391 1.859,8.752 C3.550,9.830 5.729,9.830 7.421,8.752 C7.987,8.391 8.734,8.563 9.090,9.138 C9.446,9.710 9.275,10.468 8.710,10.829 ZM4.640,8.420 C2.362,8.420 0.509,6.543 0.509,4.235 C0.509,1.926 2.362,0.048 4.640,0.048 C6.919,0.048 8.771,1.926 8.771,4.235 C8.771,6.543 6.919,8.420 4.640,8.420 ZM4.640,2.502 C3.698,2.502 2.930,3.279 2.930,4.235 C2.930,5.190 3.698,5.968 4.640,5.968 C5.584,5.968 6.351,5.190 6.351,4.235 C6.351,3.279 5.584,2.502 4.640,2.502 Z"/>-->
-<!--              </svg>-->
-<!--            </span>-->
-<!--          </a>-->
-<!--          <a class='footer-socials__link' href="" target="_blank" rel="noopener" aria-label="twitter">-->
-<!--            <span class="footer-socials__link-inner">-->
-<!--              <svg class="footer-socials__icon" width="18px" height="14px">-->
-<!--                <path fill-rule="evenodd"  fill="rgb(255, 255, 255)" d="M17.091,2.187 C16.497,2.454 15.858,2.635 15.188,2.716 C15.872,2.300 16.398,1.642 16.645,0.858 C16.005,1.243 15.295,1.522 14.540,1.673 C13.935,1.020 13.074,0.612 12.120,0.612 C10.290,0.612 8.805,2.116 8.805,3.972 C8.805,4.235 8.835,4.491 8.891,4.737 C6.136,4.597 3.694,3.259 2.059,1.227 C1.774,1.723 1.610,2.300 1.610,2.916 C1.610,4.081 2.195,5.110 3.085,5.712 C2.541,5.695 2.030,5.544 1.583,5.292 C1.583,5.306 1.583,5.320 1.583,5.334 C1.583,6.962 2.726,8.320 4.242,8.629 C3.964,8.705 3.671,8.747 3.369,8.747 C3.155,8.747 2.947,8.725 2.745,8.686 C3.167,10.021 4.391,10.992 5.842,11.019 C4.707,11.921 3.278,12.458 1.725,12.458 C1.457,12.458 1.193,12.442 0.934,12.411 C2.401,13.364 4.143,13.920 6.015,13.920 C12.113,13.920 15.447,8.801 15.447,4.361 C15.447,4.216 15.444,4.071 15.437,3.927 C16.085,3.453 16.647,2.861 17.091,2.187 Z"/>-->
-<!--              </svg>-->
-<!--            </span>-->
-<!--          </a>-->
-          <a class='footer-socials__link' href="https://www.instagram.com/inbloom.ru/" target="_blank" rel="noopener" aria-label="instagram" v-if="active.instagram">
+                </a>
+                <!--          <a class='footer-socials__link' href="https://www.youtube.com/channel/UC3QQeObZ9EXai3ZwhqZ8lYQ?view_as=subscriber" target="_blank" rel="noopener" aria-label="youtube" v-if="active.vk">-->
+                <!--            <span class="footer-socials__link-inner">-->
+                <!--              <svg class="footer-socials__icon" width="17px" height="12px">-->
+                <!--                <path fill-rule="evenodd"  fill="rgb(255, 255, 255)" d="M16.120,2.450 C15.929,1.610 15.251,0.991 14.436,0.899 C12.505,0.681 10.551,0.680 8.605,0.681 C6.659,0.680 4.705,0.681 2.774,0.899 C1.958,0.991 1.281,1.610 1.091,2.450 C0.820,3.645 0.817,4.950 0.817,6.181 C0.817,7.411 0.817,8.716 1.088,9.912 C1.278,10.751 1.955,11.370 2.771,11.462 C4.702,11.681 6.656,11.682 8.602,11.681 C10.548,11.682 12.502,11.681 14.433,11.462 C15.248,11.370 15.926,10.751 16.116,9.912 C16.388,8.716 16.389,7.411 16.389,6.181 C16.389,4.950 16.391,3.645 16.120,2.450 ZM6.970,8.332 L6.970,3.956 L11.087,6.144 L6.970,8.332 Z"/>-->
+                <!--              </svg>-->
+                <!--            </span>-->
+                <!--          </a>-->
+                <!--          <a class='footer-socials__link' href="" target="_blank" rel="noopener" aria-label="facebook">-->
+                <!--            <span class="footer-socials__link-inner">-->
+                <!--              <svg class="footer-socials__icon" width="10px" height="19px">-->
+                <!--                <path fill-rule="evenodd"  fill="rgb(255, 255, 255)" d="M6.755,18.320 L6.755,10.066 L9.488,10.066 L9.898,6.849 L6.755,6.849 L6.755,4.796 C6.755,3.864 7.010,3.229 8.328,3.229 L10.008,3.229 L10.008,0.352 C9.718,0.313 8.720,0.225 7.559,0.225 C5.136,0.225 3.477,1.724 3.477,4.477 L3.477,6.849 L0.737,6.849 L0.737,10.066 L3.477,10.066 L3.477,18.320 L6.755,18.320 Z"/>-->
+                <!--              </svg>-->
+                <!--            </span>-->
+                <!--          </a>-->
+                <!--          <a class='footer-socials__link' href="" target="_blank" rel="noopener" aria-label="ok">-->
+                <!--            <span class="footer-socials__link-inner">-->
+                <!--              <svg class="footer-socials__icon" width="10px" height="17px">-->
+                <!--                <path fill-rule="evenodd"  fill="rgb(255, 255, 255)" d="M8.710,10.829 C7.963,11.305 7.152,11.641 6.311,11.836 L8.621,14.176 C9.094,14.655 9.094,15.432 8.621,15.911 C8.148,16.390 7.382,16.390 6.910,15.911 L4.640,13.611 L2.371,15.911 C2.135,16.150 1.825,16.270 1.515,16.270 C1.206,16.270 0.896,16.150 0.660,15.911 C0.187,15.432 0.187,14.655 0.659,14.176 L2.969,11.836 C2.128,11.641 1.317,11.304 0.570,10.829 C0.005,10.468 -0.165,9.711 0.191,9.138 C0.546,8.563 1.293,8.391 1.859,8.752 C3.550,9.830 5.729,9.830 7.421,8.752 C7.987,8.391 8.734,8.563 9.090,9.138 C9.446,9.710 9.275,10.468 8.710,10.829 ZM4.640,8.420 C2.362,8.420 0.509,6.543 0.509,4.235 C0.509,1.926 2.362,0.048 4.640,0.048 C6.919,0.048 8.771,1.926 8.771,4.235 C8.771,6.543 6.919,8.420 4.640,8.420 ZM4.640,2.502 C3.698,2.502 2.930,3.279 2.930,4.235 C2.930,5.190 3.698,5.968 4.640,5.968 C5.584,5.968 6.351,5.190 6.351,4.235 C6.351,3.279 5.584,2.502 4.640,2.502 Z"/>-->
+                <!--              </svg>-->
+                <!--            </span>-->
+                <!--          </a>-->
+                <!--          <a class='footer-socials__link' href="" target="_blank" rel="noopener" aria-label="twitter">-->
+                <!--            <span class="footer-socials__link-inner">-->
+                <!--              <svg class="footer-socials__icon" width="18px" height="14px">-->
+                <!--                <path fill-rule="evenodd"  fill="rgb(255, 255, 255)" d="M17.091,2.187 C16.497,2.454 15.858,2.635 15.188,2.716 C15.872,2.300 16.398,1.642 16.645,0.858 C16.005,1.243 15.295,1.522 14.540,1.673 C13.935,1.020 13.074,0.612 12.120,0.612 C10.290,0.612 8.805,2.116 8.805,3.972 C8.805,4.235 8.835,4.491 8.891,4.737 C6.136,4.597 3.694,3.259 2.059,1.227 C1.774,1.723 1.610,2.300 1.610,2.916 C1.610,4.081 2.195,5.110 3.085,5.712 C2.541,5.695 2.030,5.544 1.583,5.292 C1.583,5.306 1.583,5.320 1.583,5.334 C1.583,6.962 2.726,8.320 4.242,8.629 C3.964,8.705 3.671,8.747 3.369,8.747 C3.155,8.747 2.947,8.725 2.745,8.686 C3.167,10.021 4.391,10.992 5.842,11.019 C4.707,11.921 3.278,12.458 1.725,12.458 C1.457,12.458 1.193,12.442 0.934,12.411 C2.401,13.364 4.143,13.920 6.015,13.920 C12.113,13.920 15.447,8.801 15.447,4.361 C15.447,4.216 15.444,4.071 15.437,3.927 C16.085,3.453 16.647,2.861 17.091,2.187 Z"/>-->
+                <!--              </svg>-->
+                <!--            </span>-->
+                <!--          </a>-->
+                <a class='footer-socials__link' href="https://www.instagram.com/inbloom.ru/" target="_blank" rel="noopener" aria-label="instagram" v-if="active.instagram">
             <span class="footer-socials__link-inner">
               <svg class="footer-socials__icon" width="16px" height="16px">
                 <path fill-rule="evenodd"  fill="rgb(255, 255, 255)" d="M15.303,10.961 C15.267,11.742 15.145,12.276 14.966,12.743 C14.781,13.226 14.533,13.635 14.130,14.044 C13.728,14.452 13.323,14.703 12.847,14.890 C12.386,15.072 11.860,15.196 11.089,15.232 C10.316,15.267 10.069,15.276 8.102,15.276 C6.134,15.276 5.887,15.267 5.115,15.232 C4.344,15.196 3.817,15.072 3.356,14.890 C2.880,14.703 2.476,14.452 2.073,14.044 C1.670,13.635 1.422,13.226 1.237,12.743 C1.058,12.276 0.936,11.742 0.901,10.961 C0.865,10.178 0.857,9.927 0.857,7.933 C0.857,5.939 0.865,5.689 0.901,4.906 C0.936,4.125 1.058,3.591 1.237,3.124 C1.422,2.641 1.670,2.231 2.073,1.823 C2.476,1.415 2.880,1.164 3.356,0.976 C3.817,0.795 4.344,0.671 5.115,0.635 C5.887,0.599 6.134,0.591 8.102,0.591 C10.069,0.591 10.316,0.599 11.089,0.635 C11.860,0.671 12.386,0.795 12.847,0.976 C13.323,1.164 13.728,1.415 14.130,1.823 C14.533,2.231 14.781,2.641 14.966,3.124 C15.145,3.591 15.267,4.125 15.303,4.906 C15.338,5.689 15.346,5.939 15.346,7.933 C15.346,9.927 15.338,10.178 15.303,10.961 ZM13.999,4.966 C13.966,4.251 13.848,3.862 13.749,3.603 C13.618,3.260 13.461,3.016 13.207,2.759 C12.954,2.502 12.712,2.343 12.374,2.210 C12.119,2.109 11.735,1.990 11.029,1.957 C10.265,1.921 10.036,1.914 8.102,1.914 C6.167,1.914 5.938,1.921 5.174,1.957 C4.468,1.990 4.084,2.109 3.829,2.210 C3.491,2.343 3.249,2.502 2.996,2.759 C2.742,3.016 2.585,3.260 2.454,3.603 C2.355,3.862 2.237,4.251 2.205,4.966 C2.170,5.741 2.162,5.973 2.162,7.933 C2.162,9.894 2.170,10.126 2.205,10.900 C2.237,11.616 2.355,12.005 2.454,12.264 C2.585,12.607 2.742,12.851 2.996,13.108 C3.249,13.365 3.491,13.524 3.829,13.657 C4.084,13.758 4.468,13.877 5.174,13.910 C5.938,13.945 6.167,13.953 8.102,13.953 C10.036,13.953 10.265,13.945 11.029,13.910 C11.735,13.877 12.119,13.758 12.374,13.657 C12.712,13.524 12.954,13.365 13.207,13.108 C13.461,12.851 13.618,12.607 13.749,12.264 C13.848,12.005 13.966,11.616 13.999,10.900 C14.034,10.126 14.041,9.894 14.041,7.933 C14.041,5.973 14.034,5.741 13.999,4.966 ZM11.969,4.895 C11.489,4.895 11.100,4.501 11.100,4.014 C11.100,3.528 11.489,3.133 11.969,3.133 C12.449,3.133 12.838,3.528 12.838,4.014 C12.838,4.501 12.449,4.895 11.969,4.895 ZM8.102,11.704 C6.047,11.704 4.381,10.016 4.381,7.933 C4.381,5.851 6.047,4.163 8.102,4.163 C10.156,4.163 11.822,5.851 11.822,7.933 C11.822,10.016 10.156,11.704 8.102,11.704 ZM8.102,5.486 C6.768,5.486 5.687,6.582 5.687,7.933 C5.687,9.285 6.768,10.381 8.102,10.381 C9.435,10.381 10.516,9.285 10.516,7.933 C10.516,6.582 9.435,5.486 8.102,5.486 Z"/>
               </svg>
             </span>
-          </a>
+                </a>
+            </div>
         </div>
-      </div>
     </div>
 
     <!-- begin .footer__copytight -->
     <div class="footer__copyright">
-      Все права защищены (С) InBloom
+        Все права защищены (С) InBloom
     </div>
     <!-- end .footer__copytight -->
 
-  </footer>
+</footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script src="js/app.js"></script>
-  <script src="https://unpkg.com/jarallax@1.10/dist/jarallax.min.js"></script>
-  <script src="http://unpkg.com/jarallax@1.10/dist/jarallax-element.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/lightbox.js"></script>
-  <script src="js/tiny-slider.js"></script>
-  <script src="js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/app.js"></script>
+<script src="https://unpkg.com/jarallax@1.10/dist/jarallax.min.js"></script>
+<script src="http://unpkg.com/jarallax@1.10/dist/jarallax-element.min.js"></script>
+<script src="js/aos.js"></script>
+<script src="js/lightbox.js"></script>
+<script src="js/tiny-slider.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

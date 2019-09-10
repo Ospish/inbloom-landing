@@ -1,0 +1,87 @@
+<header class="header" id="header">
+    <!-- begin .container -->
+    <div class="header__container container">
+
+        <!-- begin header__inner -->
+        <div class="header__inner"  data-aos="fade-in">
+
+            <!-- begin logo -->
+            <span class="header__logo header-logo">
+          <span class="header-logo__inner">
+            <a class="header-logo__link" href="/" aria-label="InBloom">
+              <img class="header-logo__img" src="images/logo.png" srcset="images/logo@2x.png 2x" alt="InBloom" />
+            </a>
+              <!--            <span class="header-logo__text">Доставка по всему миру</span>-->
+          </span>
+        </span>
+            <!-- end logo -->
+
+            <!-- begin city-select -->
+            <div class="header__city city-select" id="city-select">
+                <!-- TODO: Нужно выподяющее меню какое-то или popup с выбором города -->
+                <button class="city-select__btn" type="button" aria-label="Выбор города" v-if="city" @click="showList = !showList">
+            <span class="city-select__btn-inner">
+              <img class="city-select__icon" src="images/icons/location-pin.svg" alt="">
+                <!-- TODO: есть риска что невлезит длинное название города -->
+              <span class="city-select__name">г. {{ city }}</span>
+              <img class="city-select__arrow" src="images/icons/arrow.svg" alt="">
+            </span>
+                </button>
+                <!-- begin .city-select__dropdown -->
+                <div class="city-select__dropdown" :class="{'is-visible': showList}" @click.self="showList = !showList">
+                    <div class="city-select__list">
+                        <button class="city-select__item" v-for="(item, index) in cities" @click="selectCity(index)">{{ item }}</button>
+                    </div>
+                </div>
+                <!-- end .city-select__dropdown -->
+            </div>
+            <!-- end city-select -->
+
+            <!-- begin nav -->
+            <nav class="header__nav nav" id="nav">
+                <button class="nav__btn-burger btn-burger" id="btn-burger">
+                    Меню
+                </button>
+                <ul class="nav__list" id="nav-list">
+                    <li class="nav__item">
+                        <a class="nav__link link" href="/about.html">О нас</a>
+                    </li>
+                    <li class="nav__item">
+                        <a class="nav__link link" href="#flowers">О цветах</a>
+                    </li>
+                    <li class="nav__item">
+                        <a class="nav__link link" href="#portfolio">Фото</a>
+                    </li>
+                    <li class="nav__item">
+                        <a class="nav__link link" href="#rewrites">Отзывы</a>
+                    </li>
+                    <li class="nav__item">
+                        <a class="nav__link link" href="/" target="_blank" rel="noopener">Франшиза</a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- end nav -->
+
+            <!-- begin header-contacts -->
+            <div class="header__contacts" id="header-contacts">
+                <a class="link" href="mailto:partner@inblum.store" v-if="email">
+            <span class="link__inner">
+              <img class="link__icon" src="images/icons/mail.svg" alt="">
+              {{ email }}
+            </span>
+                </a>
+                <a class="link link--bold" href="tel:74959910406" aria-label="Позвонить" v-if="phone">
+            <span class="link__inner">
+              <img class="link__icon" src="images/icons/tel.svg" alt="">
+              <span class="link__text">{{ phone }}</span>
+            </span>
+                </a>
+            </div>
+            <!-- end header-contacts -->
+
+        </div>
+        <!-- end header__inner -->
+
+    </div>
+    <!-- end .container -->
+</header>

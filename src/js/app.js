@@ -1,4 +1,4 @@
-
+// Конфиги для  fetch
 var fetchGetConf = {
   method: 'GET',
   headers: {
@@ -6,8 +6,14 @@ var fetchGetConf = {
   }
 };
 
+//Проверяем есть ли каталог на странице
 var hasCatalog = document.getElementById('catalog');
 
+
+/**
+ * Смена города в шапке
+ * @type {Vue}
+ */
 var citySelect = new Vue({
   el: '#city-select',
   data: {
@@ -25,17 +31,22 @@ var citySelect = new Vue({
     }
   },
   watch: {
-    selectedIndex: function(value) {
-      if (value === false) return;
-      partnerInfo.getId(this.cities[value]);
+    /**
+     * Отслеживаем изменение индекса города (меняется при смене города в шапке)
+     * @param value
+     */
+    selectedIndex: function(index) {
+      if (index === false) return;
+      partnerInfo.getId(this.cities[index]);
       if (hasCatalog) {
-        catalog.getProductsByCity(this.cities[value]).then(function(products) {
+        catalog.getProductsByCity(this.cities[index]).then(function(products) {
           catalog.addProducts(products);
         });
       }
     }
   },
   created: function () {
+    // Получаем всем города и добавляем их в массив this.cities
     this.getCities().then(function(cities) {
       citySelect.addCities(cities);
     });
@@ -57,6 +68,7 @@ var citySelect = new Vue({
               return [];
             }
           }).catch(function() {
+            // В случае ошибки возвращаем пустой массив
             return [];
           });
         })
@@ -85,7 +97,10 @@ var citySelect = new Vue({
   }
 });
 
-
+/**
+ * Информация о выбраном партнере
+ * @type {Vue}
+ */
 partnerInfo = new Vue({
   el: '#header-contacts',
   data: {
@@ -132,7 +147,10 @@ partnerInfo = new Vue({
   }
 });
 
-
+/**
+ * Социальные сети в футнере
+ * @type {Vue}
+ */
 socials = new Vue({
   el: '#footer-socials',
   data: {
@@ -162,7 +180,10 @@ socials = new Vue({
 });
 
 
-
+/**
+ * Очевидно, каталог
+ * @type {Vue}
+ */
 catalog = new Vue({
   el: '#catalog',
   data: {
@@ -198,6 +219,7 @@ catalog = new Vue({
               return [];
             }
           }).catch(function() {
+            // В случае ошибки возвращаем пустой массив
             return [];
           });
         })
@@ -228,6 +250,7 @@ catalog = new Vue({
         });
     },
     addProducts: function(products) {
+      // Получаем продукты и добавляем их в  массив this.products
       products.forEach(function(item) {
         catalog.products.push(item);
       });

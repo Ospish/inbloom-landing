@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "inbloom landing page",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "gulp-file-include": "^2.1.0"
+  },
   "devDependencies": {
     "babel-preset-es2015": "^6.24.1",
     "browser-sync": "^2.26.3",
