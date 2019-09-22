@@ -30,7 +30,8 @@
                 <!-- begin .city-select__dropdown -->
                 <div class="city-select__dropdown" :class="{'is-visible': showList}" @click.self="showList = !showList">
                     <div class="city-select__list">
-                        <button class="city-select__item" v-for="(item, index) in cities" @click="selectCity(index)">{{ item }}</button>
+                        <span class="city-select-list__close" @click.self="showList = !showList">x</span>
+                        <button class="city-select__item" v-for="(item, index) in cities" v-if="item != '' && item != null" @click="selectCity(index)">{{ item }}</button>
                     </div>
                 </div>
                 <!-- end .city-select__dropdown -->
@@ -47,16 +48,16 @@
                         <a class="nav__link link" href="/about.html">О нас</a>
                     </li>
                     <li class="nav__item">
-                        <a class="nav__link link" href="#flowers">О цветах</a>
+                        <a class="nav__link link" href="/#flowers">О цветах</a>
                     </li>
                     <li class="nav__item">
-                        <a class="nav__link link" href="#portfolio">Фото</a>
+                        <a class="nav__link link" href="/#portfolio">Фото</a>
                     </li>
                     <li class="nav__item">
-                        <a class="nav__link link" href="#rewrites">Отзывы</a>
+                        <a class="nav__link link" href="/#rewrites">Отзывы</a>
                     </li>
                     <li class="nav__item">
-                        <a class="nav__link link" href="/" target="_blank" rel="noopener">Франшиза</a>
+                        <a class="nav__link link" href="https://inbloomfranchise.com/" target="_blank" rel="noopener">Франшиза</a>
                     </li>
                 </ul>
             </nav>
@@ -70,7 +71,7 @@
               {{ email }}
             </span>
                 </a>
-                <a class="link link--bold" href="tel:74959910406" aria-label="Позвонить" v-if="phone">
+                <a class="link link--bold" :href="'tel:' + this.phone" aria-label="Позвонить" v-if="phone">
             <span class="link__inner">
               <img class="link__icon" src="images/icons/tel.svg" alt="">
               <span class="link__text">{{ phone }}</span>

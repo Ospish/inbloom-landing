@@ -1,6 +1,6 @@
 .city-select {
   &__btn {
-    width: 120px;
+    width: 140px;
     padding: 0;
 
     border: none;
@@ -13,11 +13,6 @@
     line-height: normal;
     letter-spacing: normal;
     color: #292929;
-
-    @media all and (max-width: 1024px) {
-      width: 100px;
-    }
-
     @media all and (max-width: 767px) {
       width: auto;
 
@@ -84,7 +79,7 @@
 
   &__list {
     padding: 20px;
-    
+    position: relative;
     border-radius: 8px;
     background-color: #fff;
   }
@@ -103,5 +98,11 @@
     &:hover {
       color: #7a1896;
     }
+  }
+  &-list__close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    cursor: pointer;
   }
 }

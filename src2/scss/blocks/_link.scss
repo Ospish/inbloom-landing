@@ -1,0 +1,57 @@
+.link {
+  position: relative;
+
+  font-size: 16px;
+  font-weight: 300;
+  color: #292929;
+  text-decoration: none;
+
+  transition: all 0.25s ease;
+
+  &:hover {
+    color: #972bad;
+  }
+
+  &--bold {
+    font-weight: bold;
+
+    @media all and (max-width: 767px) {
+      font-size: 14px;
+    }
+  }
+
+  &--big {
+    display: inline-block;
+
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.6;
+    text-transform: uppercase;
+    color: #cf9333;
+  
+    border-bottom: 1px dotted #cf9333;
+
+    @media all and (max-width: 1024px) {
+      font-size: 14px;
+    }
+  }
+
+  &--white {
+    color: #ffffff;
+
+    &:hover {
+      color: #cf9333;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    width: 11px;
+    height: 11px;
+    margin-right: 8px;
+  }
+}

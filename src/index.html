@@ -1,23 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="images/favicon.png" type="image/png">
-
-  <meta name="Description" content="Put your description here.">
-
-  <meta property="og:title" content="InBloom - flowers from soop" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://inblum.store/" />
-  <meta property="og:image" content="https://inblum.store/images/OG_Image.jpg" />
-
-  <title>InBloom - flowers from soop</title>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/main.css">
+  @@include('include/head.html')
+  <title>InBloom - flowers from soap</title>
 </head>
 <body>
 
@@ -55,7 +40,7 @@
               <a class="cover__btn btn" href="catalog.html" data-aos="fade-down">
                 <span class="btn__inner">Купить готовый букет</span>
               </a>
-              <a class="cover__link link link--big" href="" data-aos="fade-down">Собрать букет самостоятельно</a>
+              <a class="cover__link link link--big" href="form.html" data-aos="fade-down">Собрать букет самостоятельно</a>
             </span>
           </div>
         </div>
@@ -114,7 +99,7 @@
             </div>
           </div>
 
-          <a class="flowers__btn btn" href="">
+          <a class="flowers__btn btn" href="form.html">
             <span class="btn__inner">Собрать букет</span>
           </a>
 
@@ -131,7 +116,7 @@
     <!-- begin select-size -->
     <section class="section select-size">
       <h2 class="section__heading select-size__heading" data-aos="fade-down">Выберите размер букета</h2>
-      <p class="section__description select-size__text" data-aos="new-animation" data-aos-delay="200">Ответьте на&nbsp;5&nbsp;вопросов и&nbsp;мы&nbsp;подберем для Вас самы оптимальный вариант</p>
+      <p class="section__description select-size__text" data-aos="new-animation" data-aos-delay="200">Ответьте на&nbsp;несколько&nbsp;вопросов и&nbsp;мы&nbsp;подберем для Вас самый оптимальный вариант</p>
 
       <!-- begin .container -->
       <div class="select-size__container container">
@@ -156,7 +141,7 @@
                   Размер 24х24<br>
                   Кол-во цветов от&nbsp;19&nbsp;шт.
                 </div>
-                <a class="link link--big" href="">Расчитать стоимость</a>
+                <a class="link link--big" href="form.html">Расчитать стоимость</a>
               </div>
             </div>
             <!-- end .select-size-item -->
@@ -179,7 +164,7 @@
                   Размер 24х24<br>
                   Кол-во цветов от&nbsp;19&nbsp;шт.
                 </div>
-                <a class="link link--big" href="">Расчитать стоимость</a>
+                <a class="link link--big" href="form.html">Расчитать стоимость</a>
               </div>
             </div>
             <!-- end .select-size-item -->
@@ -202,7 +187,7 @@
                   Размер 24х24<br>
                   Кол-во цветов от&nbsp;19&nbsp;шт.
                 </div>
-                <a class="link link--big" href="">Расчитать стоимость</a>
+                <a class="link link--big" href="form.html">Расчитать стоимость</a>
               </div>
             </div>
             <!-- end .select-size-item -->
@@ -250,7 +235,7 @@
         <!-- end .versus__column -->
       </div>
 
-      <a class="versus__btn btn" href="">
+      <a class="versus__btn btn" href="form.html">
         <span class="btn__inner">Собрать букет</span>
       </a>
 
@@ -260,24 +245,14 @@
     <!-- begin portfolio -->
     <section class="section portfolio" id="portfolio">
       <h2 class="section__heading portfolio__heading" data-aos="fade-down">Наши работы</h2>
-      <p class="section__description portfolio__text" data-aos="fade-down">Посмотрите букеты, которые мы собирали для наших букетов</p>
+      <p class="section__description portfolio__text" data-aos="fade-down">Посмотрите букеты, которые мы собирали для наших клиентов</p>
 
       <div class="portfolio__container container" data-aos="fade-in">
         <div class="portfolio__grid" id="portfolio-slider">
-          <a class="portfolio__item js-lightbox" href="images/content/portfolio/2@2x.jpg">
-            <img class="portfolio__img" src="images/content/portfolio/2.jpg" srcset="images/content/portfolio/2@2x.jpg 2x" alt="">
-          </a>
-          <a class="portfolio__item js-lightbox" href="images/content/portfolio/3@2x.jpg">
-            <img class="portfolio__img" src="images/content/portfolio/3.jpg" srcset="images/content/portfolio/3@2x.jpg 2x" alt="">
-          </a>
-          <a class="portfolio__item js-lightbox" href="images/content/portfolio/4@2x.jpg">
-            <img class="portfolio__img" src="images/content/portfolio/4.jpg" srcset="images/content/portfolio/4@2x.jpg 2x" alt="">
-          </a>
-          <a class="portfolio__item js-lightbox" href="images/content/portfolio/5@2x.jpg">
-            <img class="portfolio__img" src="images/content/portfolio/5.jpg" srcset="images/content/portfolio/5@2x.jpg 2x" alt="">
-          </a>
-          <a class="portfolio__item js-lightbox" href="images/content/portfolio/1@2x.jpg">
-            <img class="portfolio__img" src="images/content/portfolio/1.jpg" srcset="images/content/portfolio/1@2x.jpg 2x" alt="">
+
+          <a v-for="(id, index) in ids" v-if="urls[index] != ''" v-show="index < 6" data-fancybox="gallery" class="portfolio__item" :data-src="'#img-gallery-' + index">
+            <img class="portfolio__img" :src="urls[index]" alt="">
+            <img :id="'img-gallery-' + index" class="portfolio__img" :src="urls[index]" alt="" style="display: none">
           </a>
         </div>
       </div>
@@ -288,7 +263,7 @@
 
     <!-- befin rewrites -->
     <section class="section rewrites" id="rewrites">
-      <h2 class="section__heading rewrites__heading" data-aos="fade-down">Отзывы наших клентов</h2>
+      <h2 class="section__heading rewrites__heading" data-aos="fade-down">Отзывы наших клиентов</h2>
 
       <!-- begin .rewrites__wrap -->
       <div class="rewrites__wrap">
@@ -336,18 +311,249 @@
 
 
     <!-- begin .map -->
-    <section class="section map">
+    <section class="ymap-container section map">
       <h2 class="section__heading map__heading" data-aos="fade-down">Наши представители</h2>
-      <p class="section__description" data-aos="fade-down">Для отображения карты необходим API ключ Google</p>
-      <!-- TODO: Что должно происходить по клику? Или это ссылка? -->
-      <a class="map__btn btn" href="">
-        <span class="btn__inner">Стать партнером</span>
-      </a>
+      <p class="section__description" data-aos="fade-down">
+      <div style="width: 1000px; margin: 0 auto" id="map-yandex"></div>
+      </p>
     </section>
     <!-- end .map -->
 
   </main>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+//Переменная для включения/отключения индикатора загрузки
+var spinner = $('.ymap-container').children('.loader');
+//Переменная для определения была ли хоть раз загружена Яндекс.Карта (чтобы избежать повторной загрузки при наведении)
+var check_if_load = false;
+//Необходимые переменные для того, чтобы задать координаты на Яндекс.Карте
+var myMapTemp, i = 0, myPlacemarkArr = [];
 
-  @@include('include/footer.html')
+//Функция создания карты сайта и затем вставки ее в блок с идентификатором &#34;map-yandex&#34;
+function init () {
+myMapTemp = new ymaps.Map("map-yandex", {
+center: [55.766158, 37.6015562], // координаты центра на карте
+zoom: 3, // коэффициент приближения карты
+controls: ['zoomControl', 'fullscreenControl'] // выбираем только те функции, которые необходимы при использовании
+});
+fetch('https://ibapi.fobesko.com/public/api/user/pins', { method: 'GET' })
+.then(function(response) {
+console.log("Последний раз вас засекали здесь: ");
+return response.json().then(function(data) {
+data.forEach(function(element) {
+if (element.coords != null) {
+myPlacemarkArr[i] = new ymaps.GeoObject({
+geometry: {
+type: "Point",
+coordinates: [parseFloat(element.coords.split(" ")[1]), parseFloat(element.coords.split(" ")[0])] // координаты, где будет размещаться флажок на карте
+}
+});
+console.log(myPlacemarkArr[i].geometry._coordinates);
+i++
+}
+});
+myPlacemarkArr.forEach(function(element) {
+myMapTemp.geoObjects.add(element);
+});
+}).catch(function() {
+// В случае ошибки возвращаем пустой массив
+return [];
+});
+})
+.catch(function(error) {
+console.error(error);
+});
+
+
+
+
+// Получаем первый экземпляр коллекции слоев, потом первый слой коллекции
+var layer = myMapTemp.layers.get(0).get(0);
+
+// Решение по callback-у для определения полной загрузки карты
+waitForTilesLoad(layer).then(function() {
+// Скрываем индикатор загрузки после полной загрузки карты
+spinner.removeClass('is-active');
+});
+}
+
+// Функция для определения полной загрузки карты (на самом деле проверяется загрузка тайлов)
+function waitForTilesLoad(layer) {
+return new ymaps.vow.Promise(function (resolve, reject) {
+var tc = getTileContainer(layer), readyAll = true;
+tc.tiles.each(function (tile, number) {
+if (!tile.isReady()) {
+readyAll = false;
+}
+});
+if (readyAll) {
+resolve();
+} else {
+tc.events.once("ready", function() {
+resolve();
+});
+}
+});
+}
+
+function getTileContainer(layer) {
+for (var k in layer) {
+if (layer.hasOwnProperty(k)) {
+if (
+layer[k] instanceof ymaps.layer.tileContainer.CanvasContainer
+|| layer[k] instanceof ymaps.layer.tileContainer.DomContainer
+) {
+return layer[k];
+}
+}
+}
+return null;
+}
+
+// Функция загрузки API Яндекс.Карт по требованию (в нашем случае при наведении)
+function loadScript(url, callback){
+var script = document.createElement("script");
+
+if (script.readyState){  // IE
+script.onreadystatechange = function(){
+if (script.readyState == "loaded" ||
+script.readyState == "complete"){
+script.onreadystatechange = null;
+callback();
+}
+};
+} else {  // Другие браузеры
+script.onload = function(){
+callback();
+};
+}
+
+script.src = url;
+document.getElementsByTagName("head")[0].appendChild(script);
+}
+
+
+// Основная функция, которая проверяет когда мы навели на блок с классом &#34;ymap-container&#34;
+var ymap = function() {
+
+$('.ymap-container').mouseenter(function(){
+
+}
+);
+};
+
+
+if (document.body.clientWidth > 600) {
+var present = document.getElementById('map-yandex');
+window.onscroll = function() {
+if (checkVisible(present) == true) {
+if (!check_if_load) { // проверяем первый ли раз загружается Яндекс.Карта, если да, то загружаем
+
+// Чтобы не было повторной загрузки карты, мы изменяем значение переменной
+check_if_load = true;
+
+// Показываем индикатор загрузки до тех пор, пока карта не загрузится
+spinner.addClass('is-active');
+
+// Загружаем API Яндекс.Карт
+loadScript("https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;loadByRequire=1", function(){
+// Как только API Яндекс.Карт загрузились, сразу формируем карту и помещаем в блок с идентификатором &#34;map-yandex&#34;
+ymaps.load(init);
+});
+}
+}
+};
+function checkVisible(elm) {
+var rect = elm.getBoundingClientRect();
+var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+return !(rect.bottom < 300 || rect.top - viewHeight >= -300);
+}
+}
+//Запускаем основную функцию
+ymap();
+
+</script>
+<style>
+  /* &#34;Блок-обертка&#34;, где мы задаем фоновое изображение скриншотом как на карте */
+  .ymap-container {
+    position: relative;
+    margin: 3em auto 2em auto;
+    overflow: hidden;
+    cursor: pointer;
+
+    background-position: center center;
+    background-size: cover;
+    box-shadow: 0 0 2em  0 rgba(0,0,0,.2);
+  }
+
+  /* Блок, в котором появится Яндекс.Карта */
+  #map-yandex {
+    position: relative;
+    z-index: 7;
+    width: 100%;
+    height: 20em;
+    cursor: pointer;
+    background: url('../images/ymap.png') #ffffff no-repeat;
+    background-color: transparent;
+  }
+  /* Индикатор загрузки, который показывается до загрузки карты */
+  .loader {
+    position: absolute;
+    z-index: 15;
+    top: -100%;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    color: #000000;
+    transition: opacity .7s ease;
+    opacity: 0;
+    background-color: rgba(0,0,0,.55);
+  }
+
+  .loader:after,
+  .loader:before {
+    box-sizing: border-box;
+  }
+
+  .loader.is-active {
+    top: 0;
+    opacity: 1;
+  }
+
+  .loader-default:after {
+    position: absolute;
+    top: calc(50% - 24px);
+    left: calc(50% - 24px);
+    width: 48px;
+    height: 48px;
+    content: '';
+    animation: rotation 1s linear infinite;
+    border: solid 8px #ffffff;
+    border-left-color: transparent;
+    border-radius: 50%;
+  }
+
+  @keyframes rotation {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
+
+  @keyframes blink {
+    from {
+      opacity: .5;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+</style>
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=51dd1116-29b8-4a97-ac52-d4d1197d0d80" type="text/javascript"></script>
+@@include('include/footer.html')
 </body>
 </html>

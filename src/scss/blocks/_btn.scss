@@ -33,8 +33,10 @@
 
   @media all and (max-width: 1024px) {
     height: 52px;
-
     font-size: 16px;
+    &.popup__btn-close {
+      height: 48px;
+    }
   }
 
   &:before {
@@ -118,7 +120,7 @@
 
   &__inner {
     position: relative;
-    z-index: 2;
+    z-index: 1;
 
     display: flex;
     align-items: center;
@@ -141,5 +143,26 @@
   100% {
     left: 120%;
     opacity: 0;
+  }
+}
+
+
+#scroll-to-top {
+  width: 50px;
+  height: 50px;
+  background-image: url('/images/icons/arrow-up.svg');
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position: center 14px;
+  background-color: #de6593;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 20;
+  border-radius: 50%;
+  opacity: .7;
+  cursor: pointer;
+  &:hover {
+    opacity: 1;
   }
 }

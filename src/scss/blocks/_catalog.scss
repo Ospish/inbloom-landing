@@ -11,7 +11,10 @@
     width: calc(100% / 4);
     padding: 10px;
     margin-bottom: 16px;
+    img {
+    object-fit: cover;
 
+  }
     @media all and(max-width: 1024px) {
       width: calc(100% / 3);
     }

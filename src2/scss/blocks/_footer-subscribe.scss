@@ -1,0 +1,50 @@
+.footer-subscribe {
+  display: flex;
+  align-items: stretch;
+  height: 50px;
+
+  &__field {
+    flex-grow: 1;
+    height: 100%;
+  }
+
+  &__input {
+    width: 100%;
+    height: 100%;
+    padding: 0 18px;
+
+    border-radius: 5px 0 0 5px;
+    border: none;
+
+    font-size: 16px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.88;
+    letter-spacing: normal;
+    text-align: left;
+    color: #383838;
+  }
+
+  &__btn {
+    width: 160px;
+    height: 50px;
+    padding: 0;
+
+    border: none;
+    border-radius: 0 5px 5px 0;
+
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+
+    box-shadow: 0px 3px 12.1px 0.9px rgba(205, 111, 224, 0.39), 0px 1px 0 0 #972bad, inset 0px 9px 8px 0 rgba(126, 23, 174, 0.13);
+    background-image: linear-gradient(to right, #cb6ce6, #8f2ca2 99%);
+
+    transition: all 0.25s ease;
+
+    &:hover {
+      box-shadow: 0 0 0 0 rgba(205, 111, 224, 0.39), 0 0 0 0 #972bad, inset 0px 9px 8px 0 rgba(126, 23, 174, 0.13);
+    }
+  }
+}

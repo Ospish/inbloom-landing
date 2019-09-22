@@ -1,0 +1,91 @@
+.form {
+  &__heading {
+    margin-bottom: 30px;
+
+    text-align: center;
+  }
+
+  &__field {
+    & + & {}
+
+    margin-top: 20px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 20px;
+  }
+
+  &__btn-back {
+    width: 64px;
+    height: 64px;
+    padding: 0;
+    margin-right: 30px;
+
+    border: none;
+    border-radius: 50%;
+    background-color: #e8e8e8;
+  }
+
+  &__btn-back-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__btn-back-icon {
+    width: 21px;
+    height: 27px;
+
+    fill: #9a9a9a;
+
+    transform: rotate(90deg);
+  }
+
+  &__btn-next {
+    width: 260px;
+  }
+  &__buttons {
+    margin-top: 40px
+  }
+  &-slide {
+    .section__description {
+      font-size: 21px;
+    }
+    textarea {
+      height: 350px;
+      padding-top: 40px;
+      padding-bottom: 40px;
+      &::placeholder {
+        color: #000
+      }
+    }
+  }
+}
+
+.tns-ovh {
+  box-sizing: content-box;
+  padding-bottom: 300px;
+  margin-bottom: -300px;
+}
+
+.vdp-datepicker > div > input {
+  border: none!important;
+  font-size: 16px;
+}
+@media (max-width: 767px) {
+  .vdp-datepicker__calendar {
+    bottom: 50%;
+  }
+  .field__icon {
+    width: 40px;
+  }
+}
+
+#form-counter {
+  text-align: center;
+  margin-bottom: 20px;
+}

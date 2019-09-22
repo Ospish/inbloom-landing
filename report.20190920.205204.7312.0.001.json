@@ -1,0 +1,309 @@
+
+{
+  "header": {
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20190920.205204.7312.0.001.json",
+    "dumpEventTime": "2019-09-20T20:52:04Z",
+    "dumpEventTimeStamp": "1569001924949",
+    "processId": 7312,
+    "cwd": "/home/user/Work/inbloom-landing",
+    "commandLine": [
+      "node",
+      "/usr/bin/gulp",
+      "serve"
+    ],
+    "nodejsVersion": "v11.14.0",
+    "glibcVersionRuntime": "2.29",
+    "glibcVersionCompiler": "2.28",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "linux",
+    "componentVersions": {
+      "node": "11.14.0",
+      "v8": "7.0.276.38-node.18",
+      "uv": "1.28.0",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "67",
+      "nghttp2": "1.36.0",
+      "napi": "4",
+      "llhttp": "1.1.1",
+      "http_parser": "2.8.0",
+      "openssl": "1.1.1b",
+      "cldr": "35.1",
+      "icu": "64.1",
+      "tz": "2019a",
+      "unicode": "12.0"
+    },
+    "release": {
+      "name": "node",
+      "headersUrl": "https://nodejs.org/download/release/v11.14.0/node-v11.14.0-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v11.14.0/node-v11.14.0.tar.gz"
+    },
+    "osName": "Linux",
+    "osRelease": "5.0.10-arch1-1-ARCH",
+    "osVersion": "#1 SMP PREEMPT Sat Apr 27 20:06:45 UTC 2019",
+    "osMachine": "x86_64",
+    "host": "ARCH01"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x0000557db1309211",
+      "symbol": "report::TriggerNodeReport(v8::Isolate*, node::Environment*, char const*, char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, v8::Local<v8::String>) [gulp serve]"
+    },
+    {
+      "pc": "0x0000557db11fa74f",
+      "symbol": "node::OnFatalError(char const*, char const*) [gulp serve]"
+    },
+    {
+      "pc": "0x0000557db13947b2",
+      "symbol": "v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, bool) [gulp serve]"
+    },
+    {
+      "pc": "0x0000557db1394a0b",
+      "symbol": "v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, bool) [gulp serve]"
+    },
+    {
+      "pc": "0x0000557db172c7d3",
+      "symbol": " [gulp serve]"
+    },
+    {
+      "pc": "0x0000557db172c914",
+      "symbol": " [gulp serve]"
+    },
+    {
+      "pc": "0x0000557db173c4c6",
+      "symbol": "v8::internal::Heap::PerformGarbageCollection(v8::internal::GarbageCollector, v8::GCCallbackFlags) [gulp serve]"
+    },
+    {
+      "pc": "0x0000557db173ce6e",
+      "symbol": "v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [gulp serve]"
+    },
+    {
+      "pc": "0x0000557db173f06d",
+      "symbol": "v8::internal::Heap::AllocateRawWithLightRetry(int, v8::internal::AllocationSpace, v8::internal::AllocationAlignment) [gulp serve]"
+    },
+    {
+      "pc": "0x0000557db173f0c2",
+      "symbol": "v8::internal::Heap::AllocateRawWithRetryOrFail(int, v8::internal::AllocationSpace, v8::internal::AllocationAlignment) [gulp serve]"
+    },
+    {
+      "pc": "0x0000557db170da05",
+      "symbol": "v8::internal::Factory::NewFillerObject(int, bool, v8::internal::AllocationSpace) [gulp serve]"
+    },
+    {
+      "pc": "0x0000557db197c2af",
+      "symbol": "v8::internal::Runtime_AllocateInNewSpace(int, v8::internal::Object**, v8::internal::Isolate*) [gulp serve]"
+    },
+    {
+      "pc": "0x00003573cbbcfc5d",
+      "symbol": ""
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 1501614080,
+    "totalCommittedMemory": 1497373032,
+    "usedMemory": 1448561728,
+    "availableMemory": 27437744,
+    "memoryLimit": 1526909922,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 524288,
+        "committedMemory": 42224,
+        "capacity": 515584,
+        "used": 33520,
+        "available": 482064
+      },
+      "new_space": {
+        "memorySize": 4194304,
+        "committedMemory": 1356840,
+        "capacity": 2062336,
+        "used": 256080,
+        "available": 1806256
+      },
+      "old_space": {
+        "memorySize": 1425215488,
+        "committedMemory": 1424911552,
+        "capacity": 1381873120,
+        "used": 1381827568,
+        "available": 45552
+      },
+      "code_space": {
+        "memorySize": 3145728,
+        "committedMemory": 3002144,
+        "capacity": 2688096,
+        "used": 2688096,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 4730880,
+        "committedMemory": 4256880,
+        "capacity": 1335680,
+        "used": 1335680,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 63803392,
+        "committedMemory": 63803392,
+        "capacity": 87524656,
+        "used": 62420784,
+        "available": 25103872
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 0,
+        "used": 0,
+        "available": 0
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 297.976,
+    "kernelCpuSeconds": 42.8391,
+    "cpuConsumptionPercent": 0.402922,
+    "maxRss": 3162181632,
+    "pageFaults": {
+      "IORequired": 27629,
+      "IONotRequired": 1504793
+    },
+    "fsActivity": {
+      "reads": 769824,
+      "writes": 53648
+    }
+  },
+  "uvthreadResourceUsage": {
+    "userCpuSeconds": 188.384,
+    "kernelCpuSeconds": 18.3571,
+    "cpuConsumptionPercent": 0.244415,
+    "fsActivity": {
+      "reads": 580952,
+      "writes": 0
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "SHELL": "/bin/bash",
+    "SESSION_MANAGER": "local/ARCH01:@/tmp/.ICE-unix/2597,unix/ARCH01:/tmp/.ICE-unix/2597",
+    "WINDOWID": "54551846",
+    "COLORTERM": "truecolor",
+    "XDG_CONFIG_DIRS": "/etc/xdg",
+    "XDG_MENU_PREFIX": "xfce-",
+    "SSH_AUTH_SOCK": "/tmp/ssh-JiVIg93SrtmO/agent.2625",
+    "DESKTOP_SESSION": "xfce",
+    "SSH_AGENT_PID": "2626",
+    "GTK_MODULES": "canberra-gtk-module",
+    "XDG_SEAT": "seat0",
+    "PWD": "/home/user/Work/inbloom-landing",
+    "LOGNAME": "user",
+    "XDG_SESSION_TYPE": "tty",
+    "WINDOWPATH": "1",
+    "WINEARCH": "win32",
+    "HOME": "/home/user",
+    "LANG": "en_US.UTF-8",
+    "WINEPREFIX": "/home/user/.wine32",
+    "XDG_CURRENT_DESKTOP": "XFCE",
+    "VTE_VERSION": "5602",
+    "INVOCATION_ID": "f733c0108de04ed4b6089c925c78faa1",
+    "GLADE_CATALOG_PATH": ":",
+    "WINEDLLOVERRIDES": "winemenubuilder.exe=d",
+    "XDG_SESSION_CLASS": "user",
+    "TERM": "xterm-256color",
+    "USER": "user",
+    "DISPLAY": ":0.0",
+    "SHLVL": "3",
+    "XDG_VTNR": "1",
+    "XDG_SESSION_ID": "1",
+    "GLADE_MODULE_PATH": ":",
+    "XDG_RUNTIME_DIR": "/run/user/1000",
+    "GLADE_PIXMAP_PATH": ":",
+    "JOURNAL_STREAM": "9:18099",
+    "XDG_DATA_DIRS": "/usr/local/share:/usr/share",
+    "PATH": "/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl",
+    "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/1000/bus",
+    "MAIL": "/var/spool/mail/user",
+    "_": "/usr/bin/gulp",
+    "INIT_CWD": "/home/user/Work/inbloom-landing"
+  },
+  "userLimits": {
+    "core_file_size_blocks": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "data_seg_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "file_size_blocks": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_locked_memory_bytes": {
+      "soft": 65536,
+      "hard": 65536
+    },
+    "max_memory_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "open_files": {
+      "soft": 524288,
+      "hard": 524288
+    },
+    "stack_size_bytes": {
+      "soft": 8388608,
+      "hard": "unlimited"
+    },
+    "cpu_time_seconds": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_user_processes": {
+      "soft": 31197,
+      "hard": 31197
+    },
+    "virtual_memory_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    }
+  },
+  "sharedObjects": [
+    "linux-vdso.so.1",
+    "/usr/lib/libz.so.1",
+    "/usr/lib/libuv.so.1",
+    "/usr/lib/libcares.so.2",
+    "/usr/lib/libnghttp2.so.14",
+    "/usr/lib/libcrypto.so.1.1",
+    "/usr/lib/libssl.so.1.1",
+    "/usr/lib/libicui18n.so.64",
+    "/usr/lib/libicuuc.so.64",
+    "/usr/lib/libdl.so.2",
+    "/usr/lib/librt.so.1",
+    "/usr/lib/libstdc++.so.6",
+    "/usr/lib/libm.so.6",
+    "/usr/lib/libgcc_s.so.1",
+    "/usr/lib/libpthread.so.0",
+    "/usr/lib/libc.so.6",
+    "/usr/lib/libnsl.so.2",
+    "/usr/lib/libicudata.so.64",
+    "/lib64/ld-linux-x86-64.so.2",
+    "/usr/lib/libtirpc.so.3",
+    "/usr/lib/libgssapi_krb5.so.2",
+    "/usr/lib/libkrb5.so.3",
+    "/usr/lib/libk5crypto.so.3",
+    "/usr/lib/libcom_err.so.2",
+    "/usr/lib/libkrb5support.so.0",
+    "/usr/lib/libkeyutils.so.1",
+    "/usr/lib/libresolv.so.2",
+    "/home/user/Work/inbloom-landing/node_modules/node-sass/vendor/linux-x64-67/binding.node"
+  ]
+}

@@ -1,3 +1,4 @@
+
 (function(e) {
   e.matches = e.matches || e.mozMatchesSelector || e.msMatchesSelector || e.oMatchesSelector || e.webkitMatchesSelector;
   e.closest = e.closest || function closest(selector) {
@@ -316,24 +317,27 @@ if (selectSizeList) {
   });
 }
 
-
-var portfolioSliderElement = document.getElementById('portfolio-slider');
-if (portfolioSliderElement) {
-  var portfolioSlider = tns({
-    container: portfolioSliderElement,
+var formSliderElement = document.getElementById('formSlider');
+if (formSliderElement) {
+  var formSlider = tns({
+    container: formSliderElement,
     items: 1,
-    controls: false,
-    disable: false,
+    controlsContainer: document.getElementById('formControls'),
     nav: false,
-    pages: false,
-    autoHeight: true,
-    gutter: 30
+    pages: true,
+    mouseDrag: false,
+    loop: false,
+    responsive: {
+      320: {
+        autoHeight: true
+      },
+      767: {
+        autoHeight: false
+      }
+    }
   });
-
-  if ( window.matchMedia( '( min-width: 568px )' ).matches ) {
-    portfolioSlider.destroy();
-  }
 }
+
 
 
 document.onclick = function(event) {
@@ -345,16 +349,6 @@ document.onclick = function(event) {
     event.target.closest('.js-size-card').classList.remove('is-active');
   }
 };
-
-
-
-var lightboxDescription = GLightbox({
-  selector: 'js-lightbox',
-  loopAtEnd: true
-});
-
-
-
 
 /**
  * begin Popups
@@ -411,3 +405,20 @@ function togglePopup(id) {
 /**
  * end Popups
  */
+
+scrollBtn = document.getElementById('scroll-to-top');
+
+window.onscroll = function() {scrollFunction()}
+
+function scrollFunction() {
+  if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+    scrollBtn.style.display = "block";
+  } else {
+    scrollBtn.style.display = "none";
+  }
+}
+
+function topFunction() {
+  $("html, body").animate({ scrollTop: 0 }, "slow");
+  return false;
+}
