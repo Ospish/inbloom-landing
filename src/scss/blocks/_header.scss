@@ -24,6 +24,12 @@
     }
   }
 
+  &__cab-link {
+    margin-left: 15px;
+    img {
+      width: 25px
+    }
+  }
   &__nav {
     flex-grow: 1;
   }

@@ -18,11 +18,9 @@
 
             <!-- begin city-select -->
             <div class="header__city city-select" id="city-select">
-                <!-- TODO: Нужно выподяющее меню какое-то или popup с выбором города -->
                 <button class="city-select__btn" type="button" aria-label="Выбор города" v-if="city" @click="showList = !showList">
             <span class="city-select__btn-inner">
               <img class="city-select__icon" src="images/icons/location-pin.svg" alt="">
-                <!-- TODO: есть риска что невлезит длинное название города -->
               <span class="city-select__name">г. {{ city }}</span>
               <img class="city-select__arrow" src="images/icons/arrow.svg" alt="">
             </span>
@@ -66,18 +64,19 @@
             <!-- begin header-contacts -->
             <div class="header__contacts" id="header-contacts">
                 <a class="link" href="mailto:partner@inblum.store" v-if="email">
-            <span class="link__inner">
-              <img class="link__icon" src="images/icons/mail.svg" alt="">
-              {{ email }}
-            </span>
+                    <span class="link__inner">
+                        <img class="link__icon" src="images/icons/mail.svg" alt="">
+                        {{ email }}
+                    </span>
                 </a>
                 <a class="link link--bold" :href="'tel:' + this.phone" aria-label="Позвонить" v-if="phone">
-            <span class="link__inner">
-              <img class="link__icon" src="images/icons/tel.svg" alt="">
-              <span class="link__text">{{ phone }}</span>
-            </span>
+                    <span class="link__inner">
+                        <img class="link__icon" src="images/icons/tel.svg" alt="">
+                        <span class="link__text">{{ phone }}</span>
+                    </span>
                 </a>
             </div>
+            <a class="header__cab-link" href="https://my.inbloomshop.ru/#/auth" title="Личный кабинет франчайзи" ><img src="images/icons/lock.svg" alt=""></a>
             <!-- end header-contacts -->
 
         </div>

@@ -2,11 +2,15 @@
   width: 100%;
 }
 
+
 .select-flowers__list {
   display: flex;
   flex-wrap: wrap;
   margin-left: -10px;
   margin-right: -10px;
+  @media (max-width: 767px) {
+    margin-bottom: 100px;
+  }
 }
 
 .select-flowers__item {
@@ -22,6 +26,7 @@
   }
 }
 
+
 .select-box-color {
   margin-top: 40px;
   display: flex;
@@ -31,7 +36,7 @@
     justify-content: space-around;
   }
   &__item-wrap {
-    width: 13.5%;
+    width: 11%;
     display: block;
     @media (max-width: 767px) {
       width: 105px;
@@ -80,11 +85,12 @@
   }
   &__color-box {
     width: 100%;
-    height: 150px;
+    height: 115px;
     border-radius: 5px;
     background-position: center;
     background-size: 30%;
     background-repeat: no-repeat;
+    display: block !important;
     @media (max-width: 767px) {
       height: 90px;
     }
@@ -100,37 +106,67 @@
     &.green {
       background-color: #30994d;
     }
-    &.pink {
-      background-color: #f034c6;
+    &.black {
+      background-color: #000000;
     }
     &.lightblue {
-      background-color: #36dff0;
+      background-color: lightskyblue;
     }
-    &.teal {
-      background-color: teal;
+    &.white {
+      border: solid 1px #aaaaaa;
+      background-color: white;
     }
     &.purple {
       background-color: purple;
     }
+    &.yellow {
+      background-color: yellow;
+    }
   }
 }
+.select-flowers__item:hover {
+  .check {
+    @media (max-width: 767px) {
+      height: 155px;
+      align-items: flex-start
+    }
+  }
+  .select-flowers__colors {
+    display: block !important;
+    .flowers-color-wrap{
+      @media (max-width: 767px) {
+        transform: scale(1.4);
+        margin-top: 5px;
+      }
+    }
+  }
+}
+
 .select-flowers__colors {
   position: absolute;
   right: 30px;
   top: 24px;
-  @media (max-width: 767px) {
-    top: 7px
-  }
   p {
     font-size: 12px;
     margin-bottom: .5em;
   }
   > div {
-    display: flex
+    display: flex;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 767px) {
+    top: 50px;
+    width: 270px;
+    right: auto;
+    left: 35px;
   }
 }
 .flowers-color-wrap {
-  margin-right: 10px;
+  margin: 0 2px;
+  @media (max-width: 767px) {
+    flex-basis: 17%;
+    margin-bottom: 10px;
+  }
   input {
     display: none;
     &:checked ~ span {
@@ -149,12 +185,6 @@
     &.red {
       background-color: #cd4040;
     }
-    &.black {
-      background-color: #333;
-    }
-    &.white {
-      background-color: #fff;
-    }
     &.orange {
       background-color: #e17e30;
     }
@@ -164,11 +194,21 @@
     &.green {
       background-color: #30994d;
     }
-    &.pink {
-      background-color: #f034c6;
+    &.black {
+      background-color: #000000;
     }
     &.lightblue {
-      background-color: #36dff0;
+      background-color: lightskyblue;
+    }
+    &.white {
+      border: solid 1px #aaaaaa;
+      background-color: white;
+    }
+    &.purple {
+      background-color: purple;
+    }
+    &.yellow {
+      background-color: yellow;
     }
   }
 }

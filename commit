@@ -1,0 +1,4 @@
+*** Quiz reworked, changed image API
+- BUG: [index.html, app.js] - Fixed map double init
+* EDIT: app.js - Adapted image loading for changed API
++ FEATURE: form.html - Color input reworked

@@ -15,7 +15,7 @@
 	<section class="section catalog" id="catalog">
 
 		<h2 class="section__heading" data-aos="fade-down">Выберите готовый букет</h2>
-		<p class="section__description select-size__text" data-aos="new-animation" data-aos-delay="200">Мы свяжемся с Вами в течении 20 минут и согласуем букет перед отправкой.</p>
+		<p class="section__description select-size__text" data-aos="new-animation" data-aos-delay="200">В ближайшее время с Вами свяжется менеджер.</p>
 
 		<div class="container">
 			<div class="catalog__list">
@@ -23,7 +23,7 @@
 				<div class="catalog__item" v-for="item in products">
 					<div class="item-card">
 						<div class="item-card__cover">
-							<img class="item-card__img" :src="'http://ibapi.fobesko.com/public/api/file/blob/store/' + item.id" alt="">
+							<img class="item-card__img" :src="'http://ibapi.fobesko.com/public/api/file/oneblob/store/' + item.id" alt="">
 							<span class="item-card__size">Размер: {{ item.posInfo_size }}</span>
 						</div>
 						<div class="item-card__text" v-text="item.name"></div>
@@ -100,7 +100,7 @@
 				<div class="form">
 					<div class="form__heading heading-2">Заявка отправлена</div>
 					<p>
-						Мы свяжемся с Вами в течении 20 минут и согласуем букет перед отправкой.
+						В ближайшее время с Вами свяжется менеджер.
 					</p>
 					<a class="btn" href="/">
 						<span class="btn__inner">Вернуться на сайт</span>

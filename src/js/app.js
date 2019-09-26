@@ -181,7 +181,7 @@ var citySelect = new Vue({
   el: '#city-select',
   data: {
     cities: [],
-    selectedIndex: null,
+    selectedIndex: false,
     showList: false
   },
   computed: {
@@ -190,9 +190,8 @@ var citySelect = new Vue({
      */
     city: function() {
       if (this.cities.length < 1) return 'Москва';
-      if (this.selectedIndex == null) return 'Москва';
+      if (this.selectedIndex == false) return 'Москва';
       return this.cities[this.selectedIndex];
-
     }
   },
   watch: {
@@ -201,8 +200,7 @@ var citySelect = new Vue({
      * @param value
      */
     selectedIndex: function(index) {
-      if (index == false) city = 'Москва';
-      else city = this.cities[index];
+      city = this.cities[index];
       partnerInfo.getId(city);
     }
   },
@@ -282,11 +280,11 @@ contentInfo = new Vue({
       return fetch('https://ibapi.fobesko.com/public/api/content', fetchGetConf)
           .then(function(response) {
             return response.json().then(function(info) {
-                info.forEach(function(item) {
-                  contentInfo.ids.push(item.id);
-                  contentInfo.urls.push('https://ibapi.fobesko.com/public/api/file/blob/content/' + item.id);
-                  contentInfo.urls2.push('https://ibapi.fobesko.com/public/api/file/content/' + item.id);
-                })
+              info.forEach(function(item) {
+                contentInfo.ids.push(item.id);
+                contentInfo.urls.push('https://ibapi.fobesko.com/public/api/file/oneblob/content/' + item.id);
+                contentInfo.urls2.push('https://ibapi.fobesko.com/public/api/file/one/content/' + item.id);
+              })
             });
           })
           .catch(function(error) {
@@ -295,11 +293,11 @@ contentInfo = new Vue({
     }
   },
   watch: {
-      /*
-    urls: function(index) {
-      contentInfo.urls[index] = ('http://ibapi.fobesko.com/public/api/file/blob/content/' + item.id + '.jpg');
-    }
-    */
+    /*
+  urls: function(index) {
+    contentInfo.urls[index] = ('http://ibapi.fobesko.com/public/api/file/blob/content/' + item.id + '.jpg');
+  }
+  */
   },
 });
 
@@ -447,13 +445,32 @@ catalog = new Vue({
         request.phone = dateform.phone.replace(/\D+/g, "");
         request.receiveDate = dateform.date.toISOString().slice(0, 19).replace('T', ' ');
         request.posInfo_flowers = '';
-        request.posInfo_colors = '';
-        form.flowers.forEach( function(item){
-          if (item.checked == true) request.posInfo_flowers += item.value
+        request.posInfo_colors = [];
+        str = '[';
+
+        word = '';
+        form.flowers.forEach( function(item, index){
+          if (item.checked == true) {
+            request.posInfo_flowers += item.value;
+            if (str != '[') str += ', ';
+            word += '[';
+            form['colors_' + index].forEach(function (item) {
+              if (item.checked == true) {
+                if (word != '[') word += ',';
+                word += '1';
+              } else {
+                if (word != '[') word += ',';
+                word += '0';
+              }
+            });
+            word += ']';
+            str += word;
+            word = '';
+          }
         });
-        form.colors.forEach( function(item){
-          if (item.checked == true) request.posInfo_colors += item.value
-        });
+        str += ']';
+        console.log(JSON.parse(str));
+        request.posInfo_colors = str
         request.posInfo_boxColor = form.boxColor.value;
       }
       if (form.id == 'orderform') {
@@ -461,6 +478,7 @@ catalog = new Vue({
         request.posInfo_products = this.cart;
         request.phone = catalog.buyer.phone.replace(/\D+/g, "");
         request.receiveDate = catalog.buyer.date.toISOString().slice(0, 19).replace('T', ' ');
+        request.posInfo_boxColor = 0;
       }
       request.userid = partnerInfo.id;
       request.posInfo_name = form.name.value;

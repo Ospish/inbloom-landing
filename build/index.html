@@ -44,11 +44,9 @@
 
             <!-- begin city-select -->
             <div class="header__city city-select" id="city-select">
-                <!-- TODO: Нужно выподяющее меню какое-то или popup с выбором города -->
                 <button class="city-select__btn" type="button" aria-label="Выбор города" v-if="city" @click="showList = !showList">
             <span class="city-select__btn-inner">
               <img class="city-select__icon" src="images/icons/location-pin.svg" alt="">
-                <!-- TODO: есть риска что невлезит длинное название города -->
               <span class="city-select__name">г. {{ city }}</span>
               <img class="city-select__arrow" src="images/icons/arrow.svg" alt="">
             </span>
@@ -92,18 +90,19 @@
             <!-- begin header-contacts -->
             <div class="header__contacts" id="header-contacts">
                 <a class="link" href="mailto:partner@inblum.store" v-if="email">
-            <span class="link__inner">
-              <img class="link__icon" src="images/icons/mail.svg" alt="">
-              {{ email }}
-            </span>
+                    <span class="link__inner">
+                        <img class="link__icon" src="images/icons/mail.svg" alt="">
+                        {{ email }}
+                    </span>
                 </a>
                 <a class="link link--bold" :href="'tel:' + this.phone" aria-label="Позвонить" v-if="phone">
-            <span class="link__inner">
-              <img class="link__icon" src="images/icons/tel.svg" alt="">
-              <span class="link__text">{{ phone }}</span>
-            </span>
+                    <span class="link__inner">
+                        <img class="link__icon" src="images/icons/tel.svg" alt="">
+                        <span class="link__text">{{ phone }}</span>
+                    </span>
                 </a>
             </div>
+            <a class="header__cab-link" href="https://my.inbloomshop.ru/#/auth" title="Личный кабинет франчайзи" ><img src="images/icons/lock.svg" alt=""></a>
             <!-- end header-contacts -->
 
         </div>
@@ -197,7 +196,7 @@
             </div>
             <div class="flowers__item">
               <img class="flowers__icon" src="images/icons/rose.svg" alt="">
-              <span>Тренд 2019 года</span>
+              <span>Тренд года</span>
             </div>
             <div class="flowers__item">
               <img class="flowers__icon" src="images/icons/calendar.svg" alt="">
@@ -427,8 +426,7 @@
 
   </main>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script>
-//Переменная для включения/отключения индикатора загрузки
+<script>//Переменная для включения/отключения индикатора загрузки
 var spinner = $('.ymap-container').children('.loader');
 //Переменная для определения была ли хоть раз загружена Яндекс.Карта (чтобы избежать повторной загрузки при наведении)
 var check_if_load = false;
@@ -437,147 +435,160 @@ var myMapTemp, i = 0, myPlacemarkArr = [];
 
 //Функция создания карты сайта и затем вставки ее в блок с идентификатором &#34;map-yandex&#34;
 function init () {
-myMapTemp = new ymaps.Map("map-yandex", {
-center: [55.766158, 37.6015562], // координаты центра на карте
-zoom: 3, // коэффициент приближения карты
-controls: ['zoomControl', 'fullscreenControl'] // выбираем только те функции, которые необходимы при использовании
-});
-fetch('https://ibapi.fobesko.com/public/api/user/pins', { method: 'GET' })
-.then(function(response) {
-console.log("Последний раз вас засекали здесь: ");
-return response.json().then(function(data) {
-data.forEach(function(element) {
-if (element.coords != null) {
-myPlacemarkArr[i] = new ymaps.GeoObject({
-geometry: {
-type: "Point",
-coordinates: [parseFloat(element.coords.split(" ")[1]), parseFloat(element.coords.split(" ")[0])] // координаты, где будет размещаться флажок на карте
-}
-});
-console.log(myPlacemarkArr[i].geometry._coordinates);
-i++
-}
-});
-myPlacemarkArr.forEach(function(element) {
-myMapTemp.geoObjects.add(element);
-});
-}).catch(function() {
-// В случае ошибки возвращаем пустой массив
-return [];
-});
-})
-.catch(function(error) {
-console.error(error);
-});
+  myMapTemp = new ymaps.Map("map-yandex", {
+    center: [55.766158, 37.6015562], // координаты центра на карте
+    zoom: 3, // коэффициент приближения карты
+    controls: ['zoomControl', 'fullscreenControl'] // выбираем только те функции, которые необходимы при использовании
+  });
+  fetch('https://ibapi.fobesko.com/public/api/user/pins', { method: 'GET' })
+          .then(function(response) {
+            console.log("Последний раз вас засекали здесь: ");
+            return response.json().then(function(data) {
+              data.forEach(function(element) {
+                if (element.coords != null) {
+                  myPlacemarkArr[i] = new ymaps.GeoObject({
+                    geometry: {
+                      type: "Point",
+                      coordinates: [parseFloat(element.coords.split(" ")[1]), parseFloat(element.coords.split(" ")[0])] // координаты, где будет размещаться флажок на карте
+                    }
+                  });
+                  console.log(myPlacemarkArr[i].geometry._coordinates);
+                  i++
+                }
+              });
+              myPlacemarkArr.forEach(function(element) {
+                myMapTemp.geoObjects.add(element);
+              });
+            }).catch(function() {
+              // В случае ошибки возвращаем пустой массив
+              return [];
+            });
+          })
+          .catch(function(error) {
+            console.error(error);
+          });
 
 
 
 
-// Получаем первый экземпляр коллекции слоев, потом первый слой коллекции
-var layer = myMapTemp.layers.get(0).get(0);
+  // Получаем первый экземпляр коллекции слоев, потом первый слой коллекции
+  var layer = myMapTemp.layers.get(0).get(0);
 
-// Решение по callback-у для определения полной загрузки карты
-waitForTilesLoad(layer).then(function() {
-// Скрываем индикатор загрузки после полной загрузки карты
-spinner.removeClass('is-active');
-});
+  // Решение по callback-у для определения полной загрузки карты
+  waitForTilesLoad(layer).then(function() {
+    // Скрываем индикатор загрузки после полной загрузки карты
+    spinner.removeClass('is-active');
+  });
 }
 
 // Функция для определения полной загрузки карты (на самом деле проверяется загрузка тайлов)
 function waitForTilesLoad(layer) {
-return new ymaps.vow.Promise(function (resolve, reject) {
-var tc = getTileContainer(layer), readyAll = true;
-tc.tiles.each(function (tile, number) {
-if (!tile.isReady()) {
-readyAll = false;
-}
-});
-if (readyAll) {
-resolve();
-} else {
-tc.events.once("ready", function() {
-resolve();
-});
-}
-});
+  return new ymaps.vow.Promise(function (resolve, reject) {
+    var tc = getTileContainer(layer), readyAll = true;
+    tc.tiles.each(function (tile, number) {
+      if (!tile.isReady()) {
+        readyAll = false;
+      }
+    });
+    if (readyAll) {
+      resolve();
+    } else {
+      tc.events.once("ready", function() {
+        resolve();
+      });
+    }
+  });
 }
 
 function getTileContainer(layer) {
-for (var k in layer) {
-if (layer.hasOwnProperty(k)) {
-if (
-layer[k] instanceof ymaps.layer.tileContainer.CanvasContainer
-|| layer[k] instanceof ymaps.layer.tileContainer.DomContainer
-) {
-return layer[k];
-}
-}
-}
-return null;
+  for (var k in layer) {
+    if (layer.hasOwnProperty(k)) {
+      if (
+              layer[k] instanceof ymaps.layer.tileContainer.CanvasContainer
+              || layer[k] instanceof ymaps.layer.tileContainer.DomContainer
+      ) {
+        return layer[k];
+      }
+    }
+  }
+  return null;
 }
 
 // Функция загрузки API Яндекс.Карт по требованию (в нашем случае при наведении)
 function loadScript(url, callback){
-var script = document.createElement("script");
+  var script = document.createElement("script");
 
-if (script.readyState){  // IE
-script.onreadystatechange = function(){
-if (script.readyState == "loaded" ||
-script.readyState == "complete"){
-script.onreadystatechange = null;
-callback();
-}
-};
-} else {  // Другие браузеры
-script.onload = function(){
-callback();
-};
-}
+  if (script.readyState){  // IE
+    script.onreadystatechange = function(){
+      if (script.readyState == "loaded" ||
+              script.readyState == "complete"){
+        script.onreadystatechange = null;
+        callback();
+      }
+    };
+  } else {  // Другие браузеры
+    script.onload = function(){
+      callback();
+    };
+  }
 
-script.src = url;
-document.getElementsByTagName("head")[0].appendChild(script);
+  script.src = url;
+  document.getElementsByTagName("head")[0].appendChild(script);
 }
 
 
 // Основная функция, которая проверяет когда мы навели на блок с классом &#34;ymap-container&#34;
 var ymap = function() {
+  $('.ymap-container').mouseenter(function(){
+    if (!check_if_load) { // проверяем первый ли раз загружается Яндекс.Карта, если да, то загружаем
 
-$('.ymap-container').mouseenter(function(){
+      // Чтобы не было повторной загрузки карты, мы изменяем значение переменной
+      check_if_load = true;
 
-}
-);
+      // Показываем индикатор загрузки до тех пор, пока карта не загрузится
+      spinner.addClass('is-active');
+
+      // Загружаем API Яндекс.Карт
+      loadScript("https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=51dd1116-29b8-4a97-ac52-d4d1197d0d80&amp;loadByRequire=1", function(){
+        // Как только API Яндекс.Карт загрузились, сразу формируем карту и помещаем в блок с идентификатором &#34;map-yandex&#34;
+        ymaps.load(init);
+      });
+    }
+  });
 };
 
+$(function () {
 
-if (document.body.clientWidth > 600) {
-var present = document.getElementById('map-yandex');
-window.onscroll = function() {
-if (checkVisible(present) == true) {
-if (!check_if_load) { // проверяем первый ли раз загружается Яндекс.Карта, если да, то загружаем
 
-// Чтобы не было повторной загрузки карты, мы изменяем значение переменной
-check_if_load = true;
+  //if (document.body.clientWidth < 600) {
+    var present = document.getElementById('map-yandex');
+    window.onscroll = function() {
+      if (checkVisible(present) == true) {
+        if (!check_if_load) { // проверяем первый ли раз загружается Яндекс.Карта, если да, то загружаем
 
-// Показываем индикатор загрузки до тех пор, пока карта не загрузится
-spinner.addClass('is-active');
+          // Чтобы не было повторной загрузки карты, мы изменяем значение переменной
+          check_if_load = true;
 
-// Загружаем API Яндекс.Карт
-loadScript("https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;loadByRequire=1", function(){
-// Как только API Яндекс.Карт загрузились, сразу формируем карту и помещаем в блок с идентификатором &#34;map-yandex&#34;
-ymaps.load(init);
-});
-}
-}
-};
-function checkVisible(elm) {
-var rect = elm.getBoundingClientRect();
-var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
-return !(rect.bottom < 300 || rect.top - viewHeight >= -300);
-}
-}
-//Запускаем основную функцию
-ymap();
+          // Показываем индикатор загрузки до тех пор, пока карта не загрузится
+          spinner.addClass('is-active');
 
+          // Загружаем API Яндекс.Карт
+          loadScript("https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=51dd1116-29b8-4a97-ac52-d4d1197d0d80&amp;loadByRequire=1", function(){
+            // Как только API Яндекс.Карт загрузились, сразу формируем карту и помещаем в блок с идентификатором &#34;map-yandex&#34;
+            ymaps.load(init);
+          });
+        }
+      }
+    };
+    function checkVisible(elm) {
+      var rect = elm.getBoundingClientRect();
+      var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+      return !(rect.bottom < 300 || rect.top - viewHeight >= -300);
+    }
+  //}
+  //Запускаем основную функцию
+  ymap();
+})
 </script>
 <style>
   /* &#34;Блок-обертка&#34;, где мы задаем фоновое изображение скриншотом как на карте */
@@ -659,7 +670,7 @@ ymap();
     }
   }
 </style>
-<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=51dd1116-29b8-4a97-ac52-d4d1197d0d80" type="text/javascript"></script>
+
 <footer class="footer" id="footer">
 
     <div class="footer__container container">
