@@ -17,6 +17,9 @@
     @media all and (max-width: 767px) {
       font-size: 14px;
     }
+    @media (max-width: 360px) {
+      padding: 10px;
+    }
   }
 
   &__list {

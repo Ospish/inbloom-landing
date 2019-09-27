@@ -300,43 +300,34 @@ AOS.init({
   once: true
 });
 
-var selectSizeList = document.getElementById('select-size-list');
-if (selectSizeList) {
-  var selectSizeListSlider = tns({
-    container: selectSizeList,
-    items: 1,
-    controls: false,
-    nav: false,
-    pages: false,
-    gutter: 30,
-    responsive: {
-      767: {
-        items: 3
-      }
-    }
-  });
-}
-
 var formSliderElement = document.getElementById('formSlider');
 if (formSliderElement) {
-  var formSlider = tns({
-    container: formSliderElement,
-    items: 1,
-    controlsContainer: document.getElementById('formControls'),
-    nav: false,
-    pages: true,
-    mouseDrag: false,
-    loop: false,
-    responsive: {
-      320: {
-        autoHeight: true
-      },
-      767: {
-        autoHeight: false
-      }
-    }
+  $(formSliderElement).slick({
+    slidesToShow: 1,
+    infinite: false,
+    prevArrow: $('.form__btn-back'),
+    nextArrow: $('#nextbutton'),
   });
 }
+$('#rewrites-slider').slick({
+  slidesToShow: 1,
+  prevArrow: $('.rewrites-back'),
+  nextArrow: $('.rewrites-next'),
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        adaptiveHeight: true 
+      }
+    }
+  ]
+})
+
+$('#rewrites-slider').on('afterChange', function(event, slick, currentSlide){
+  imageSrc = slick.$slides[currentSlide].getAttribute('data-image')
+  $('.rewrites__photo-slider img').attr('src', imageSrc)
+
+})
 
 
 

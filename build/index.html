@@ -44,9 +44,11 @@
 
             <!-- begin city-select -->
             <div class="header__city city-select" id="city-select">
+                <!-- TODO: Нужно выподяющее меню какое-то или popup с выбором города -->
                 <button class="city-select__btn" type="button" aria-label="Выбор города" v-if="city" @click="showList = !showList">
             <span class="city-select__btn-inner">
               <img class="city-select__icon" src="images/icons/location-pin.svg" alt="">
+                <!-- TODO: есть риска что невлезит длинное название города -->
               <span class="city-select__name">г. {{ city }}</span>
               <img class="city-select__arrow" src="images/icons/arrow.svg" alt="">
             </span>
@@ -196,7 +198,7 @@
             </div>
             <div class="flowers__item">
               <img class="flowers__icon" src="images/icons/rose.svg" alt="">
-              <span>Тренд года</span>
+              <span>Тренд 2019-2020 года</span>
             </div>
             <div class="flowers__item">
               <img class="flowers__icon" src="images/icons/calendar.svg" alt="">
@@ -355,7 +357,7 @@
       <div class="portfolio__container container" data-aos="fade-in">
         <div class="portfolio__grid" id="portfolio-slider">
 
-          <a v-for="(id, index) in ids" v-if="urls[index] != ''" v-show="index < 6" data-fancybox="gallery" class="portfolio__item" :data-src="'#img-gallery-' + index">
+          <a v-for="(id, index) in ids" v-if="urls[index] != ''" data-fancybox="gallery" class="portfolio__item" :data-src="'#img-gallery-' + index">
             <img class="portfolio__img" :src="urls[index]" alt="">
             <img :id="'img-gallery-' + index" class="portfolio__img" :src="urls[index]" alt="" style="display: none">
           </a>
@@ -382,7 +384,7 @@
 
         <!-- begin .rewrites__photo-slider -->
         <div class="rewrites__photo-slider" data-aos="fade-right" data-aos-delay="300">
-
+          <img src="/images/rewrite/1.jpg" alt="">
         </div>
         <!-- end .rewrites__photo-slider -->
 
@@ -391,23 +393,92 @@
           <!-- begin .rewrites-slider -->
           <div class="rewrites-slider">
             <div id="rewrites-slider">
-              <div class="rewrites-slider__slide">
-
+              <div class="rewrites-slider__slide" data-image="/images/rewrite/1.jpg">
                 <div class="rewrite-item">
-                  <div class="rewrite-item__name">Марат Унгудыев</div>
-                  <div class="rewrite-item__city">Г. Москва</div>
                   <div class="rewrite-item__text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde
+                      Сегодня я была в полном восторге от букета из мыла от компани InBloom, он вообще как настоящий, но не завянет и будет долго стоять.
                   </div>
+                  <a href="https://instagram.com/goncharova_mama" target="_blank" class="rewrite-item__inst"><img src="/images/icons/instagram.svg" alt=""><span>@goncharova_mama</span></a>
                 </div>
-
+              </div>
+              <div class="rewrites-slider__slide" data-image="/images/rewrite/2.jpg">
+                <div class="rewrite-item">
+                  <div class="rewrite-item__text">
+                    Никогда не догодаетесь, из чего эти розочки. Я вот первый раз такие вижу @inbloom.ru Спасибо за эту красоту.
+                  </div>
+                  <a href="https://instagram.com/mt_and_me_" target="_blank" class="rewrite-item__inst"><img src="/images/icons/instagram.svg" alt=""><span>@mt_and_me_</span></a>
+                </div>
+              </div>
+              <div class="rewrites-slider__slide" data-image="/images/rewrite/3.jpg">
+                <div class="rewrite-item">
+                  <div class="rewrite-item__text">
+                    Спасибо InBloom за прекрасный подарок. Букетик понравился всем гостям, а именинницу будет радовать не один день.
+                  </div>
+                  <a href="https://instagram.com/viktoryska" target="_blank" class="rewrite-item__inst"><img src="/images/icons/instagram.svg" alt=""><span>@viktoryska</span></a>
+                </div>
+              </div>
+              <div class="rewrites-slider__slide" data-image="/images/rewrite/4.jpg">
+                <div class="rewrite-item">
+                  <div class="rewrite-item__text">
+                      Мне очень повезло, что я нашла Вас. Уже не в первый раз заказываю букетик для своих подружек. Это настолько необычно и красиво, что ими можно любоваться вечно.
+                  </div>
+                  <a href="https://instagram.com/lemyr27" target="_blank" class="rewrite-item__inst"><img src="/images/icons/instagram.svg" alt=""><span>@lemyr27</span></a>
+                </div>
+              </div>
+              <div class="rewrites-slider__slide" data-image="/images/rewrite/5.jpg">
+                <div class="rewrite-item">
+                  <div class="rewrite-item__text">
+                    ... и да, это не тортик, а цветы,но не простые, а "вечно живые" Cпасибо InBloom за оперативность и терпение, #яжвесы, раз 5 меняла свой выбор, но если вы зайдете к ним на страничку, то сами все пойтеме.
+                  </div>
+                  <a href="https://instagram.com/neprostaya_ya" target="_blank" class="rewrite-item__inst"><img src="/images/icons/instagram.svg" alt=""><span>@neprostaya_ya</span></a>
+                </div>
+              </div>
+              <div class="rewrites-slider__slide" data-image="/images/rewrite/6.jpg">
+                <div class="rewrite-item">
+                  <div class="rewrite-item__text">
+                    Лучший мой подарочек! Я не только про Адреану (это само собой), а еще и про цветы. Скажу честно, раньше цветы не любила! А на фото - моя мечта. Не требуют ухода, подрезания и т.д. Неувядающие мыльные цветы, а выглядят как настоящие, просто шикарно!
+                  </div>
+                  <a href="https://instagram.com/katieflotskaya" target="_blank" class="rewrite-item__inst"><img src="/images/icons/instagram.svg" alt=""><span>@katieflotskaya</span></a>
+                </div>
+              </div>
+              <div class="rewrites-slider__slide" data-image="/images/rewrite/7.jpg">
+                <div class="rewrite-item">
+                  <div class="rewrite-item__text">
+                      Новый хит, цветы на мыльной основе от InBloom. Розы выглядят, как настоящие, раскошные, пышные! Это просто бомба, я просыпаюсь улыбаюсь каждое утро от всей этой красоты. Спасибо InBloom.
+                  </div>
+                  <a href="https://instagram.com/nastya.coco" target="_blank" class="rewrite-item__inst"><img src="/images/icons/instagram.svg" alt=""><span>@nastya.coco</span></a>
+                </div>
+              </div>
+              <div class="rewrites-slider__slide" data-image="/images/rewrite/8.jpg">
+                <div class="rewrite-item">
+                  <div class="rewrite-item__text">
+                      Хотела поделиться прекрасной находкой!Для нашей семьи - осень - пора Дней Рождений, очень хотелось подарить, что то эдакое прекрасным дамам, чтоб порадовал глаз не один день и я попала на очень уютную и интересную страницу @inbloom.ru. Выглядят как настоящие, ручная работа, 
+                      отличный подарок, приятные цены, великолепный серви. Нам помогли  срочно оформить заказ в Орск+курьер по пути в ТК купил подарочную карту. Доставили все с блеском! Ни один цветочек не пострадал! Ставлю смело 10 из 10.
+                  </div>
+                  <a href="https://instagram.com/Innesskin" target="_blank" class="rewrite-item__inst"><img src="/images/icons/instagram.svg" alt=""><span>@Innesskin</span></a>
+                </div>
+              </div>
+              <div class="rewrites-slider__slide" data-image="/images/rewrite/9.jpg">
+                <div class="rewrite-item">
+                  <div class="rewrite-item__text">
+                      Букет идеально вписался в интерьер нашего гнездышка. Цветы не требуют вообще никакого ухода, приятно пахнут и самое главное никогда не завянут. Огромное спасибо ребятам из магазина @inbloom за невероятной  красоты букет и оперативную доставку к нашему маленькому праздничному событию.
+                  </div>
+                  <a href="https://instagram.com/tanyalozi" target="_blank" class="rewrite-item__inst"><img src="/images/icons/instagram.svg" alt=""><span>@tanyalozi</span></a>
+                </div>
               </div>
             </div>
           </div>
           <!-- end .rewrites-slider -->
         </div>
         <!-- end .rewrites__slider -->
-
+        <div class="rewrite__buttons" id="rewriteControls">
+            <button type="button" class="rewrites__btn rewrites-back" onclick="rewriteSlide()">
+              <img src="/images/icons/arrow-prev.svg" alt="">
+            </button>
+            <button class="rewrites__btn rewrites-next" type="button" onclick="rewriteSlide()" data-controls="next">
+              <img src="/images/icons/arrow-next.svg" alt="">
+            </button>
+          </div>
       </div>
       <!-- end .rewrites__wrap -->
 
@@ -512,6 +583,13 @@ function getTileContainer(layer) {
     }
   }
   return null;
+}
+
+function rewriteSlide() {
+  setTimeout(function(){
+    let imgSrc = $('#rewrites-slider').find('.tns-slide-active').attr('data-image');
+    $('.rewrites__photo-slider img').attr('src', imgSrc);
+  },300)
 }
 
 // Функция загрузки API Яндекс.Карт по требованию (в нашем случае при наведении)

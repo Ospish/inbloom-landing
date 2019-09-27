@@ -7,22 +7,25 @@
     padding-right: 15px;
   }
   
-  &__name {
-    margin-bottom: 9px;
-
+  &__inst {
+    margin-top: 9px;
     font-size: 24px;
-    font-weight: 600;
     line-height: 1.13;
     letter-spacing: normal;
-  }
-
-  &__city {
-    margin-bottom: 24px;
-
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 1.69;
-    letter-spacing: normal;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    &:hover {
+      color: #cf9333
+    }
+    img {
+      width: 20px;
+      margin-right: 5px;
+    }
+    @media (max-width: 767px) {
+      font-size: 20px;
+    }
   }
 
   &__text {

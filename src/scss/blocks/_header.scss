@@ -26,6 +26,9 @@
 
   &__cab-link {
     margin-left: 15px;
+    @media (max-width: 360px) {
+      margin-left: 10px;
+    }
     img {
       width: 25px
     }
@@ -58,6 +61,13 @@
         &:last-of-type {
           display: block;
         }
+      }
+    }
+    @media (max-width: 360px) {
+      .link__icon {
+        width: 20px;
+        height: 20px;
+        padding: 0;
       }
     }
   }

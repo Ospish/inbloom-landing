@@ -190,7 +190,11 @@ var citySelect = new Vue({
      */
     city: function() {
       if (this.cities.length < 1) return 'Москва';
-      if (this.selectedIndex == false) return 'Москва';
+      if (this.selectedIndex == false) {
+        partnerInfo.getId('Москва');
+        return 'Москва';
+      }
+
       return this.cities[this.selectedIndex];
     }
   },
@@ -243,10 +247,13 @@ var citySelect = new Vue({
       cities.forEach(function(element) {
         citySelect.cities.push(element.city);
       });
-      console.log(localStorage.getItem('cityindex'))
-        if (localStorage.getItem('cityindex') != null) {
-            citySelect.selectedIndex = localStorage.getItem('cityindex');
-        }
+      console.log(localStorage.getItem('cityindex'));
+
+      if ((localStorage.getItem('cityindex') != null) && (localStorage.getItem('cityindex') <= citySelect.cities.length)) {
+        citySelect.selectedIndex = localStorage.getItem('cityindex');
+      }
+
+
     },
     /**
      * Смена города по индексу
@@ -269,7 +276,7 @@ contentInfo = new Vue({
   },
   created: function () {
     this.getContent()
-    //partnerInfo.getId('Москва');
+
     console.log(portfolio.asd)
   },
   methods: {
