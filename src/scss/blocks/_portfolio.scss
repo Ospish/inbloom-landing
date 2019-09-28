@@ -94,7 +94,9 @@
     grid-template-rows: repeat(6, 7vw);
     grid-auto-rows: 10vw;
     grid-gap: 15px;
-
+    @media (max-width: 1600px) {
+      grid-template-rows: repeat(6, 11vw);
+    }
     @media all and (max-width: 566px) {
       display: block;
     }

@@ -120,28 +120,27 @@
 
       <!-- begin .container -->
       <div class="select-size__container container">
-
         <!-- begin .select-size__list -->
         <div class="select-size__list" id="select-size-list">
-
           <!-- begin .select-size__item -->
           <div class="select-size__item">
             <!-- begin .select-size-item -->
             <div class="select-size-item js-size-card">
               <div class="select-size-item__cover">
                 <!-- TODO: желательно заменить на PNG, иногда залазит на фон, заметны белые границы -->
-                <img class="select-size-item__img" src="images/content/select-size/s.png" alt="большой букет в шляпной коробке">
+                <a href="form.html">
+                  <img class="select-size-item__img" src="images/content/select-size/s.png" alt="большой букет в шляпной коробке">
+                </a>
               </div>
               <div class="select-size-item__label">S</div>
               <button class="select-size-item__btn-open js-open-size-card" type="button">i</button>
               <div class="select-size-item__card">
                 <button class="select-size-item__btn-close js-close-size-card" type="button">x</button>
-                <div class="select-size-item__name">большой букет в&nbsp;шляпной коробке</div>
+                <div class="select-size-item__name">Маленький букет <br>в шляпной коробке</div>
                 <div class="select-size-item__description">
-                  Размер 24х24<br>
-                  Кол-во цветов от&nbsp;19&nbsp;шт.
+                  Кол-во цветов от&nbsp;11&nbsp;шт.<br>
+                  Цена от 1290₽
                 </div>
-                <a class="link link--big" href="form.html">Расчитать стоимость</a>
               </div>
             </div>
             <!-- end .select-size-item -->
@@ -153,18 +152,19 @@
             <!-- begin .select-size-item -->
             <div class="select-size-item js-size-card">
               <div class="select-size-item__cover">
-                <img class="select-size-item__img" src="images/content/select-size/m.png" alt="большой букет в шляпной коробке">
+                <a href="form.html">
+                  <img class="select-size-item__img" src="images/content/select-size/m.png" alt="большой букет в шляпной коробке">
+                </a>
               </div>
               <div class="select-size-item__label">M</div>
               <button class="select-size-item__btn-open js-open-size-card" type="button">i</button>
               <div class="select-size-item__card">
                 <button class="select-size-item__btn-close js-close-size-card" type="button">x</button>
-                <div class="select-size-item__name">большой букет в&nbsp;шляпной коробке</div>
+                <div class="select-size-item__name">Средний букет <br>в шляпной коробке</div>
                 <div class="select-size-item__description">
-                  Размер 24х24<br>
-                  Кол-во цветов от&nbsp;19&nbsp;шт.
+                  Кол-во цветов от&nbsp;23&nbsp;шт.<br>
+                  Цена от 2390₽
                 </div>
-                <a class="link link--big" href="form.html">Расчитать стоимость</a>
               </div>
             </div>
             <!-- end .select-size-item -->
@@ -176,18 +176,19 @@
             <!-- begin .select-size-item -->
             <div class="select-size-item js-size-card">
               <div class="select-size-item__cover">
-                <img class="select-size-item__img" src="images/content/select-size/l.png" alt="большой букет в шляпной коробке">
+                <a href="form.html">
+                  <img class="select-size-item__img" src="images/content/select-size/l.png" alt="большой букет в шляпной коробке">
+                </a>
               </div>
               <div class="select-size-item__label">L</div>
               <button class="select-size-item__btn-open js-open-size-card" type="button">i</button>
               <div class="select-size-item__card">
                 <button class="select-size-item__btn-close js-close-size-card" type="button">x</button>
-                <div class="select-size-item__name">большой букет в&nbsp;шляпной коробке</div>
+                <div class="select-size-item__name">большой букет <br>в шляпной коробке</div>
                 <div class="select-size-item__description">
-                  Размер 24х24<br>
-                  Кол-во цветов от&nbsp;19&nbsp;шт.
+                  Кол-во цветов от&nbsp;35&nbsp;шт.<br>
+                  Цена от 3500₽
                 </div>
-                <a class="link link--big" href="form.html">Расчитать стоимость</a>
               </div>
             </div>
             <!-- end .select-size-item -->
@@ -196,7 +197,14 @@
 
         </div>
         <!-- end .select-size__list -->
-
+        <div class="rewrite__buttons" id="flowersControls">
+          <button type="button" id="flowersBack" class="rewrites__btn rewrites-back">
+            <img src="/images/icons/arrow-prev.svg" alt="">
+          </button>
+          <button class="rewrites__btn rewrites-next" id="flowersNext" type="button">
+            <img src="/images/icons/arrow-next.svg" alt="">
+          </button>
+        </div>
       </div>
       <!-- end .container -->
 
@@ -364,14 +372,14 @@
           <!-- end .rewrites-slider -->
         </div>
         <!-- end .rewrites__slider -->
-        <div class="rewrite__buttons" id="rewriteControls">
-            <button type="button" class="rewrites__btn rewrites-back" onclick="rewriteSlide()">
-              <img src="/images/icons/arrow-prev.svg" alt="">
-            </button>
-            <button class="rewrites__btn rewrites-next" type="button" onclick="rewriteSlide()" data-controls="next">
-              <img src="/images/icons/arrow-next.svg" alt="">
-            </button>
-          </div>
+        <div class="rewrite__buttons">
+          <button type="button" id="rewritesBack" class="rewrites__btn rewrites-back">
+            <img src="/images/icons/arrow-prev.svg" alt="">
+          </button>
+          <button class="rewrites__btn rewrites-next" id="rewritesNext" type="button">
+            <img src="/images/icons/arrow-next.svg" alt="">
+          </button>
+        </div>
       </div>
       <!-- end .rewrites__wrap -->
 
@@ -476,13 +484,6 @@ function getTileContainer(layer) {
     }
   }
   return null;
-}
-
-function rewriteSlide() {
-  setTimeout(function(){
-    let imgSrc = $('#rewrites-slider').find('.tns-slide-active').attr('data-image');
-    $('.rewrites__photo-slider img').attr('src', imgSrc);
-  },300)
 }
 
 // Функция загрузки API Яндекс.Карт по требованию (в нашем случае при наведении)

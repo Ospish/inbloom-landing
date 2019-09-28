@@ -300,6 +300,26 @@ AOS.init({
   once: true
 });
 
+var flowersSlider = document.getElementById('select-size-list');
+if (flowersSlider) {
+  $(flowersSlider).slick({
+    slidesToShow: 3,
+    infinite: false,
+    arrows: false,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          prevArrow: $('#flowersBack'),
+          nextArrow: $('#flowersNext'),
+          arrows: true,
+          slidesToShow: 1
+        }
+      }
+    ]
+  });
+}
+
 var formSliderElement = document.getElementById('formSlider');
 if (formSliderElement) {
   $(formSliderElement).slick({
@@ -309,25 +329,28 @@ if (formSliderElement) {
     nextArrow: $('#nextbutton'),
   });
 }
-$('#rewrites-slider').slick({
-  slidesToShow: 1,
-  prevArrow: $('.rewrites-back'),
-  nextArrow: $('.rewrites-next'),
-  responsive: [
-    {
-      breakpoint: 768,
-      settings: {
-        adaptiveHeight: true 
+var rewritesSlider = document.getElementById('rewrites-slider');
+if (rewritesSlider) {
+  $('#rewrites-slider').slick({
+    slidesToShow: 1,
+    prevArrow: $('#rewritesBack'),
+    nextArrow: $('#rewritesNext'),
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          adaptiveHeight: true 
+        }
       }
-    }
-  ]
-})
-
-$('#rewrites-slider').on('afterChange', function(event, slick, currentSlide){
-  imageSrc = slick.$slides[currentSlide].getAttribute('data-image')
-  $('.rewrites__photo-slider img').attr('src', imageSrc)
-
-})
+    ]
+  })
+  
+  $('#rewrites-slider').on('afterChange', function(event, slick, currentSlide){
+    imageSrc = slick.$slides[currentSlide].getAttribute('data-image')
+    $('.rewrites__photo-slider img').attr('src', imageSrc)
+  
+  })
+}
 
 
 

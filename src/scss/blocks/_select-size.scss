@@ -29,6 +29,7 @@
   }
 
   &__container {
+    position: relative;
     @media all and (max-width: 1024px) {
       width: 707px;
     }
@@ -67,6 +68,36 @@
     @media all and (max-width: 1280px) {
       //width: 300px;
       //margin: 0 15px;
+    }
+  }
+}
+
+#flowersControls {
+  .rewrites__btn {
+    display: none;
+    top: 50%;
+    @media (max-width: 767px) {
+      display: block;
+      top: calc(50% + 30px)
+    }
+  }
+} 
+
+#select-size-list {
+  @media (max-width: 767px) {
+    .select-size__item {
+      height: 200px;
+    }
+  }
+  @media (min-width: 767px) {
+    .slick-list {
+      width: 100%;
+    }
+    .slick-track {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      width: 100%!important;
     }
   }
 }
