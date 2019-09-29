@@ -7,7 +7,7 @@ var fetchGetConf = {
     'Content-Type': 'application/json',
   }
 };
-var API_SERVER = 'https://ibapi.fobesko.com/public'
+var API_SERVER = 'https://api.inbloomshop.ru/public'
 //Проверяем есть ли каталог на странице
 var hasCatalog = document.getElementById('catalog')
 
@@ -222,7 +222,7 @@ var citySelect = new Vue({
      * Получение городов
      */
     getCities: function () {
-      return fetch('https://ibapi.fobesko.com/public/api/user/cities', fetchGetConf)
+      return fetch(API_SERVER + '/public/api/user/cities', fetchGetConf)
         .then(function(response) {
           return response.json().then(function(cities) {
             if (cities.length > 0) {
@@ -284,13 +284,13 @@ contentInfo = new Vue({
      * Получение id контента
      */
     getContent: function() {
-      return fetch('https://ibapi.fobesko.com/public/api/content', fetchGetConf)
+      return fetch(API_SERVER + '/public/api/content', fetchGetConf)
           .then(function(response) {
             return response.json().then(function(info) {
               info.forEach(function(item) {
                 contentInfo.ids.push(item.id);
-                contentInfo.urls.push('https://ibapi.fobesko.com/public/api/file/oneblob/content/' + item.id);
-                contentInfo.urls2.push('https://ibapi.fobesko.com/public/api/file/one/content/' + item.id);
+                contentInfo.urls.push(API_SERVER + '/api/file/oneblob/content/' + item.id);
+                contentInfo.urls2.push(API_SERVER + '/public/api/file/one/content/' + item.id);
               })
             });
           })
@@ -325,7 +325,7 @@ partnerInfo = new Vue({
      * @param city - город партнера
      */
     getId: function(city) {
-     return fetch('https://ibapi.fobesko.com/public/api/user/city?city=' + city, fetchGetConf)
+     return fetch(API_SERVER + '/public/api/user/city?city=' + city, fetchGetConf)
       .then(function(response) {
         return response.json().then(function(id) {
           console.log('id' + id);
@@ -350,7 +350,7 @@ partnerInfo = new Vue({
      * @param id - id партнера
      */
     getInfo: function(id) {
-      return fetch('https://ibapi.fobesko.com/public/api/user/info/' + id, fetchGetConf)
+      return fetch(API_SERVER + '/public/api/user/info/' + id, fetchGetConf)
         .then(function(response) {
           return response.json().then(function(info) {
             if (info.length > 0) {
@@ -382,7 +382,7 @@ socials = new Vue({
      * @param id - id партнера
      */
     getSocials: function(id) {
-      return fetch('https://ibapi.fobesko.com/public/api/user/socials/' + id, fetchGetConf)
+      return fetch(API_SERVER + '/public/api/user/socials/' + id, fetchGetConf)
         .then(function(response) {
           return response.json().then(function(list) {
             if (list.length > 0) {
@@ -533,7 +533,7 @@ catalog = new Vue({
      */
     getProductsById: function(id) {
       this.products.splice(0, this.products.length);
-      return fetch('https://ibapi.fobesko.com/public/api/store/site/' + id, fetchGetConf)
+      return fetch(API_SERVER + '/public/api/store/site/' + id, fetchGetConf)
         .then(function(response) {
           return response.json().then(function(products) {
             if (products.length > 0) {
@@ -557,7 +557,7 @@ catalog = new Vue({
      */
     getProductsByCity: function(city) {
       this.products.splice(0, this.products.length);
-      return fetch('https://ibapi.fobesko.com/public/api/store/city/' + city, fetchGetConf)
+      return fetch(API_SERVER + '/public/api/store/city/' + city, fetchGetConf)
         .then(function(response) {
           return response.json().then(function(products) {
             if (products.length > 0) {
@@ -581,7 +581,7 @@ catalog = new Vue({
     },
     setLastSale: function() {
       // Получаем продукты и добавляем их в  массив this.products
-      return fetch('https://ibapi.fobesko.com/public/api/user/lastsale/' + partnerInfo.id, {
+      return fetch(API_SERVER + '/public/api/user/lastsale/' + partnerInfo.id, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
