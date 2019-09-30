@@ -16,35 +16,38 @@ var hasCatalog = document.getElementById('catalog')
 
 
 
-/*
+
 var result;
 
 window.onload = function() {
-  result = document.getElementById('result');
-
   // Если функциональность геолокации доступна,
   // пытаемся определить координаты посетителя
-  if (navigator.geolocation) {
-    // Передаем две функции
-    navigator.geolocation.getCurrentPosition(
-        geolocationSuccess, geolocationFailure);
+  if (typeof localStorage.getItem('addrStr') == 'undefined') {
+    if (navigator.geolocation) {
+      // Передаем две функции
+      navigator.geolocation.getCurrentPosition(
+          geolocationSuccess, geolocationFailure);
 
-    // Выводим результат
-    console.log("Поиск начался");
+      // Выводим результат
+      console.log("Поиск начался");
+    }
+    else {
+      // Выводим результат
+      console.log("Ваш браузер не поддерживает геолокацию");
+    }
   }
-  else {
-    // Выводим результат
-    console.log("Ваш браузер не поддерживает геолокацию");
-  }
-}
+};
+
 
 function geolocationSuccess(position) {
-  request = 'https://geocode-maps.yandex.ru/1.x/?format=json&geocode=' + position.coords.longitude + ", " + position.coords.latitude;
+  request = 'https://geocode-maps.yandex.ru/1.x/?format=json&apikey=51dd1116-29b8-4a97-ac52-d4d1197d0d80&geocode=' + position.coords.longitude + ", " + position.coords.latitude;
   return fetch(request, { method: 'GET' })
       .then(function(response) {
         console.log("Последний раз вас засекали здесь: ");
-        return response.json().then(function(cities) {
-          console.log(response);
+        return response.json().then(function(data) {
+          var addrStr = data.response.GeoObjectCollection.featureMember[0].GeoObject.name + ', ' + data.response.GeoObjectCollection.featureMember[1].GeoObject.name + ', ' + data.response.GeoObjectCollection.featureMember[2].GeoObject.name;
+          console.log(addrStr);
+          localStorage.setItem('addrStr', addrStr)
         }).catch(function() {
           // В случае ошибки возвращаем пустой массив
           return [];
@@ -59,7 +62,7 @@ function geolocationFailure(positionError) {
   console.log("Ошибка геолокации");
 }
 
-
+/*
 if (typeof ymaps != 'undefined') {
     ymaps.ready(init);
 
@@ -222,7 +225,7 @@ var citySelect = new Vue({
      * Получение городов
      */
     getCities: function () {
-      return fetch(API_SERVER + '/public/api/user/cities', fetchGetConf)
+      return fetch(API_SERVER + '/api/user/cities', fetchGetConf)
         .then(function(response) {
           return response.json().then(function(cities) {
             if (cities.length > 0) {
@@ -284,13 +287,13 @@ contentInfo = new Vue({
      * Получение id контента
      */
     getContent: function() {
-      return fetch(API_SERVER + '/public/api/content', fetchGetConf)
+      return fetch(API_SERVER + '/api/content', fetchGetConf)
           .then(function(response) {
             return response.json().then(function(info) {
               info.forEach(function(item) {
                 contentInfo.ids.push(item.id);
                 contentInfo.urls.push(API_SERVER + '/api/file/oneblob/content/' + item.id);
-                contentInfo.urls2.push(API_SERVER + '/public/api/file/one/content/' + item.id);
+                contentInfo.urls2.push(API_SERVER + '/api/file/one/content/' + item.id);
               })
             });
           })
@@ -302,14 +305,14 @@ contentInfo = new Vue({
   watch: {
     /*
   urls: function(index) {
-    contentInfo.urls[index] = ('http://ibapi.fobesko.com/public/api/file/blob/content/' + item.id + '.jpg');
+    contentInfo.urls[index] = ('http://.com/public/api/file/blob/content/' + item.id + '.jpg');
   }
   */
   },
 });
 
 /**
- * Информация о выбраном партнере
+ * Информация о выбранном партнере
  * @type {Vue}
  */
 partnerInfo = new Vue({
@@ -321,11 +324,11 @@ partnerInfo = new Vue({
   },
   methods: {
     /**
-     * Получаем id партнера у которого дольше всего небыло заказа в этом городе
+     * Получаем id партнера, у которого дольше всего не было заказа в этом городе
      * @param city - город партнера
      */
     getId: function(city) {
-     return fetch(API_SERVER + '/public/api/user/city?city=' + city, fetchGetConf)
+     return fetch(API_SERVER + '/api/user/city?city=' + city, fetchGetConf)
       .then(function(response) {
         return response.json().then(function(id) {
           console.log('id' + id);
@@ -346,11 +349,11 @@ partnerInfo = new Vue({
       });
     },
     /**
-     * Получение инофрмации о партнере по id
+     * Получение информации о партнере по id
      * @param id - id партнера
      */
     getInfo: function(id) {
-      return fetch(API_SERVER + '/public/api/user/info/' + id, fetchGetConf)
+      return fetch(API_SERVER + '/api/user/info/' + id, fetchGetConf)
         .then(function(response) {
           return response.json().then(function(info) {
             if (info.length > 0) {
@@ -378,11 +381,11 @@ socials = new Vue({
   },
   methods: {
     /**
-     * Получение социальных ситей по id партнера
+     * Получение социальных сетей по id партнера
      * @param id - id партнера
      */
     getSocials: function(id) {
-      return fetch(API_SERVER + '/public/api/user/socials/' + id, fetchGetConf)
+      return fetch(API_SERVER + '/api/user/socials/' + id, fetchGetConf)
         .then(function(response) {
           return response.json().then(function(list) {
             if (list.length > 0) {
@@ -448,6 +451,7 @@ catalog = new Vue({
       if (form.id == 'quizform') {
         request.type = 1;
         request.posInfo_size = form.size.value;
+        request.posInfo_name = form.name.value;
         request.congrats = form.congrats.value;
         request.phone = dateform.phone.replace(/\D+/g, "");
         request.receiveDate = dateform.date.toISOString().slice(0, 19).replace('T', ' ');
@@ -477,20 +481,21 @@ catalog = new Vue({
         });
         str += ']';
         console.log(JSON.parse(str));
-        request.posInfo_colors = str
+        request.posInfo_colors = str;
         request.posInfo_boxColor = form.boxColor.value;
       }
       if (form.id == 'orderform') {
-        request.type = 0
-        request.posInfo_products = this.cart;
+        request.type = 0;
+        request.posInfo_products = '['+this.cart+']';
+        request.posInfo_name = catalog.buyer.name;
         request.phone = catalog.buyer.phone.replace(/\D+/g, "");
         request.receiveDate = catalog.buyer.date.toISOString().slice(0, 19).replace('T', ' ');
         request.posInfo_boxColor = 0;
       }
       request.userid = partnerInfo.id;
-      request.posInfo_name = form.name.value;
       request.posInfo_quantity = '[1]';
       request.city = citySelect.city;
+      request.geo = localStorage.getItem('addrStr');
       console.log(request);
 
       fetch(API_SERVER + '/api/requests', {
@@ -510,13 +515,13 @@ catalog = new Vue({
       .catch(function (error) {
         console.log(error)
       });
-      /*
+
       fetch(API_SERVER + '/api/user/notify', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: request
+        body: JSON.stringify(request)
       })
           .then(function(response) {
             console.log(response.data)
@@ -524,7 +529,7 @@ catalog = new Vue({
           .catch(function (error) {
             console.log(error)
           })
-       */
+
     },
 
     /**
@@ -533,7 +538,7 @@ catalog = new Vue({
      */
     getProductsById: function(id) {
       this.products.splice(0, this.products.length);
-      return fetch(API_SERVER + '/public/api/store/site/' + id, fetchGetConf)
+      return fetch(API_SERVER + '/api/store/site/' + id, fetchGetConf)
         .then(function(response) {
           return response.json().then(function(products) {
             if (products.length > 0) {
@@ -557,7 +562,7 @@ catalog = new Vue({
      */
     getProductsByCity: function(city) {
       this.products.splice(0, this.products.length);
-      return fetch(API_SERVER + '/public/api/store/city/' + city, fetchGetConf)
+      return fetch(API_SERVER + '/api/store/city/' + city, fetchGetConf)
         .then(function(response) {
           return response.json().then(function(products) {
             if (products.length > 0) {
@@ -581,7 +586,7 @@ catalog = new Vue({
     },
     setLastSale: function() {
       // Получаем продукты и добавляем их в  массив this.products
-      return fetch(API_SERVER + '/public/api/user/lastsale/' + partnerInfo.id, {
+      return fetch(API_SERVER + '/api/user/lastsale/' + partnerInfo.id, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
