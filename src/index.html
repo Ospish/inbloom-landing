@@ -418,7 +418,7 @@ function init () {
     zoom: 3, // коэффициент приближения карты
     controls: ['zoomControl', 'fullscreenControl'] // выбираем только те функции, которые необходимы при использовании
   });
-  fetch('https://ibapi.fobesko.com/public/api/user/pins', { method: 'GET' })
+  fetch('https://api.inbloomshop.ru/public/api/user/pins', { method: 'GET' })
           .then(function(response) {
             console.log("Последний раз вас засекали здесь: ");
             return response.json().then(function(data) {

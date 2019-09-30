@@ -52,11 +52,11 @@
 .select-departments .dropdown.current,.select-doctors .dropdown.current {
   display: block;
 }
-.mfSelect .show .dropdown, .mfSelect .focus .dropdown { 
+.mfSelect .show .dropdown, .mfSelect .focus .dropdown {
   display: block;
   opacity: 1;
 }
-.mfSelect .dropdown { 
+.mfSelect .dropdown {
   margin-bottom: 0;
   background: #fff;
   width: 100%;
@@ -71,7 +71,7 @@
     border-bottom: 1px solid #e8e8e8;
     padding: 5px 18px;
 }
-.mfSelect .dropdown li:last-child { 
+.mfSelect .dropdown li:last-child {
   border: none;
 }
 .mfSelect.show .dropdown, .mfSelect.focus .dropdown {
@@ -83,8 +83,8 @@
   color: #888;
 }
 .mfSelect .value:after {
-  width: 0; 
-  height: 0; 
+  width: 0;
+  height: 0;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   border-top: 6px solid #d1d1d1;
@@ -750,7 +750,7 @@
     height: 0;
     border-style: solid;
     border-width: 0 6px 6px 6px;
-    border-color: transparent transparent #2E7D32 transparent;    
+    border-color: transparent transparent #2E7D32 transparent;
 }
 
 @media (max-width: 767px) {
@@ -759,7 +759,7 @@
     height: 0;
     border-style: solid;
     border-width: 0 6px 6px 6px;
-    border-color: transparent transparent #2E7D32 transparent;    
+    border-color: transparent transparent #2E7D32 transparent;
   }
 }
 @-ms-keyframes fout {

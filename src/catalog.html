@@ -23,7 +23,7 @@
 				<div class="catalog__item" v-for="item in products">
 					<div class="item-card">
 						<div class="item-card__cover">
-							<img class="item-card__img" :src="'http://ibapi.fobesko.com/public/api/file/oneblob/store/' + item.id" alt="">
+							<img class="item-card__img" :src="'http://api.inbloomshop.ru/public/api/file/oneblob/store/' + item.id" alt="">
 							<span class="item-card__size">Размер: {{ item.posInfo_size }}</span>
 						</div>
 						<div class="item-card__text" v-text="item.name"></div>
