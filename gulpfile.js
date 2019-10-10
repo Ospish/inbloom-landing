@@ -37,7 +37,6 @@ function css() {
   return src('src/scss/*.scss')
     .pipe(sass())
     .pipe(autoprefixer({
-      browsers: ['last 2 versions'],
       cascade: false
     }))
     .pipe(minifyCSS())

@@ -7,13 +7,9 @@ var fetchGetConf = {
     'Content-Type': 'application/json',
   }
 };
-var API_SERVER = 'https://api.inbloomshop.ru/public'
+var API_SERVER = 'https://api.inbloomshop.ru/public';
 //Проверяем есть ли каталог на странице
 var hasCatalog = document.getElementById('catalog')
-
-
-
-
 
 
 
@@ -22,7 +18,7 @@ var result;
 window.onload = function() {
   // Если функциональность геолокации доступна,
   // пытаемся определить координаты посетителя
-  if (typeof localStorage.getItem('addrStr') == 'undefined') {
+  if (localStorage.getItem('addrStr').length < 5) {
     if (navigator.geolocation) {
       // Передаем две функции
       navigator.geolocation.getCurrentPosition(
@@ -37,7 +33,6 @@ window.onload = function() {
     }
   }
 };
-
 
 function geolocationSuccess(position) {
   request = 'https://geocode-maps.yandex.ru/1.x/?format=json&apikey=51dd1116-29b8-4a97-ac52-d4d1197d0d80&geocode=' + position.coords.longitude + ", " + position.coords.latitude;
@@ -62,120 +57,6 @@ function geolocationFailure(positionError) {
   console.log("Ошибка геолокации");
 }
 
-/*
-if (typeof ymaps != 'undefined') {
-    ymaps.ready(init);
-
-
-function init() {
-    var myMap = new ymaps.Map("map", {
-            center: [55.76, 37.64],
-            zoom: 10
-        }, {
-            searchControlProvider: 'yandex#search'
-        }),
-
-    // Создаем геообъект с типом геометрии "Точка".
-        myGeoObject = new ymaps.GeoObject({
-            // Описание геометрии.
-            geometry: {
-                type: "Point",
-                coordinates: [55.8, 37.8]
-            },
-            // Свойства.
-            properties: {
-                // Контент метки.
-                iconContent: 'Я тащусь',
-                hintContent: 'Ну давай уже тащи'
-            }
-        }, {
-            // Опции.
-            // Иконка метки будет растягиваться под размер ее содержимого.
-            preset: 'islands#blackStretchyIcon',
-            // Метку можно перемещать.
-            draggable: true
-        }),
-        myPieChart = new ymaps.Placemark([
-            55.847, 37.6
-        ], {
-            // Данные для построения диаграммы.
-            data: [
-                {weight: 8, color: '#0E4779'},
-                {weight: 6, color: '#1E98FF'},
-                {weight: 4, color: '#82CDFF'}
-            ],
-            iconCaption: "Диаграмма"
-        }, {
-            // Зададим произвольный макет метки.
-            iconLayout: 'default#pieChart',
-            // Радиус диаграммы в пикселях.
-            iconPieChartRadius: 30,
-            // Радиус центральной части макета.
-            iconPieChartCoreRadius: 10,
-            // Стиль заливки центральной части.
-            iconPieChartCoreFillStyle: '#ffffff',
-            // Cтиль линий-разделителей секторов и внешней обводки диаграммы.
-            iconPieChartStrokeStyle: '#ffffff',
-            // Ширина линий-разделителей секторов и внешней обводки диаграммы.
-            iconPieChartStrokeWidth: 3,
-            // Максимальная ширина подписи метки.
-            iconPieChartCaptionMaxWidth: 200
-        });
-
-    myMap.geoObjects
-        .add(myGeoObject)
-        .add(myPieChart)
-        .add(new ymaps.Placemark([55.684758, 37.738521], {
-            balloonContent: 'цвет <strong>воды пляжа бонди</strong>'
-        }, {
-            preset: 'islands#icon',
-            iconColor: '#0095b6'
-        }))
-        .add(new ymaps.Placemark([55.833436, 37.715175], {
-            balloonContent: '<strong>серобуромалиновый</strong> цвет'
-        }, {
-            preset: 'islands#dotIcon',
-            iconColor: '#735184'
-        }))
-        .add(new ymaps.Placemark([55.687086, 37.529789], {
-            balloonContent: 'цвет <strong>влюбленной жабы</strong>'
-        }, {
-            preset: 'islands#circleIcon',
-            iconColor: '#3caa3c'
-        }))
-        .add(new ymaps.Placemark([55.782392, 37.614924], {
-            balloonContent: 'цвет <strong>детской неожиданности</strong>'
-        }, {
-            preset: 'islands#circleDotIcon',
-            iconColor: 'yellow'
-        }))
-        .add(new ymaps.Placemark([55.642063, 37.656123], {
-            balloonContent: 'цвет <strong>красный</strong>'
-        }, {
-            preset: 'islands#redSportIcon'
-        }))
-        .add(new ymaps.Placemark([55.826479, 37.487208], {
-            balloonContent: 'цвет <strong>фэйсбука</strong>'
-        }, {
-            preset: 'islands#governmentCircleIcon',
-            iconColor: '#3b5998'
-        }))
-        .add(new ymaps.Placemark([55.694843, 37.435023], {
-            balloonContent: 'цвет <strong>носика Гены</strong>',
-            iconCaption: 'Очень длиннный, но невероятно интересный текст'
-        }, {
-            preset: 'islands#greenDotIconWithCaption'
-        }))
-        .add(new ymaps.Placemark([55.790139, 37.814052], {
-            balloonContent: 'цвет <strong>голубой</strong>',
-            iconCaption: 'Очень длиннный, но невероятно интересный текст'
-        }, {
-            preset: 'islands#blueCircleDotIconWithCaption',
-            iconCaptionMaxWidth: '50'
-        }));
-}
-}
-
 /**
  * Смена города в шапке
  * @type {Vue}
@@ -192,12 +73,13 @@ var citySelect = new Vue({
      * Название выбранного города
      */
     city: function() {
-      if (this.cities.length < 1) return 'Москва';
+      if (this.cities.length < 1) {
+
+          return 'Москва';
+      }
       if (this.selectedIndex == false) {
-        partnerInfo.getId('Москва');
         return 'Москва';
       }
-
       return this.cities[this.selectedIndex];
     }
   },
@@ -213,10 +95,16 @@ var citySelect = new Vue({
   },
   created: function () {
     // Получаем всем города и добавляем их в массив this.cities
+    this.getCities();
+
+    /* FETCH CODE
     this.getCities().then(function(cities) {
       citySelect.addCities(cities);
     });
-
+     */
+    setTimeout(function (){
+        partnerInfo.getId('Москва');
+    }, 500);
   },
   methods: {
     init: function() {
@@ -224,39 +112,51 @@ var citySelect = new Vue({
     /**
      * Получение городов
      */
-    getCities: function () {
-      return fetch(API_SERVER + '/api/user/cities', fetchGetConf)
-        .then(function(response) {
-          return response.json().then(function(cities) {
-            if (cities.length > 0) {
-              return cities;
-            } else {
-              return [];
-            }
-          }).catch(function() {
-            // В случае ошибки возвращаем пустой массив
-            return [];
-          });
-        })
-        .catch(function(error) {
-          console.error(error);
-        });
-    },
+      getCities: function () {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            citySelect.addCities(JSON.parse(xhttp.responseText))
+          }
+        };
+        xhttp.open("GET",API_SERVER + "/api/user/cities",true);
+        xhttp.send();
+
+        /* FETCH CODE
+        return fetch(API_SERVER + '/api/user/cities', fetchGetConf)
+            .then(function(response) {
+              return response.json().then(function(cities) {
+                if (cities.length > 0) {
+                  return cities;
+                } else {
+                  return [];
+                }
+              }).catch(function() {
+                // В случае ошибки возвращаем пустой массив
+                return [];
+              });
+            })
+            .catch(function(error) {
+              console.error(error);
+            });
+         */
+      },
     /**
      * Добавление города
      * @param cities - массив с городами [{city: cityName}, {city: cityName}]
      */
+
     addCities: function(cities) {
       cities.forEach(function(element) {
         citySelect.cities.push(element.city);
       });
+    /*
       console.log(localStorage.getItem('cityindex'));
-
-      if ((localStorage.getItem('cityindex') != null) && (localStorage.getItem('cityindex') <= citySelect.cities.length)) {
+      if (localStorage.getItem('cityindex') > citySelect.cities.length) {localStorage.removeItem('cityindex');}
+      if ((localStorage.getItem('cityindex') != null) && (citySelect.selectedIndex != localStorage.getItem('cityindex'))) {
         citySelect.selectedIndex = localStorage.getItem('cityindex');
       }
-
-
+    */
     },
     /**
      * Смена города по индексу
@@ -264,7 +164,10 @@ var citySelect = new Vue({
      */
     selectCity: function(index) {
       this.selectedIndex = index;
+      /*
       localStorage.setItem('cityindex', index);
+
+       */
       this.showList = false;
     }
   }
@@ -279,14 +182,27 @@ contentInfo = new Vue({
   },
   created: function () {
     this.getContent()
-
-    console.log(portfolio.asd)
   },
   methods: {
     /**
      * Получение id контента
      */
     getContent: function() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var info = JSON.parse(xhttp.responseText);
+          console.log(info);
+          info.forEach(function (item) {
+            contentInfo.ids.push(item.id);
+            contentInfo.urls.push(API_SERVER + '/api/file/oneblob/content/' + item.id);
+            contentInfo.urls2.push(API_SERVER + '/api/file/one/content/' + item.id);
+          })
+        }
+      };
+      xhttp.open("GET",API_SERVER + '/api/content',true);
+      xhttp.send();
+      /*
       return fetch(API_SERVER + '/api/content', fetchGetConf)
           .then(function(response) {
             return response.json().then(function(info) {
@@ -300,15 +216,16 @@ contentInfo = new Vue({
           .catch(function(error) {
             console.error(error);
           });
+      */
     }
   },
+  /*
   watch: {
-    /*
-  urls: function(index) {
-    contentInfo.urls[index] = ('http://.com/public/api/file/blob/content/' + item.id + '.jpg');
-  }
-  */
+    urls: function(index) {
+      contentInfo.urls[index] = ('http://.com/public/api/file/blob/content/' + item.id + '.jpg');
+    }
   },
+ */
 });
 
 /**
@@ -328,6 +245,31 @@ partnerInfo = new Vue({
      * @param city - город партнера
      */
     getId: function(city) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var id = JSON.parse(xhttp.responseText);
+          console.log('id' + id);
+          if (id != null) {
+            partnerInfo.id = id;
+            partnerInfo.getInfo(id);
+            socials.getSocials(id);
+            /*
+            if (hasCatalog) {
+              catalog.getProductsById(id).then(function (products) {
+                catalog.addProducts(products);
+              });
+            }
+             */
+            if (hasCatalog) {
+              catalog.getProductsById(id);
+            }
+          }
+        }
+      };
+      xhttp.open("GET", API_SERVER + '/api/user/city?city=' + city, true);
+      xhttp.send();
+      /*
      return fetch(API_SERVER + '/api/user/city?city=' + city, fetchGetConf)
       .then(function(response) {
         return response.json().then(function(id) {
@@ -347,12 +289,26 @@ partnerInfo = new Vue({
       .catch(function(error) {
         console.error(error);
       });
+       */
     },
     /**
      * Получение информации о партнере по id
      * @param id - id партнера
      */
     getInfo: function(id) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var info = JSON.parse(xhttp.responseText);
+          if (info.length > 0) {
+            partnerInfo.phone = info[0]['phone'] ? info[0]['phone'] : false;
+            partnerInfo.email = info[0]['corp_email'] ? info[0]['corp_email'] : false;
+          }
+        }
+      };
+      xhttp.open("GET", API_SERVER + '/api/user/info/' + id, true);
+      xhttp.send();
+      /*
       return fetch(API_SERVER + '/api/user/info/' + id, fetchGetConf)
         .then(function(response) {
           return response.json().then(function(info) {
@@ -365,6 +321,7 @@ partnerInfo = new Vue({
         .catch(function(error) {
           console.error(error);
         });
+       */
     }
   }
 });
@@ -385,6 +342,19 @@ socials = new Vue({
      * @param id - id партнера
      */
     getSocials: function(id) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var list = JSON.parse(xhttp.responseText);
+          if (list.length > 0) {
+            socials.list = list[0][0];
+            socials.active = list[1][0];
+          }
+        }
+      };
+      xhttp.open("GET", API_SERVER + '/api/user/socials/' + id, true);
+      xhttp.send();
+      /*
       return fetch(API_SERVER + '/api/user/socials/' + id, fetchGetConf)
         .then(function(response) {
           return response.json().then(function(list) {
@@ -397,6 +367,7 @@ socials = new Vue({
         .catch(function(error) {
           console.error(error);
         });
+       */
     }
   }
 });
@@ -454,7 +425,7 @@ catalog = new Vue({
         request.posInfo_name = form.name.value;
         request.congrats = form.congrats.value;
         request.phone = dateform.phone.replace(/\D+/g, "");
-        request.receiveDate = dateform.date.toISOString().slice(0, 19).replace('T', ' ');
+        request.receiveDate = dateform.date.toISOString().slice(0, 10);
         request.posInfo_flowers = '';
         request.posInfo_colors = [];
         str = '[';
@@ -489,7 +460,7 @@ catalog = new Vue({
         request.posInfo_products = '['+this.cart+']';
         request.posInfo_name = catalog.buyer.name;
         request.phone = catalog.buyer.phone.replace(/\D+/g, "");
-        request.receiveDate = catalog.buyer.date.toISOString().slice(0, 19).replace('T', ' ');
+        request.receiveDate = catalog.buyer.date.toISOString().slice(0, 10);
         request.posInfo_boxColor = 0;
       }
       request.userid = partnerInfo.id;
@@ -498,6 +469,30 @@ catalog = new Vue({
       request.geo = localStorage.getItem('addrStr');
       console.log(request);
 
+      var xhttp1 = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          catalog.setLastSale();
+          if (form.id == 'orderform') {togglePopup('popup-form');}
+          togglePopup('popup-message');
+        }
+      };
+      xhttp.open("POST", API_SERVER + '/api/requests', true);
+      xhttp.send(JSON.stringify(request));
+
+      var xhttp2 = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var list = JSON.parse(xhttp2.responseText);
+          if (list.length > 0) {
+            socials.list = list[0][0];
+            socials.active = list[1][0];
+          }
+        }
+      };
+      xhttp.open("POST", API_SERVER + '/api/user/notify', true);
+      xhttp.send(JSON.stringify(request));
+/*
       fetch(API_SERVER + '/api/requests', {
         method: 'POST',
         headers: {
@@ -529,7 +524,7 @@ catalog = new Vue({
           .catch(function (error) {
             console.log(error)
           })
-
+*/
     },
 
     /**
@@ -538,6 +533,18 @@ catalog = new Vue({
      */
     getProductsById: function(id) {
       this.products.splice(0, this.products.length);
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var products = JSON.parse(xhttp.responseText);
+            products.forEach(function (item) {
+              catalog.products.push(item);
+            })
+        }
+      };
+      xhttp.open("GET", API_SERVER + '/api/store/site/' + id, true);
+      xhttp.send();
+      /*
       return fetch(API_SERVER + '/api/store/site/' + id, fetchGetConf)
         .then(function(response) {
           return response.json().then(function(products) {
@@ -555,6 +562,7 @@ catalog = new Vue({
         .catch(function(error) {
           console.error(error);
         });
+       */
     },
     /**
      * Полкчение продуктов по городу
@@ -578,14 +586,23 @@ catalog = new Vue({
           console.error(error);
         });
     },
-    addProducts: function(products) {
-      // Получаем продукты и добавляем их в  массив this.products
-      products.forEach(function(item) {
-        catalog.products.push(item);
-      });
-    },
     setLastSale: function() {
-      // Получаем продукты и добавляем их в  массив this.products
+      // Получаем id последнего партнера в очереди
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var products = JSON.parse(xhttp.responseText);
+          if (products.length > 0) {
+            console.log('products' + id)
+            return products;
+          } else {
+            return [];
+          }
+        }
+        xhttp.open("PUT", API_SERVER + '/api/user/lastsale/' + partnerInfo.id, true);
+        xhttp.send();
+      }
+      /*
       return fetch(API_SERVER + '/api/user/lastsale/' + partnerInfo.id, {
         method: 'PUT',
         headers: {
@@ -605,6 +622,7 @@ catalog = new Vue({
           .catch(function(error) {
             console.error(error);
           });
+       */
     }
   }
 });
