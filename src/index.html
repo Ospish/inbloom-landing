@@ -418,6 +418,33 @@ function init () {
     zoom: 3, // коэффициент приближения карты
     controls: ['zoomControl', 'fullscreenControl'] // выбираем только те функции, которые необходимы при использовании
   });
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var data = JSON.parse(xhttp.responseText);
+      console.log('MAP');
+      console.log(data);
+      data.forEach(function (element) {
+        if (element.coords != null) {
+          myPlacemarkArr[i] = new ymaps.GeoObject({
+            geometry: {
+              type: "Point",
+              coordinates: [parseFloat(element.coords.split(" ")[1]), parseFloat(element.coords.split(" ")[0])] // координаты, где будет размещаться флажок на карте
+            }
+          });
+          console.log(myPlacemarkArr[i].geometry._coordinates);
+          i++
+        }
+      });
+      myPlacemarkArr.forEach(function (element) {
+        myMapTemp.geoObjects.add(element);
+      });
+    }
+  };
+  xhttp.open("GET", API_SERVER + '/api/user/pins', true);
+  xhttp.send();
+  /*
   fetch('https://api.inbloomshop.ru/public/api/user/pins', { method: 'GET' })
           .then(function(response) {
             console.log("Последний раз вас засекали здесь: ");
@@ -445,7 +472,7 @@ function init () {
           .catch(function(error) {
             console.error(error);
           });
-
+*/
 
 
 

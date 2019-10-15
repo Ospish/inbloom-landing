@@ -102,8 +102,11 @@ var citySelect = new Vue({
       citySelect.addCities(cities);
     });
      */
+
     setTimeout(function (){
+      if (partnerInfo.id == null) {
         partnerInfo.getId('Москва');
+      }
     }, 500);
   },
   methods: {
@@ -150,13 +153,13 @@ var citySelect = new Vue({
       cities.forEach(function(element) {
         citySelect.cities.push(element.city);
       });
-    /*
+
       console.log(localStorage.getItem('cityindex'));
       if (localStorage.getItem('cityindex') > citySelect.cities.length) {localStorage.removeItem('cityindex');}
       if ((localStorage.getItem('cityindex') != null) && (citySelect.selectedIndex != localStorage.getItem('cityindex'))) {
         citySelect.selectedIndex = localStorage.getItem('cityindex');
       }
-    */
+
     },
     /**
      * Смена города по индексу
@@ -164,10 +167,10 @@ var citySelect = new Vue({
      */
     selectCity: function(index) {
       this.selectedIndex = index;
-      /*
+
       localStorage.setItem('cityindex', index);
 
-       */
+
       this.showList = false;
     }
   }
@@ -375,9 +378,12 @@ socials = new Vue({
 
 dateform = new Vue({
   el: '#formdatepick',
-  data: {
+  data: function () {
+    return {
     date: null,
-    phone: null
+    phone: null,
+    curMask: 7
+      }
   },
   components: {
     datepicker: vuejsDatepicker
@@ -386,8 +392,10 @@ dateform = new Vue({
 
 footerform = new Vue({
   el: '#footerform',
-  data: {
-    phone: null
+  data: function () {
+    return {
+      phone: null
+    }
   }
 });
 /**
@@ -396,13 +404,15 @@ footerform = new Vue({
  */
 catalog = new Vue({
   el: '#catalog',
-  data: {
-    products: [],
-    cart: false,
-    buyer: {
-      name: '',
-      phone: '',
-      date: null
+  data: function () {
+    return {
+      products: [],
+      cart: false,
+      buyer: {
+        name: '',
+        phone: '+7 (###) ###-##-##',
+        date: null
+      }
     }
   },
   components: {
@@ -470,18 +480,19 @@ catalog = new Vue({
       console.log(request);
 
       var xhttp1 = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
+      xhttp1.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
           catalog.setLastSale();
           if (form.id == 'orderform') {togglePopup('popup-form');}
           togglePopup('popup-message');
         }
       };
-      xhttp.open("POST", API_SERVER + '/api/requests', true);
-      xhttp.send(JSON.stringify(request));
+      xhttp1.open("POST", API_SERVER + '/api/requests', true);
+      xhttp1.setRequestHeader('Content-type', 'application/json');
+      xhttp1.send(JSON.stringify(request));
 
       var xhttp2 = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
+      xhttp2.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
           var list = JSON.parse(xhttp2.responseText);
           if (list.length > 0) {
@@ -490,8 +501,9 @@ catalog = new Vue({
           }
         }
       };
-      xhttp.open("POST", API_SERVER + '/api/user/notify', true);
-      xhttp.send(JSON.stringify(request));
+      xhttp2.open("POST", API_SERVER + '/api/user/notify', true);
+      xhttp2.setRequestHeader('Content-type', 'application/json');
+      xhttp2.send(JSON.stringify(request));
 /*
       fetch(API_SERVER + '/api/requests', {
         method: 'POST',
@@ -599,9 +611,9 @@ catalog = new Vue({
             return [];
           }
         }
-        xhttp.open("PUT", API_SERVER + '/api/user/lastsale/' + partnerInfo.id, true);
-        xhttp.send();
-      }
+      };
+      xhttp.open("PUT", API_SERVER + '/api/user/lastsale/' + partnerInfo.id, true);
+      xhttp.send();
       /*
       return fetch(API_SERVER + '/api/user/lastsale/' + partnerInfo.id, {
         method: 'PUT',
