@@ -1,7 +1,8 @@
 'use strict';
 const { task, src, dest, watch, series, parallel } = require('gulp');
 var sass = require('gulp-sass');
-var uglify = require('gulp-uglify');
+var babel = require('gulp-babel')
+var uglify = require('gulp-uglify-es').default;
 var minifyCSS = require("gulp-minify-css");
 var pipeline = require('readable-stream').pipeline;
 var autoprefixer = require('gulp-autoprefixer');
@@ -37,6 +38,7 @@ function css() {
   return src('src/scss/*.scss')
     .pipe(sass())
     .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
       cascade: false
     }))
     .pipe(minifyCSS())
@@ -46,6 +48,9 @@ function css() {
 
 function js() {
   return src('src/js/*.js', { sourcemaps: false })
+    // .pipe(babel({
+    //   presets: ['@babel/preset-env']
+    // }))
     .pipe(uglify())
     .pipe(dest('build/js', { sourcemaps: false }))
     .pipe(browserSync.reload({stream: true}))

@@ -551,8 +551,8 @@
 						<span class="field__icon"></span>
 					</label>
 
-					<label class="form__field field">
-						<input v-mask="'###############'" v-model="phone" class="field__input" type="tel" placeholder="Ваш телефон (c WhatsApp или Viber)" required>
+					<label class="form__field field" for="phone">
+						<input id="phone" v-mask="'(###) ###-##-##'" v-model="phone" class="field__input" type="tel" placeholder="Ваш телефон (c WhatsApp или Viber)" required>
 						<span class="field__icon"></span>
 					</label>
 					<div class="form__field field">
@@ -632,10 +632,10 @@
 		}
 
 		var counter = 0;
-		document.getElementById('form-counter').innerHTML = 'Шаг ' + (counter + 1) + ' из 6';
+		document.getElementById('form-counter').innerHTML = 'Шаг ' + (counter + 1) + ' из 5';
 		function prevStep() {
-			counter--;
-			document.getElementById('form-counter').innerHTML = 'Шаг ' + (counter + 1) + ' из 6';
+			if (counter > 1) counter--;
+			document.getElementById('form-counter').innerHTML = 'Шаг ' + (counter + 1) + ' из 5';
 			if (counter == 3) {
 				document.getElementById('nextbutton').style.display = 'block';
 				document.getElementById('sendbutton').style.display = 'none';
@@ -643,7 +643,7 @@
 		}
 		function nextStep() {
 			counter++;
-			document.getElementById('form-counter').innerHTML = 'Шаг ' + (counter + 1) + ' из 6';
+			document.getElementById('form-counter').innerHTML = 'Шаг ' + (counter + 1) + ' из 5';
 			if (counter == 4) {
 				document.getElementById('nextbutton').style.display = 'none';
 				document.getElementById('sendbutton').style.display = 'block';

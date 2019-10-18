@@ -9,9 +9,9 @@ var fetchGetConf = {
 };
 var API_SERVER = 'https://api.inbloomshop.ru/public';
 //Проверяем есть ли каталог на странице
-var hasCatalog = document.getElementById('catalog')
-
-
+var hasCatalog = document.getElementById('catalog');
+var hasPortfolio = document.getElementById("portfolio");
+var hasQuiz = document.getElementById("quiz");
 
 var result;
 
@@ -103,11 +103,7 @@ var citySelect = new Vue({
     });
      */
 
-    setTimeout(function (){
-      if (partnerInfo.id == null) {
-        partnerInfo.getId('Москва');
-      }
-    }, 500);
+
   },
   methods: {
     init: function() {
@@ -156,10 +152,12 @@ var citySelect = new Vue({
 
       console.log(localStorage.getItem('cityindex'));
       if (localStorage.getItem('cityindex') > citySelect.cities.length) {localStorage.removeItem('cityindex');}
-      if ((localStorage.getItem('cityindex') != null) && (citySelect.selectedIndex != localStorage.getItem('cityindex'))) {
+      if (localStorage.getItem('cityindex') != null) {
         citySelect.selectedIndex = localStorage.getItem('cityindex');
       }
-
+      else {
+        citySelect.selectedIndex = 0;
+      }
     },
     /**
      * Смена города по индексу
@@ -176,60 +174,62 @@ var citySelect = new Vue({
   }
 });
 
-contentInfo = new Vue({
-  el: '#portfolio',
-  data: {
-    ids: [],
-    urls: [],
-    urls2: []
-  },
-  created: function () {
-    this.getContent()
-  },
-  methods: {
-    /**
-     * Получение id контента
-     */
-    getContent: function() {
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          var info = JSON.parse(xhttp.responseText);
-          console.log(info);
-          info.forEach(function (item) {
-            contentInfo.ids.push(item.id);
-            contentInfo.urls.push(API_SERVER + '/api/file/oneblob/content/' + item.id);
-            contentInfo.urls2.push(API_SERVER + '/api/file/one/content/' + item.id);
-          })
-        }
-      };
-      xhttp.open("GET",API_SERVER + '/api/content',true);
-      xhttp.send();
-      /*
-      return fetch(API_SERVER + '/api/content', fetchGetConf)
-          .then(function(response) {
-            return response.json().then(function(info) {
-              info.forEach(function(item) {
-                contentInfo.ids.push(item.id);
-                contentInfo.urls.push(API_SERVER + '/api/file/oneblob/content/' + item.id);
-                contentInfo.urls2.push(API_SERVER + '/api/file/one/content/' + item.id);
-              })
+if (hasPortfolio) {
+  contentInfo = new Vue({
+    el: '#portfolio',
+    data: {
+      ids: [],
+      urls: [],
+      urls2: []
+    },
+    created: function () {
+      this.getContent()
+    },
+    methods: {
+      /**
+       * Получение id контента
+       */
+      getContent: function() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            var info = JSON.parse(xhttp.responseText);
+            console.log(info);
+            info.forEach(function (item) {
+              contentInfo.ids.push(item.id);
+              contentInfo.urls.push(API_SERVER + '/api/file/oneblob/content/' + item.id);
+              contentInfo.urls2.push(API_SERVER + '/api/file/one/content/' + item.id);
+            })
+          }
+        };
+        xhttp.open("GET",API_SERVER + '/api/content',true);
+        xhttp.send();
+        /*
+        return fetch(API_SERVER + '/api/content', fetchGetConf)
+            .then(function(response) {
+              return response.json().then(function(info) {
+                info.forEach(function(item) {
+                  contentInfo.ids.push(item.id);
+                  contentInfo.urls.push(API_SERVER + '/api/file/oneblob/content/' + item.id);
+                  contentInfo.urls2.push(API_SERVER + '/api/file/one/content/' + item.id);
+                })
+              });
+            })
+            .catch(function(error) {
+              console.error(error);
             });
-          })
-          .catch(function(error) {
-            console.error(error);
-          });
-      */
-    }
-  },
-  /*
-  watch: {
-    urls: function(index) {
-      contentInfo.urls[index] = ('http://.com/public/api/file/blob/content/' + item.id + '.jpg');
-    }
-  },
- */
-});
+        */
+      }
+    },
+    /*
+    watch: {
+      urls: function(index) {
+        contentInfo.urls[index] = ('http://.com/public/api/file/blob/content/' + item.id + '.jpg');
+      }
+    },
+   */
+  });
+}
 
 /**
  * Информация о выбранном партнере
@@ -257,13 +257,6 @@ partnerInfo = new Vue({
             partnerInfo.id = id;
             partnerInfo.getInfo(id);
             socials.getSocials(id);
-            /*
-            if (hasCatalog) {
-              catalog.getProductsById(id).then(function (products) {
-                catalog.addProducts(products);
-              });
-            }
-             */
             if (hasCatalog) {
               catalog.getProductsById(id);
             }
@@ -304,7 +297,7 @@ partnerInfo = new Vue({
         if (this.readyState == 4 && this.status == 200) {
           var info = JSON.parse(xhttp.responseText);
           if (info.length > 0) {
-            partnerInfo.phone = info[0]['phone'] ? info[0]['phone'] : false;
+            partnerInfo.phone = info[0]['phone'] ? '+' + info[0]['countrycode'] + info[0]['phone'] : false;
             partnerInfo.email = info[0]['corp_email'] ? info[0]['corp_email'] : false;
           }
         }
@@ -330,7 +323,7 @@ partnerInfo = new Vue({
 });
 
 /**
- * Социальные сети в футнере
+ * Социальные сети в футере
  * @type {Vue}
  */
 socials = new Vue({
@@ -375,21 +368,6 @@ socials = new Vue({
   }
 });
 
-
-dateform = new Vue({
-  el: '#formdatepick',
-  data: function () {
-    return {
-    date: null,
-    phone: null,
-    curMask: 7
-      }
-  },
-  components: {
-    datepicker: vuejsDatepicker
-  }
-});
-
 footerform = new Vue({
   el: '#footerform',
   data: function () {
@@ -398,10 +376,29 @@ footerform = new Vue({
     }
   }
 });
+
+
+  dateform = new Vue({
+    el: '#formdatepick',
+    data: function () {
+      return {
+        date: null,
+        phone: null,
+        curMask: 7
+      }
+    },
+    components: {
+      datepicker: vuejsDatepicker
+    }
+  });
+
+
+
 /**
  * Очевидно, каталог
  * @type {Vue}
  */
+
 catalog = new Vue({
   el: '#catalog',
   data: function () {
@@ -410,7 +407,7 @@ catalog = new Vue({
       cart: false,
       buyer: {
         name: '',
-        phone: '+7 (###) ###-##-##',
+        phone: '',
         date: null
       }
     }
@@ -435,6 +432,10 @@ catalog = new Vue({
         request.posInfo_name = form.name.value;
         request.congrats = form.congrats.value;
         request.phone = dateform.phone.replace(/\D+/g, "");
+        if (document.querySelector('.country-phone-selected span')) {
+          var code = document.querySelector('.country-phone-selected span').innerText;
+        }
+        request.phone = code ? code + request.phone : '+7' + request.phone;
         request.receiveDate = dateform.date.toISOString().slice(0, 10);
         request.posInfo_flowers = '';
         request.posInfo_colors = [];
@@ -470,6 +471,10 @@ catalog = new Vue({
         request.posInfo_products = '['+this.cart+']';
         request.posInfo_name = catalog.buyer.name;
         request.phone = catalog.buyer.phone.replace(/\D+/g, "");
+        if (document.querySelector('.country-phone-selected span')) {
+          var code = document.querySelector('.country-phone-selected span').innerText;
+        }
+        request.phone = code ? code + request.phone : '+7' + request.phone;
         request.receiveDate = catalog.buyer.date.toISOString().slice(0, 10);
         request.posInfo_boxColor = 0;
       }
@@ -574,7 +579,7 @@ catalog = new Vue({
         .catch(function(error) {
           console.error(error);
         });
-       */
+      */
     },
     /**
      * Полкчение продуктов по городу
@@ -634,7 +639,8 @@ catalog = new Vue({
           .catch(function(error) {
             console.error(error);
           });
-       */
+      */
     }
   }
 });
+

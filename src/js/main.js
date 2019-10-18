@@ -1,4 +1,3 @@
-
 (function(e) {
   e.matches = e.matches || e.mozMatchesSelector || e.msMatchesSelector || e.oMatchesSelector || e.webkitMatchesSelector;
   e.closest = e.closest || function closest(selector) {
@@ -346,7 +345,7 @@ if (rewritesSlider) {
   })
   
   $('#rewrites-slider').on('afterChange', function(event, slick, currentSlide){
-    imageSrc = slick.$slides[currentSlide].getAttribute('data-image')
+    var imageSrc = slick.$slides[currentSlide].getAttribute('data-image')
     $('.rewrites__photo-slider img').attr('src', imageSrc)
   
   })
@@ -355,7 +354,7 @@ if (rewritesSlider) {
 
 
 document.onclick = function(event) {
-  if (event.target.classList.contains('js-open-size-card')) {
+  if (event.target.cssList.contains('js-open-size-card')) {
     event.target.closest('.js-size-card').classList.add('is-active');
   }
 
@@ -420,7 +419,7 @@ function togglePopup(id) {
  * end Popups
  */
 
-scrollBtn = document.getElementById('scroll-to-top');
+var scrollBtn = document.getElementById('scroll-to-top');
 
 window.onscroll = function() {scrollFunction()}
 
@@ -436,3 +435,5 @@ function topFunction() {
   $("html, body").animate({ scrollTop: 0 }, "slow");
   return false;
 }
+
+

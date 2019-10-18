@@ -104,7 +104,7 @@
 </footer>
 <div style="display: none" id="footerform">
         <h2>Введите данные</h2>
-        <form method="post" action="https://inbloomfranchise.com/php/rd-mailform.php" class="mailform off2">
+        <form method="get" action="https://inbloomfranchise.com/php/rd-mailform.php" class="mailform off2">
             <input type="hidden" name="form-type" value="partnership">
             <label class="form__field field">
                 <input class="field__input" required type="text" name="name" value="" placeholder="Имя" data-constraints="@LettersOnly @NotEmpty">
@@ -112,13 +112,12 @@
             <label class="form__field field">
                 <input class="field__input" required type="text" name="city" value="" placeholder="Город" data-constraints="@LettersOnly @NotEmpty">
             </label>
-            <label class="form__field field">
-                <input class="field__input" v-mask="'+7 (###) ###-##-##'" v-model="phone" required class="input_tel" type="text" value="" placeholder="Телефон" data-constraints="@Phone">
+            <label class="form__field field" for="phoneFoot">
+                <input class="field__input" id="phoneFoot" v-mask="'(###) ###-##-##'" v-model="phone" required class="input_tel" type="text" value="" placeholder="Телефон" data-constraints="@Phone">
             </label>
             <label class="form__field field">
                 <input class="field__input" required type="text" name="email" value="" placeholder="E-mail" data-constraints="@Email @NotEmpty">
             </label>
-            <input type="hidden" name="type" value="Презентация">
             <div class="form__buttons">
                 <button class="form__btn-next btn">
                     <span type="submit" class="btn__inner">Отправить</span>
@@ -152,3 +151,16 @@
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 <script src="../js/slick.min.js"></script>
 <script src="../js/main.js"></script>
+<script src="../js/jquery-ui-1.10.4.custom.min.js"></script>
+<script src="../js/counties.js"></script>
+<script src="../js/phonecode.js"></script>
+<script>
+    $(function(){
+        $('#phone').phonecode({
+            preferCo: 'ru'
+        });
+        $('#phoneFoot').phonecode({
+            preferCo: 'ru'
+        })
+    });
+</script>

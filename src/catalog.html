@@ -60,8 +60,8 @@
 						<span class="field__icon"></span>
 					</label>
 
-					<label class="form__field field">
-						<input v-mask="'###############'" v-model="buyer.phone" class="field__input" type="tel" placeholder="Ваш телефон (c WhatsApp или Viber)" required>
+					<label class="form__field field" for="phone">
+						<input id="phone" v-mask="'(###) ###-##-##'" v-model="buyer.phone" class="field__input" type="tel" placeholder="Ваш телефон (c WhatsApp или Viber)" required>
 						<span class="field__icon"></span>
 					</label>
 

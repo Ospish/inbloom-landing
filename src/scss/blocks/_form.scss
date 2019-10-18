@@ -104,3 +104,22 @@
     }
   }
 }
+#phone, #phoneFoot {
+  width: auto;
+  border: none;
+  padding: 0 3px;
+  margin-top: 5px;
+}
+
+.country-phone-option {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.country-phone-option span {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+}
